@@ -41,7 +41,7 @@ export interface HeroCounter {
 export const reformasHero = {
   eyebrow: "La revolución institucional",
   title: "LAS 12 REFORMAS",
-  desc: "Prometí transformar la Argentina. No con discursos, sino con hechos. En dos años aprobamos los tres exámenes — fiscal, monetario y cambiario — e hicimos más reformas estructurales que en las últimas cuatro décadas juntas.",
+  desc: "Prometí transformar la Argentina. No con discursos, sino con hechos. En dos años aprobamos los tres exámenes — fiscal, monetario y cambiario — aprobamos la primera reforma laboral de la democracia, e hicimos más reformas estructurales que en las últimas cuatro décadas juntas. En 2026, cada ministerio presentará 10 paquetes de proyectos legislativos para completar la transformación.",
 } as const;
 
 export const heroCounters: HeroCounter[] = [

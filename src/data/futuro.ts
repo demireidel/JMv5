@@ -81,7 +81,7 @@ export interface ClosingData {
 export const futuroHeader = {
   sectionTitle: "ARGENTINA DEL FUTURO",
   introQuote: "Solo reencontrándonos con las verdades de nuestro pasado profundo podemos dar un salto hacia el futuro.",
-  introText: "Tres pilares transforman a la Argentina en protagonista de la revolución tecnológica global: Silicon Valley, Stargate e hidrocarburos.",
+  introText: "Cuatro pilares transforman a la Argentina en protagonista de la revolución tecnológica y energética global: Silicon Valley, Stargate, energía nuclear e hidrocarburos.",
 } as const;
 
 // ── Gallery photos ──────────────────────────────────────────
@@ -232,6 +232,6 @@ export const vacaMuerta: VacaMuertaData = {
 // ── Closing ─────────────────────────────────────────────────
 
 export const futuroClosing: ClosingData = {
-  text: "Silicon Valley abrió la puerta. Stargate trae la infraestructura. Vaca Muerta la alimenta. Argentina no será una observadora pasiva — está llamada a ser la arquitecta del futuro.",
-  attr: "Javier Milei",
+  text: "Silicon Valley abrió la puerta. Stargate trae la infraestructura. Vaca Muerta y el plan nuclear la alimentan. El litio, el cobre y el uranio proveen los minerales críticos. Argentina no será una observadora pasiva — está llamada a ser la arquitecta del futuro. En dos años, pasamos de país paria a destino de inversión global. Los próximos dos serán los de la construcción.",
+  attr: "Javier Milei — Apertura de Sesiones 2026",
 };

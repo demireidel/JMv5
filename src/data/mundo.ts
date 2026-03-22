@@ -60,6 +60,10 @@ export const leaders: Leader[] = [
   { flag: "🇺🇸", name: "Scott Bessent", role: "Secretario del Tesoro" },
   { flag: "🇨🇱", name: "José A. Kast", role: "Presidente de Chile" },
   { flag: "🇭🇺", name: "Viktor Orbán", role: "PM de Hungría" },
+  { flag: "🇬🇧", name: "Keir Starmer", role: "PM del Reino Unido" },
+  { flag: "🇺🇸", name: "Pete Hegseth", role: "Secretario de Guerra de EE.UU." },
+  { flag: "🇦🇪", name: "MGX / Abu Dhabi", role: "Fondo soberano — Stargate" },
+  { flag: "🇯🇵", name: "Masayoshi Son", role: "CEO de SoftBank — Stargate" },
 ];
 
 export const timeline: TimelineEvent[] = [
