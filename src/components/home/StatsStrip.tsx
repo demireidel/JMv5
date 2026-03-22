@@ -2,22 +2,9 @@
 
 import { useAnimatedNumber } from "@/hooks/useAnimatedNumber";
 import { ScrollReveal } from "@/components/ui/ScrollReveal";
+import { homeStats, type HomeStat } from "@/data/home";
 
-interface StatItem {
-  target: number;
-  suffix: string;
-  label: string;
-  decimals?: number;
-}
-
-const stats: StatItem[] = [
-  { target: 57, suffix: "% → 27%", label: "Reducción de pobreza" },
-  { target: 2.4, suffix: "% mensual", label: "Inflación", decimals: 1 },
-  { target: 14500, suffix: "+", label: "Desregulaciones" },
-  { target: 497, suffix: " pts", label: "Riesgo país" },
-];
-
-function AnimatedStat({ stat, delay }: { stat: StatItem; delay: number }) {
+function AnimatedStat({ stat, delay }: { stat: HomeStat; delay: number }) {
   const { ref, display, value } = useAnimatedNumber({
     target: stat.target,
     duration: 1800,
@@ -54,7 +41,7 @@ export function StatsStrip() {
     <section className="border-y border-border bg-navy">
       <div className="mx-auto max-w-[var(--width-content)] px-4 py-10 sm:px-6 md:py-14 lg:px-8">
         <div className="grid grid-cols-2 gap-8 md:grid-cols-4 md:gap-6">
-          {stats.map((stat, i) => (
+          {homeStats.map((stat, i) => (
             <AnimatedStat key={stat.label} stat={stat} delay={i * 60} />
           ))}
         </div>

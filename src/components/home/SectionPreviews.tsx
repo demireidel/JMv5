@@ -4,59 +4,7 @@ import Link from "next/link";
 import { Container } from "@/components/ui/Container";
 import { ScrollReveal } from "@/components/ui/ScrollReveal";
 import { Card } from "@/components/ui/Card";
-
-interface SectionPreview {
-  title: string;
-  desc: string;
-  href: string;
-  stat?: string;
-  statLabel?: string;
-}
-
-const sections: SectionPreview[] = [
-  {
-    title: "Visión",
-    desc: "La filosofía y los principios que guían cada decisión de gobierno",
-    href: "/vision",
-    stat: "5",
-    statLabel: "capítulos",
-  },
-  {
-    title: "Logros",
-    desc: "Resultados concretos con datos antes y después — la evidencia habla",
-    href: "/logros",
-    stat: "19",
-    statLabel: "logros",
-  },
-  {
-    title: "Reformas",
-    desc: "Las transformaciones estructurales que cambiaron las reglas del juego",
-    href: "/reformas",
-    stat: "12",
-    statLabel: "reformas",
-  },
-  {
-    title: "Futuro",
-    desc: "Los proyectos estratégicos que posicionan a la Argentina como potencia",
-    href: "/futuro",
-    stat: "4",
-    statLabel: "proyectos",
-  },
-  {
-    title: "Mundo",
-    desc: "Acuerdos comerciales, alianzas y el regreso de Argentina al escenario global",
-    href: "/mundo",
-    stat: "3",
-    statLabel: "TLCs firmados",
-  },
-  {
-    title: "Archivo",
-    desc: "Libros, artículos académicos, discursos y entrevistas — el pensamiento completo",
-    href: "/archivo",
-    stat: "80+",
-    statLabel: "obras",
-  },
-];
+import { sectionCards } from "@/data/home";
 
 export function SectionPreviews() {
   return (
@@ -72,7 +20,7 @@ export function SectionPreviews() {
         </ScrollReveal>
 
         <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-          {sections.map((s, i) => (
+          {sectionCards.map((s, i) => (
             <ScrollReveal key={s.href} variant="scale-in" delay={i * 80}>
               <Link href={s.href} className="group block no-underline">
                 <Card accent hover className="p-6">
