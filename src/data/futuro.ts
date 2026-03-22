@@ -173,7 +173,7 @@ export const nuclear: NuclearData = {
     },
     {
       label: "Fase 2 — El uranio.",
-      text: "El «modelo Gillette»: vender reactores con compromiso de compra de uranio argentino a largo plazo. YPF creó la subsidiaria YPF Nuclear para liderar la explotación de Cerro Solo en Chubut — el mayor reservorio de uranio del país con reservas estimadas de 6.000 toneladas — junto a 18 iniciativas privadas adicionales de exploración y explotación en Mendoza, Salta y San Luis. El objetivo: nunca más importar uranio para nuestros propios reactores. Argentina tiene la séptima mayor reserva de uranio de América y la infraestructura para enriquecer combustible nuclear — una capacidad que solo 13 países del mundo poseen.",
+      text: "El «modelo Gillette»: vender reactores con compromiso de compra de uranio argentino a largo plazo. YPF creó la subsidiaria YPF Nuclear para liderar la explotación de Cerro Solo en Chubut — el mayor reservorio de uranio del país con reservas estimadas de 6.000 toneladas — junto a 18 iniciativas privadas adicionales de exploración y explotación en Mendoza, Salta y San Luis. En 2025, Argentina batió su récord histórico de producción de uranio: 190 toneladas. El objetivo: nunca más importar uranio para nuestros propios reactores. Argentina tiene la séptima mayor reserva de uranio de América y la infraestructura para enriquecer combustible nuclear — una capacidad que solo 13 países del mundo poseen.",
     },
     {
       label: "Fase 3 — Nuclear City.",
@@ -204,18 +204,20 @@ export const nuclear: NuclearData = {
 // ── 4. Vaca Muerta ──────────────────────────────────────────
 
 export const vacaMuerta: VacaMuertaData = {
-  kicker: "Récord histórico · 2025",
+  kicker: "Récord tras récord · 2025–2026",
   titleLine1: "VACA MUERTA:",
   titleLine2Em: "EL GIGANTE DESPIERTA",
   paragraphs: [
     "En 2025, la Argentina superó el récord de producción petrolera de 1998 — un máximo que llevaba 27 años intacto. La producción alcanzó 869.000 barriles diarios con Vaca Muerta aportando el 65% del total nacional. El crecimiento de la producción shale fue del 33% interanual, convirtiendo a Argentina en el productor de shale de más rápido crecimiento del mundo fuera de Estados Unidos. Vaca Muerta es la segunda reserva mundial de gas shale (tras China) y la cuarta de petróleo shale (tras Rusia, EE.UU. y China) — con una superficie de 30.000 km², equivalente a Bélgica.",
     "Las cifras de la Cuenca Neuquina son contundentes. La inversión total en 2025 alcanzó USD 10.000 millones, con el 76% destinado exclusivamente a Vaca Muerta. YPF, bajo la conducción de Horacio Marín, superó los 200.000 barriles diarios de shale oil propio — un crecimiento del 82% en solo dos años, posicionándose como la petrolera de shale de mayor crecimiento del mundo. Loma Campana, operado por YPF, se convirtió en el primer yacimiento argentino en romper la barrera de los 100.000 barriles diarios, con más de USD 10.000 millones invertidos acumulados y 750 pozos activos. Otras operadoras como Vista Energy, Pan American Energy, Tecpetrol y Pluspetrol batieron récords propios de producción.",
     "Las exportaciones de crudo y derivados superaron los USD 6.000 millones en 2025 — Argentina pasó de ser importador neto de energía a exportador neto en solo dos años. El superávit de la balanza comercial energética alcanzó USD 6.900 millones en 2025 — un 22% más que en 2024. El proyecto estrella del futuro es Argentina LNG, liderado por YPF y Petronas (la petrolera estatal de Malasia), que proyecta exportar 12 millones de toneladas anuales de gas natural licuado desde una planta en Sierra Grande, Río Negro — generando USD 200.000 millones en exportaciones acumuladas en 20 años. Con la segunda reserva mundial de gas shale y la cuarta de petróleo shale, el gigante despertó.",
+    "Y en 2026, el gigante sigue acelerando. Neuquén superó por primera vez los 610.000 barriles diarios — récord provincial absoluto — y YPF apunta a que Argentina quiebre la barrera del millón de barriles diarios durante el año. El oleoducto Vaca Muerta Oil Sur (VMOS), construido por YPF junto a Pan American Energy, Pluspetrol, Vista y Pampa Energía, transportará hasta 550.000 barriles diarios hasta la costa atlántica, desbloqueando más de USD 15.000 millones anuales en exportaciones. YPF fijó una meta récord de USD 14.000 millones en exportaciones energéticas para 2026. La producción de uranio también marcó un hito: 190 toneladas en 2025, el récord histórico nacional.",
   ],
   stats: [
-    { val: "869K", label: "Barriles/día · Récord" },
-    { val: "$10B", label: "Inversión 2025" },
-    { val: "$6.9B", label: "Superávit energético" },
+    { val: "869K", label: "Barriles/día · Récord 2025" },
+    { val: "1M", label: "Meta 2026 · barriles/día" },
+    { val: "$14B", label: "Meta exportaciones 2026" },
+    { val: "$6.9B", label: "Superávit energético 2025" },
   ],
   photo: {
     src: "/images/banco/vaca-muerta-recorrida.jpg",

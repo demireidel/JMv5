@@ -175,6 +175,24 @@ export const discursos: Discurso[] = [
     desc: "En su segundo discurso ante la AGNU, Milei propuso cuatro principios concretos para reformar las Naciones Unidas: soberanía nacional, subsidiariedad internacional, diligencia institucional y simplificación normativa. Reiteró el reclamo de soberanía sobre las Islas Malvinas, denunció la detención del gendarme Nahuel Gallo por el régimen de Maduro en Venezuela y exigió la liberación de los rehenes en Gaza. El discurso marcó un endurecimiento de la posición argentina en foros multilaterales, consolidando la doctrina de política exterior basada en libertad y propiedad.",
     themes: ["Reforma ONU", "Malvinas", "Venezuela"],
   },
+  {
+    date: "ENE 2026",
+    title: "Foro Económico Mundial — Davos III",
+    location: "WEF, Davos, Suiza",
+    desc: "Tercer Special Address consecutivo ante el WEF — ningún líder latinoamericano lo había logrado. Milei proclamó que 'el mundo ha comenzado a despertar' y presentó los resultados de dos años de gestión: PBI en máximo histórico, inflación de 200% a 30%, pobreza de 57% a 27%, cepo levantado, tres acuerdos de libre comercio firmados. Defendió el capitalismo como el único sistema que genera prosperidad y trazó un paralelismo entre el renacer argentino y el giro global hacia las ideas de la libertad. Previamente, mantuvo un encuentro con CEOs y altos directivos de compañías internacionales. Junto a Trump, firmó el Board of Peace — 19 países comprometidos con la resolución pacífica de conflictos.",
+    frase: "2026 es el año en el que traigo buenas noticias: el mundo ha comenzado a despertar.",
+    themes: ["Capitalismo", "Resultados de gestión", "Board of Peace"],
+    keynote: true,
+  },
+  {
+    date: "MAR 2026",
+    title: "Apertura de Sesiones Ordinarias 2026",
+    location: "Congreso de la Nación, Buenos Aires",
+    desc: "Ante la Asamblea Legislativa, Milei presentó el balance más completo de su gestión: PBI récord (+4,4%), inflación de 200% a 30%, pobreza de 57% a 27%, cepo eliminado, tres TLC firmados, RIGI con USD 25.000M aprobados, reforma laboral sancionada. Anunció el 'año calendario de la reforma': cada ministerio preparó 10 paquetes de proyectos legislativos para presentación mensual — reformas del Código Civil y Comercial, Código Aduanero, defensa del consumidor, competencia e impositivo. Ratificó la alianza estratégica con EE.UU. como política de Estado y presentó al RIGI como el mayor logro de la gestión.",
+    frase: "Robar está mal, pero robarle el pan de la boca a los más vulnerables, haciéndolos esclavos para amasar poder, excede a cualquier adjetivo.",
+    themes: ["Balance de gestión", "Reformas 2026", "RIGI", "Alianza con EE.UU."],
+    keynote: true,
+  },
 ];
 
 export const entrevistas: Entrevista[] = [
@@ -245,13 +263,16 @@ export const reconocimientos: string[] = [
   "Johns Hopkins: 2.º economista más influyente en habla hispana y EE.UU.",
   "Reunión con Robert C. Merton (Nobel 1997) en Olivos (diciembre 2025)",
   "Philippe Aghion (Nobel 2025) elogió las reformas en Foro Económico LAC 2026",
+  "3 Special Addresses consecutivos en el WEF de Davos (2024, 2025, 2026) — único líder latinoamericano",
+  "15 viajes a EE.UU. como presidente — récord histórico para un mandatario argentino",
+  "Victoria legislativa de medio término con 40,7% — mayor votación oficialista en elecciones de mitad de mandato en democracia moderna",
 ];
 
 // ── Section metadata ────────────────────────────────────
 
 export const archivoHeader = {
   sectionTitle: "ARCHIVO INTELECTUAL",
-  sectionIntro: "Más de 50 artículos académicos, 7 libros, discursos que redefinieron el debate global y entrevistas con audiencias de cientos de millones. La producción intelectual completa de un presidente-economista sin precedentes.",
+  sectionIntro: "Más de 50 artículos académicos, 7 libros, 12 discursos que redefinieron el debate global y entrevistas con audiencias de cientos de millones. La producción intelectual completa de un presidente-economista sin precedentes.",
 } as const;
 
 export const collabProject = {

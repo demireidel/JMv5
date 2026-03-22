@@ -153,6 +153,26 @@ export const timeline: TimelineEvent[] = [
     title: "Argentina Week — Nueva York",
     desc: "Más de 300 líderes empresariales de todo el mundo convergen en Manhattan. Jamie Dimon inaugura el evento desde la flamante torre de JP Morgan en 270 Park Avenue. USD 16.150M en inversiones confirmadas. Gobernadores argentinos salen a vender sus provincias al capital global.",
   },
+  {
+    date: "OCT 2025",
+    title: "Victoria legislativa histórica — 40,7 %",
+    desc: "La Libertad Avanza arrasa en las elecciones de medio término con el 40,7 % de los votos a nivel nacional — victoria en 15 de 24 provincias y en 6 de 8 distritos senatoriales. Por primera vez, un presidente gana la provincia de Buenos Aires — bastión del peronismo desde 1987. LLA consolida el tercio legislativo para blindar vetos y queda a 22 votos de la mayoría simple. Milei declara: 'Argentina decidió dejar atrás 100 años de decadencia'.",
+  },
+  {
+    date: "FEB 2026",
+    title: "Acuerdo comercial y de datos con EE.UU.",
+    desc: "El canciller Pablo Quirno y el representante de Comercio de EE.UU. Jamieson Greer firman un acuerdo marco de comercio, inversiones y datos. Argentina reconoce a EE.UU. como jurisdicción adecuada para transferencia transfronteriza de datos, se compromete a no imponer aranceles a transmisiones electrónicas ni impuestos a servicios digitales. Paralelamente, el ministro de Defensa Presti firma con Pete Hegseth la adhesión a la coalición hemisférica de seguridad contra el narcoterrorismo.",
+  },
+  {
+    date: "FEB 2026",
+    title: "Reforma laboral aprobada en el Congreso",
+    desc: "La primera reforma laboral desde el retorno a la democracia se aprueba en el Senado. Reemplaza el sistema de indemnizaciones por fondos de cese, elimina la ultractividad de convenios colectivos, prioriza acuerdos empresa por empresa sobre los sectoriales, y moderniza licencias, horas extra y régimen de enfermedades inculpables. Aplica a todos los contratos — no solo a los nuevos.",
+  },
+  {
+    date: "2026",
+    title: "Visita al Reino Unido — primera en 30 años",
+    desc: "Milei confirma la primera visita oficial de un presidente argentino a Londres en casi tres décadas. La agenda incluye cooperación en energía, servicios financieros y tecnología, mientras se ratifica que el reclamo de soberanía sobre las Islas Malvinas 'no es negociable'. El viaje marca el reinicio de una relación bilateral congelada desde la guerra de 1982.",
+  },
 ];
 
 export const megaStats: MegaStat[] = [
@@ -196,6 +216,18 @@ export const megaStats: MegaStat[] = [
     label: "Superávit comercial 2025",
     detail: "USD 11.290M de superávit en la balanza comercial de 2025 — Argentina vuelve a exportar más de lo que importa, revirtiendo años de déficit",
     animated: { target: 11.29, prefix: "$", suffix: "B" },
+  },
+  {
+    value: "$25B+",
+    label: "RIGI aprobado",
+    detail: "12 proyectos aprobados bajo el Régimen de Incentivo para Grandes Inversiones — energía, minería, tecnología, siderurgia — con USD 60.000M+ en pipeline",
+    animated: { target: 25, prefix: "$", suffix: "B+" },
+  },
+  {
+    value: "40,7%",
+    label: "Victoria legislativa",
+    detail: "La Libertad Avanza ganó las elecciones de medio término en 15 de 24 provincias, incluyendo Buenos Aires — bastión peronista desde 1987",
+    animated: { target: 40.7, suffix: "%" },
   },
 ];
 
@@ -273,8 +305,8 @@ export const cooperationGrid: CooperationItem[] = [
   },
   {
     icon: "⚡",
-    title: "RIGI — Grandes Inversiones",
-    desc: "Régimen de incentivos para inversiones estratégicas que ya atrae capital global en energía, minería, tecnología e infraestructura. Vaca Muerta, GNL, litio y data centers de IA: Argentina se posiciona como la potencia de recursos naturales del siglo XXI.",
+    title: "RIGI — USD 25.000M aprobados",
+    desc: "12 proyectos aprobados con USD 25.000M en inversiones comprometidas y USD 60.000M+ en pipeline. Vaca Muerta Sur (oleoducto USD 3.000M), GNL (USD 6.878M), litio (Río Tinto USD 2.724M), siderurgia, minería de oro. RIGI extendido hasta julio 2027 — beneficios fiscales y aduaneros por 30 años para inversiones estratégicas.",
   },
   {
     icon: "🤖",
