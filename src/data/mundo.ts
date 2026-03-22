@@ -70,7 +70,82 @@ export const timeline: TimelineEvent[] = [
   {
     date: "ENE 2024",
     title: "Davos I — El rugido del león",
-    desc: "Milei irrumpe en el Foro Económico Mundial con un discurso que sacude al establishment global. Por primera vez en décadas, un presidente argentino se planta ante la élite de Davos para defender el libre mercado sin ambigüedades. Argentina vuelve al radar del mundo.",
+    desc: "«Occidente está en peligro.» Con esa frase, Milei irrumpe en el Foro Económico Mundial ante la élite global de Davos y lanza una defensa radical del capitalismo de libre mercado. El discurso genera una ovación de pie inédita en la historia del WEF y es reproducido por medios de todo el mundo. Argentina vuelve al radar global por primera vez en décadas.",
+  },
+  {
+    date: "FEB 2024",
+    title: "Vaticano — Una hora con el Papa Francisco",
+    desc: "Pese a las asperezas públicas durante la campaña, Milei se reúne con el Papa Francisco durante 70 minutos en el Vaticano — una audiencia excepcionalmente larga. Intercambian regalos y discuten la crisis social argentina. El gesto desarma la narrativa de confrontación y abre un canal diplomático con la Santa Sede.",
+  },
+  {
+    date: "FEB 2024",
+    title: "Roma — Primera bilateral con Meloni",
+    desc: "En el Palazzo Chigi, Milei se reúne durante una hora con Giorgia Meloni — su primera bilateral con una líder europea. Acuerdos en energía, infraestructura y agroindustria. Comienza una alianza personal que se profundizará en cinco encuentros en dos años.",
+  },
+  {
+    date: "FEB 2024",
+    title: "Jerusalén — Milei en el Muro de los Lamentos",
+    desc: "Bilateral de 90 minutos con Netanyahu en la oficina del Primer Ministro. Acuerdos en ciberseguridad, defensa, drones y agtech. Milei visita el Muro de los Lamentos y anuncia la intención de trasladar la embajada argentina a Jerusalén. Israel reconoce a Argentina como socio prioritario en América Latina.",
+  },
+  {
+    date: "FEB 2024",
+    title: "CPAC Washington — Ante el conservadurismo global",
+    desc: "En la conferencia conservadora más importante de EE.UU., Milei deconstruye los cuatro supuestos fallos de mercado: monopolio, bienes públicos, externalidades e información asimétrica. Primera foto con Trump — quien lo llama «MAGA: Make Argentina Great Again». El público norteamericano lo ovaciona de pie.",
+  },
+  {
+    date: "ABR 2024",
+    title: "Musk en la Gigafactory de Tesla — Austin",
+    desc: "Milei visita la Gigafactory de Tesla en Austin, Texas, y se reúne con Elon Musk. Discuten mercados libres, litio argentino, eliminación de burocracia y la posibilidad de un «evento de la libertad» en Argentina. Musk elogia públicamente las reformas argentinas en X.",
+  },
+  {
+    date: "MAY 2024",
+    title: "Silicon Valley — 7 CEOs en 36 horas",
+    desc: "En un raid de 36 horas por San Francisco, Milei se reúne cara a cara con Sam Altman (OpenAI, 90 minutos), Tim Cook (Apple), Sundar Pichai (Google), Mark Zuckerberg (Meta) y Marc Andreessen (a16z). Plantea a Argentina como hub global de IA con energía limpia, agua dulce y clima frío en Patagonia. La gira planta la semilla de Stargate Argentina.",
+  },
+  {
+    date: "JUN 2024",
+    title: "G7 Apulia — Invitado por Meloni",
+    desc: "Milei asiste al G7 en Borgo Egnazia, Italia, como invitado personal de Meloni — la anfitriona del foro. Primera vez que un presidente argentino es invitado al G7 en una década. Bilaterales con líderes del grupo. Milei y Meloni consolidan su alianza personal ante las cámaras del mundo.",
+  },
+  {
+    date: "JUN 2024",
+    title: "Zelensky — Cumbre de Paz en Suiza",
+    desc: "En el resort de Bürgenstock, Milei se reúne con Volodímir Zelensky en la Cumbre Global de Paz. Recibe la Orden de la Libertad de Ucrania y reitera el apoyo argentino a la soberanía ucraniana. Argentina firma el comunicado final junto a más de 80 países.",
+  },
+  {
+    date: "JUL 2024",
+    title: "Macron en el Elíseo — Bilateral en París",
+    desc: "En vísperas de los Juegos Olímpicos, Milei se reúne con Macron en el Palacio del Elíseo durante casi una hora. El presidente liberal y el dirigista europeo encuentran terreno común: FMI, energía nuclear, Mercosur-UE y la candidatura argentina a la OCDE. Francia ofrece respaldo en los foros multilaterales.",
+  },
+  {
+    date: "SEP 2024",
+    title: "ONU — «No soy político, soy economista»",
+    desc: "Ante la 79.ª Asamblea General de la ONU, Milei rechaza frontalmente la Agenda 2030, alerta sobre el fracaso de la ONU en su misión original y presenta a Argentina como ejemplo de que la transformación radical es posible. «La vida, la libertad y la propiedad» quedan definidos como los tres pilares inamovibles de la política exterior argentina.",
+  },
+  {
+    date: "NOV 2024",
+    title: "Mar-a-Lago — Primer líder en ver a Trump electo",
+    desc: "Milei es el primer jefe de Estado del mundo en reunirse con Trump tras su victoria electoral, en la gala del America First Policy Institute en Mar-a-Lago. Elon Musk también está presente. Milei llama a la victoria de Trump «el mayor comeback político de la historia». La foto de los tres recorre el planeta.",
+  },
+  {
+    date: "NOV 2024",
+    title: "Meloni en Buenos Aires — Cena en Olivos",
+    desc: "Meloni visita Argentina después del G20 en Río. Cena en la Quinta de Olivos, bilateral de dos horas en Casa Rosada. Se anuncia el Plan de Acción Italia-Argentina 2025-2030. Italia respalda el ingreso de Argentina a la OCDE. Milei y Karina reciben la ciudadanía italiana por ius sanguinis.",
+  },
+  {
+    date: "NOV 2024",
+    title: "G20 Río — Xi Jinping cara a cara",
+    desc: "Pese a haber llamado «asesinos» al gobierno chino durante la campaña, Milei se reúne con Xi Jinping en el G20 de Río de Janeiro. Ambos acuerdan «cooperación constructiva» y la renovación del swap de divisas por USD 5.000 millones. Pragmatismo puro: China es el segundo socio comercial de Argentina.",
+  },
+  {
+    date: "ENE 2025",
+    title: "Inauguración de Trump — Primer jefe de Estado en asistir",
+    desc: "Milei asiste a la inauguración presidencial de Trump en el Capitolio — primer mandatario en ejercicio en hacerlo según los registros del Departamento de Estado desde 1874. Entourage: Karina Milei, Luis Caputo, Gerardo Werthein. También asiste a la Starlight Gala. La señal es inequívoca: Argentina y EE.UU. son aliados estratégicos.",
+  },
+  {
+    date: "ENE 2025",
+    title: "Davos II — «Maquiavelo ha muerto»",
+    desc: "Segundo Special Address consecutivo ante el WEF. Milei introduce la eficiencia dinámica de Huerta de Soto, argumenta que la eficiencia sin moral es tiranía, y anuncia la formación de una alianza internacional de naciones libres junto a Trump, Musk, Meloni, Bukele, Orbán y Netanyahu. Ovación prolongada del auditorio.",
   },
   {
     date: "ABR 2025",
@@ -79,13 +154,23 @@ export const timeline: TimelineEvent[] = [
   },
   {
     date: "JUN 2025",
-    title: "Bilateral con Netanyahu — Jerusalén",
-    desc: "Milei se reúne con el Primer Ministro israelí en Jerusalén, consolidando la alianza estratégica. Acuerdos de cooperación en ciberseguridad, agtech e inteligencia. Israel reconoce a Argentina como socio prioritario en América Latina.",
+    title: "Meloni en Roma — YPF-ENI y ciudadanía italiana",
+    desc: "Bilateral de dos horas en Roma. Se adopta el Plan de Acción Italia-Argentina 2025-2030 y se firma el acuerdo YPF-ENI para el proyecto Argentina LNG: gas de Vaca Muerta licuado con tecnología flotante, con potencial de más de USD 100.000 millones en exportaciones en 20 años. Quinto encuentro Milei-Meloni en 18 meses.",
   },
   {
     date: "JUN 2025",
-    title: "Bilateral con Macron — Niza",
-    desc: "En la Riviera francesa, Milei y Macron sellan un entendimiento que parecía imposible: el presidente liberal y el dirigista europeo encuentran terreno común en defensa, energía nuclear y el impulso final al acuerdo Mercosur-UE.",
+    title: "Papa León XIV — Primera audiencia",
+    desc: "Audiencia privada de 45 minutos con el Papa León XIV — el primer papa americano de la historia. Discuten la situación social argentina, la reducción de la pobreza y la cohesión social. El Papa confirma su intención de visitar Argentina. Milei entrega una invitación formal por escrito.",
+  },
+  {
+    date: "JUN 2025",
+    title: "Knesset — Milei ante el parlamento israelí",
+    desc: "Milei se convierte en el primer presidente argentino en dirigirse al pleno de la Knesset. Anuncia formalmente que Argentina trasladará su embajada a Jerusalén Oeste en 2026. Netanyahu agradece a Milei por «estar del lado correcto en la lucha contra las fuerzas de la oscuridad». Visita de tres días que incluye acuerdos de defensa y tecnología.",
+  },
+  {
+    date: "JUN 2025",
+    title: "Macron en Niza — Alianza nuclear y minerales",
+    desc: "Al margen de la Conferencia de Océanos de la ONU, Milei y Macron firman una alianza estratégica en minerales críticos y energía nuclear. Francia se compromete a apoyar el Plan Nuclear argentino. Acuerdos bilaterales en litio y cobre. Según funcionarios, la relación franco-argentina está «en su punto más alto de cercanía política en décadas».",
   },
   {
     date: "JUL 2025",
@@ -159,23 +244,28 @@ export const timeline: TimelineEvent[] = [
   },
   {
     date: "OCT 2025",
+    title: "Stargate Argentina — OpenAI elige Patagonia",
+    desc: "OpenAI y Sur Energy firman el acuerdo para construir Stargate Argentina: el primer proyecto de infraestructura de IA fuera de Estados Unidos. Hasta 500 MW de capacidad de cómputo alimentados con energía renovable patagónica. Inversión de hasta USD 25.000 millones bajo el régimen RIGI. Construcción comienza en 2026, primera fase operativa en 2027.",
+  },
+  {
+    date: "OCT 2025",
     title: "Victoria legislativa histórica — 40,7 %",
-    desc: "La Libertad Avanza arrasa en las elecciones de medio término con el 40,7 % de los votos a nivel nacional — victoria en 15 de 24 provincias y en 6 de 8 distritos senatoriales. Por primera vez, un presidente gana la provincia de Buenos Aires — bastión del peronismo desde 1987. LLA consolida el tercio legislativo para blindar vetos y queda a 22 votos de la mayoría simple. Milei declara: 'Argentina decidió dejar atrás 100 años de decadencia'.",
+    desc: "La Libertad Avanza arrasa en las elecciones de medio término con el 40,7 % a nivel nacional — victoria en 15 de 24 provincias y en 6 de 8 distritos senatoriales. Por primera vez desde 1987, un presidente gana la provincia de Buenos Aires, bastión histórico del peronismo. LLA consolida el tercio legislativo para blindar vetos y queda a 22 votos de la mayoría simple. Los mercados responden con un rally inmediato.",
   },
   {
     date: "FEB 2026",
-    title: "Acuerdo comercial y de datos con EE.UU.",
-    desc: "El canciller Pablo Quirno y el representante de Comercio de EE.UU. Jamieson Greer firman un acuerdo marco de comercio, inversiones y datos. Argentina reconoce a EE.UU. como jurisdicción adecuada para transferencia transfronteriza de datos, se compromete a no imponer aranceles a transmisiones electrónicas ni impuestos a servicios digitales. Paralelamente, el ministro de Defensa Presti firma con Pete Hegseth la adhesión a la coalición hemisférica de seguridad contra el narcoterrorismo.",
+    title: "Firma del acuerdo comercial y de datos con EE.UU.",
+    desc: "El canciller Pablo Quirno y el representante de Comercio Jamieson Greer firman en Washington el acuerdo de comercio, inversiones y datos. Argentina reconoce a EE.UU. como jurisdicción adecuada para transferencia transfronteriza de datos y se compromete a no imponer aranceles a transmisiones electrónicas. Paralelamente, el ministro de Defensa firma con Pete Hegseth la adhesión a la coalición hemisférica de seguridad.",
   },
   {
     date: "FEB 2026",
-    title: "Reforma laboral aprobada en el Congreso",
-    desc: "La primera reforma laboral desde el retorno a la democracia se aprueba en el Senado. Reemplaza el sistema de indemnizaciones por fondos de cese, elimina la ultractividad de convenios colectivos, prioriza acuerdos empresa por empresa sobre los sectoriales, y moderniza licencias, horas extra y régimen de enfermedades inculpables. Aplica a todos los contratos — no solo a los nuevos.",
+    title: "Reforma laboral — Primera en 40 años de democracia",
+    desc: "El Senado aprueba la primera reforma laboral integral desde el retorno a la democracia en 1983. Reemplaza el sistema de indemnizaciones por fondos de cese, elimina la ultractividad de convenios colectivos, prioriza acuerdos empresa por empresa sobre los sectoriales, y moderniza licencias, horas extra y régimen de enfermedades inculpables. Aplica a todos los contratos — no solo a los nuevos.",
   },
   {
     date: "2026",
-    title: "Visita al Reino Unido — primera en 30 años",
-    desc: "Milei confirma la primera visita oficial de un presidente argentino a Londres en casi tres décadas. La agenda incluye cooperación en energía, servicios financieros y tecnología, mientras se ratifica que el reclamo de soberanía sobre las Islas Malvinas 'no es negociable'. El viaje marca el reinicio de una relación bilateral congelada desde la guerra de 1982.",
+    title: "Londres — Primera visita presidencial en 28 años",
+    desc: "Milei confirma la primera visita oficial de un presidente argentino a Londres desde 1998. Agenda: cooperación en energía, servicios financieros y tecnología con el PM Keir Starmer. Se inician conversaciones sobre el embargo de armas vigente desde 1982. El reclamo de soberanía sobre Malvinas se ratifica como «no negociable», pero Milei propone una «relación comercial adulta» como vía diplomática.",
   },
 ];
 
@@ -222,16 +312,22 @@ export const megaStats: MegaStat[] = [
     animated: { target: 11.29, prefix: "$", suffix: "B" },
   },
   {
-    value: "$25B+",
-    label: "RIGI aprobado",
-    detail: "12 proyectos aprobados bajo el Régimen de Incentivo para Grandes Inversiones — energía, minería, tecnología, siderurgia — con USD 60.000M+ en pipeline",
-    animated: { target: 25, prefix: "$", suffix: "B+" },
+    value: "$55B+",
+    label: "Inversiones anunciadas",
+    detail: "USD 55.000M+ en inversiones comprometidas: RIGI (USD 25.000M aprobados, USD 60.000M en pipeline), Stargate Argentina, Vaca Muerta Sur, Argentina LNG, minería de litio y cobre",
+    animated: { target: 55, prefix: "$", suffix: "B+" },
   },
   {
     value: "40,7%",
     label: "Victoria legislativa",
     detail: "La Libertad Avanza ganó las elecciones de medio término en 15 de 24 provincias, incluyendo Buenos Aires — bastión peronista desde 1987",
     animated: { target: 40.7, suffix: "%" },
+  },
+  {
+    value: "9+",
+    label: "Viajes a EE.UU.",
+    detail: "Récord histórico de un presidente argentino: Washington, Nueva York, Miami, Austin, San Francisco, Los Ángeles, Idaho — la relación bilateral más intensa de la historia",
+    animated: { target: 9, suffix: "+" },
   },
 ];
 
