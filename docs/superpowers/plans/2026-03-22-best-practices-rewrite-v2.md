@@ -76,17 +76,29 @@ cat -n next.config.ts
 
 - [ ] **Step 2: Rewrite `next.config.ts`**
 
+Key research findings incorporated here:
+- **React Compiler** (`experimental.reactCompiler: true`): stable in Next.js 16, auto-memoizes all components/hooks without manual `useMemo`/`useCallback`. Biggest 2026 perf win for React apps.
+- **`minimumCacheTTL`**: default changed to 4 hours in Next.js 16 — explicit 30-day value keeps our static assets cached aggressively.
+- **`images.domains`**: deprecated in Next.js 16 (no remote images in this project, so `remotePatterns` not needed).
+
 ```typescript
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
   poweredByHeader: false,
 
+  experimental: {
+    // React Compiler: auto-memoizes components + hooks at build time.
+    // Eliminates need for manual useMemo/useCallback across the entire codebase.
+    // Stable in Next.js 16 / React 19.2.
+    reactCompiler: true,
+  },
+
   images: {
     formats: ["image/avif", "image/webp"],
     deviceSizes: [640, 750, 828, 1080, 1200, 1920],
     imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],
-    minimumCacheTTL: 60 * 60 * 24 * 30, // 30 days
+    minimumCacheTTL: 60 * 60 * 24 * 30, // 30 days (explicit; default changed to 4h in Next.js 16)
   },
 
   async headers() {
@@ -2150,6 +2162,7 @@ git commit -m "chore: final verification — 0 TS errors, 0 lint warnings, all t
 ### Violations Fixed
 | Violation | File(s) | Fix |
 |-----------|---------|-----|
+| React Compiler not enabled | `next.config.ts` | Added `experimental.reactCompiler: true` — auto-memoizes all components/hooks, eliminates manual `useMemo`/`useCallback` (stable in Next.js 16 / React 19.2) |
 | Missing CSP header | `next.config.ts` | Added CSP with correct directives |
 | `colorScheme: "dark"` on light site | `layout.tsx`, `next.config.ts` | Fixed to `"light"` |
 | Stale video preload | `layout.tsx` | Removed |
