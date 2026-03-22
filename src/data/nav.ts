@@ -3,13 +3,14 @@
 export interface NavLink {
   href: string;
   label: string;
+  sublabel: string;
 }
 
 export const navLinks: NavLink[] = [
-  { href: "/vision", label: "Visión" },
-  { href: "/logros", label: "Logros" },
-  { href: "/reformas", label: "Reformas" },
-  { href: "/futuro", label: "Futuro" },
-  { href: "/mundo", label: "Mundo" },
-  { href: "/archivo", label: "Archivo" },
+  { href: "/vision",   label: "Visión",    sublabel: "Ideas & valores" },
+  { href: "/logros",   label: "Logros",    sublabel: "Gestión de gobierno" },
+  { href: "/reformas", label: "Reformas",  sublabel: "La transformación" },
+  { href: "/futuro",   label: "Futuro",    sublabel: "El proyecto país" },
+  { href: "/mundo",    label: "Mundo",     sublabel: "Argentina global" },
+  { href: "/archivo",  label: "Archivo",   sublabel: "Multimedia & prensa" },
 ];

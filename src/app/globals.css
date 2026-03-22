@@ -20,7 +20,7 @@
   --color-celeste: oklch(0.55 0.11 240);
   --color-dark: oklch(0.97 0.005 80);
   --color-navy: oklch(0.91 0.012 250);
-  --color-cream: #1a1a2e;
+  --color-midnight: #1a1a2e;
 
   /* Hex fallbacks (OG images, scrollbar, etc.) */
   --color-gold-hex: #b8860b;
@@ -262,10 +262,11 @@
   .hero-overlay {
     background: linear-gradient(
       to bottom,
-      color-mix(in oklch, var(--color-overlay-dark), transparent 85%) 0%,
-      color-mix(in oklch, var(--color-overlay-dark), transparent 65%) 40%,
-      color-mix(in oklch, var(--color-overlay-dark), transparent 30%) 80%,
-      color-mix(in oklch, var(--color-overlay-dark), transparent 10%) 100%
+      color-mix(in oklch, var(--color-overlay-dark), transparent 45%) 0%,
+      color-mix(in oklch, var(--color-overlay-dark), transparent 75%) 25%,
+      color-mix(in oklch, var(--color-overlay-dark), transparent 70%) 50%,
+      color-mix(in oklch, var(--color-overlay-dark), transparent 20%) 80%,
+      color-mix(in oklch, var(--color-overlay-dark), transparent 5%) 100%
     );
   }
 

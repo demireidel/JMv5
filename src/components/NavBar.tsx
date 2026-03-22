@@ -10,6 +10,7 @@ export function NavBar() {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const pathname = usePathname();
+  const isHome = pathname === "/";
   const hamburgerRef = useRef<HTMLButtonElement>(null);
   const menuNavRef = useRef<HTMLElement>(null);
   const navListRef = useRef<HTMLUListElement>(null);
@@ -107,7 +108,9 @@ export function NavBar() {
         className={`fixed inset-x-0 top-0 z-50 h-[var(--height-nav)] transition-all duration-[var(--duration-normal)] ease-[var(--ease-standard)] ${
           scrolled
             ? "border-b border-border bg-nav-bg backdrop-blur-[12px] backdrop-saturate-[1.2]"
-            : "border-b border-transparent bg-transparent"
+            : isHome
+              ? "border-b border-white/10 bg-gradient-to-b from-black/50 to-transparent backdrop-blur-[2px]"
+              : "border-b border-transparent bg-transparent"
         }`}
       >
         <nav
@@ -120,7 +123,7 @@ export function NavBar() {
             className="flex items-center no-underline"
             aria-label="Inicio — Javier Milei"
           >
-            <Wordmark className="text-xl tracking-[0.1em]" />
+            <Wordmark className="text-xl tracking-[0.1em]" light={isHome && !scrolled} />
           </Link>
 
           {/* Desktop links */}
@@ -135,10 +138,12 @@ export function NavBar() {
                     if (el) linkRefs.current.set(link.href, el);
                   }}
                   href={link.href}
-                  className={`relative px-3 py-2 font-body text-sm font-medium no-underline transition-colors duration-[var(--duration-fast)] ${
+                  className={`group relative px-3 py-2 font-accent text-xs font-bold uppercase tracking-[0.15em] no-underline transition-colors duration-[var(--duration-fast)] ${
                     isActive(link.href)
                       ? "text-gold"
-                      : "text-text-secondary hover:text-text-primary"
+                      : isHome && !scrolled
+                        ? "text-white/80 hover:text-white"
+                        : "text-text-secondary hover:text-text-primary"
                   }`}
                   {...(isActive(link.href) ? { "aria-current": "page" as const } : {})}
                 >
@@ -166,24 +171,28 @@ export function NavBar() {
           <button
             ref={hamburgerRef}
             onClick={toggleMenu}
-            className="flex h-11 w-11 cursor-pointer flex-col items-center justify-center gap-1.5 rounded-full border border-white/15 bg-white/10 backdrop-blur-sm transition-colors duration-[var(--duration-fast)] hover:bg-white/15 md:hidden"
+            className={`flex h-11 w-11 cursor-pointer flex-col items-center justify-center gap-1.5 rounded-full transition-colors duration-[var(--duration-fast)] md:hidden ${
+              isHome && !scrolled
+                ? "border border-white/30 bg-black/40 backdrop-blur-md hover:bg-black/55"
+                : "border border-border bg-surface-1 backdrop-blur-sm hover:bg-surface-2"
+            }`}
             aria-label={menuOpen ? "Cerrar menú" : "Abrir menú"}
             aria-expanded={menuOpen}
           >
             <span
-              className={`block h-0.5 w-5 bg-white transition-all duration-[var(--duration-fast)] ${
-                menuOpen ? "translate-y-[4px] rotate-45" : ""
-              }`}
+              className={`block h-0.5 w-5 transition-all duration-[var(--duration-fast)] ${
+                isHome && !scrolled ? "bg-white" : "bg-text-primary"
+              } ${menuOpen ? "translate-y-[4px] rotate-45" : ""}`}
             />
             <span
-              className={`block h-0.5 w-5 bg-white transition-all duration-[var(--duration-fast)] ${
-                menuOpen ? "opacity-0" : "opacity-100"
-              }`}
+              className={`block h-0.5 w-5 transition-all duration-[var(--duration-fast)] ${
+                isHome && !scrolled ? "bg-white" : "bg-text-primary"
+              } ${menuOpen ? "opacity-0" : "opacity-100"}`}
             />
             <span
-              className={`block h-0.5 w-5 bg-white transition-all duration-[var(--duration-fast)] ${
-                menuOpen ? "-translate-y-[4px] -rotate-45" : ""
-              }`}
+              className={`block h-0.5 w-5 transition-all duration-[var(--duration-fast)] ${
+                isHome && !scrolled ? "bg-white" : "bg-text-primary"
+              } ${menuOpen ? "-translate-y-[4px] -rotate-45" : ""}`}
             />
           </button>
         </nav>
@@ -199,33 +208,61 @@ export function NavBar() {
         }`}
         aria-hidden={!menuOpen}
       >
+        {/* Decorative gold top line */}
+        <div
+          className="absolute inset-x-8 top-[var(--height-nav)] h-px bg-gradient-to-r from-transparent via-gold/40 to-transparent"
+          aria-hidden="true"
+        />
+
         <nav ref={menuNavRef} aria-label="Menú móvil">
-          <ul className="m-0 flex list-none flex-col items-center gap-2 p-0">
+          <ul className="m-0 flex list-none flex-col items-center gap-0 p-0">
             {navLinks.map((link, i) => (
               <li
                 key={link.href}
-                className={`transition-[opacity,transform] duration-[var(--duration-normal)] ease-[var(--ease-decelerate)] ${
+                className={`w-full transition-[opacity,transform] duration-[var(--duration-normal)] ease-[var(--ease-decelerate)] ${
                   menuOpen
                     ? "translate-y-0 opacity-100"
-                    : "translate-y-4 opacity-0"
+                    : "translate-y-5 opacity-0"
                 }`}
-                style={{ transitionDelay: `${i * 50}ms` }}
+                style={{ transitionDelay: `${i * 60}ms` }}
               >
                 <Link
                   href={link.href}
-                  className={`block px-6 py-3 text-center font-accent text-[length:var(--text-2xl)] uppercase tracking-wider no-underline transition-colors duration-[var(--duration-fast)] ${
+                  className={`group flex flex-col items-center gap-0.5 px-8 py-4 text-center no-underline transition-colors duration-[var(--duration-fast)] ${
                     isActive(link.href)
                       ? "text-gold"
                       : "text-text-primary hover:text-gold"
                   }`}
                   tabIndex={menuOpen ? 0 : -1}
                 >
-                  {link.label}
+                  <span className="font-accent text-[length:var(--text-2xl)] font-bold uppercase tracking-[0.2em] leading-none">
+                    {link.label}
+                  </span>
+                  <span
+                    className={`font-body text-xs tracking-[0.08em] transition-colors duration-[var(--duration-fast)] ${
+                      isActive(link.href)
+                        ? "text-gold/60"
+                        : "text-text-secondary group-hover:text-gold/50"
+                    }`}
+                  >
+                    {link.sublabel}
+                  </span>
                 </Link>
+
+                {/* Separator between items */}
+                {i < navLinks.length - 1 && (
+                  <div className="mx-auto h-px w-16 bg-border/50" aria-hidden="true" />
+                )}
               </li>
             ))}
           </ul>
         </nav>
+
+        {/* Bottom decorative line */}
+        <div
+          className="absolute bottom-[5rem] inset-x-8 h-px bg-gradient-to-r from-transparent via-gold/30 to-transparent"
+          aria-hidden="true"
+        />
       </div>
     </>
   );

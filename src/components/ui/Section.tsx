@@ -1,4 +1,4 @@
-type SectionVariant = "dark" | "navy" | "cream";
+type SectionVariant = "dark" | "navy" | "midnight";
 
 interface SectionProps {
   children: React.ReactNode;
@@ -13,13 +13,13 @@ interface SectionProps {
 const variantClasses = {
   dark:  "bg-dark text-text-primary",
   navy:  "bg-navy text-text-primary",
-  cream: "bg-cream text-dark",
+  midnight: "bg-midnight text-dark",
 } satisfies Record<SectionVariant, string>;
 
 const variantBg = {
   dark:  "var(--color-dark)",
   navy:  "var(--color-navy)",
-  cream: "var(--color-cream)",
+  midnight: "var(--color-midnight)",
 } satisfies Record<SectionVariant, string>;
 
 export function Section({

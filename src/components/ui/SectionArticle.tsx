@@ -1,6 +1,7 @@
 "use client";
 
 import { Divider } from "@/components/ui/Divider";
+import { ScrollReveal } from "@/components/ui/ScrollReveal";
 
 interface SectionArticleProps {
   id: string;
@@ -17,7 +18,9 @@ export function SectionArticle({
 }: SectionArticleProps) {
   return (
     <article id={id} className={className ?? "mb-20"}>
-      {children}
+      <ScrollReveal variant="fade-up" duration={500}>
+        {children}
+      </ScrollReveal>
       {!last && <Divider animated className="mt-16" />}
     </article>
   );

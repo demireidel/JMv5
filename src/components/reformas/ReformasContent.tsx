@@ -13,7 +13,14 @@ import { SectionArticle } from "@/components/ui/SectionArticle";
 const romanNumerals = ["I", "II", "III", "IV", "V", "VI"];
 
 function toId(title: string) {
-  return `bloque-${title.replace(/\s+/g, "-").toLowerCase()}`;
+  return `bloque-${title
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .replace(/[^a-zA-Z0-9\s-]/g, "")
+    .replace(/\s+/g, "-")
+    .replace(/-+/g, "-")
+    .replace(/^-|-$/g, "")
+    .toLowerCase()}`;
 }
 
 function cleanTitle(title: string) {

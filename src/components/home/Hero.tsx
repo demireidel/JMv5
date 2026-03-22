@@ -55,7 +55,7 @@ export function Hero() {
           muted
           loop
           playsInline
-          preload="auto"
+          preload="metadata"
           src="/videos/hero.mp4"
           poster={heroImage.src}
           onError={() => setShowFallback(true)}
@@ -94,7 +94,7 @@ export function Hero() {
       <div className="relative z-10 flex h-full flex-col items-center justify-end px-4 pb-12">
         {/* Eyebrow */}
         <p
-          className="mb-6 text-center font-accent text-[length:var(--text-xs)] uppercase tracking-[0.35em] text-white/50"
+          className="mb-6 text-center font-accent text-[length:var(--text-xs)] uppercase tracking-[0.35em] text-white/70"
           style={{
             opacity: shown || step >= 2 ? 1 : 0,
             transform: shown || step >= 2 ? "translateY(0)" : "translateY(12px)",
@@ -150,7 +150,7 @@ export function Hero() {
 
         {/* Subtitle — max-w-lg so the phrase fits on 1–2 lines */}
         <p
-          className="max-w-[36rem] text-center font-display text-[length:var(--text-lg)] italic leading-snug text-white/65"
+          className="max-w-[36rem] text-center font-display text-[length:var(--text-lg)] italic leading-snug text-white/85"
           style={{
             opacity: shown || step >= 6 ? 1 : 0,
             transform: shown || step >= 6 ? "translateY(0)" : "translateY(10px)",

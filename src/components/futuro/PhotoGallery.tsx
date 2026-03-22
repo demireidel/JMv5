@@ -12,7 +12,11 @@ export function PhotoGallery({ photos }: PhotoGalleryProps) {
       <h4 className="badge-text mb-5 !text-gold">Galería — La gira en imágenes</h4>
       <ContentGrid cols={3}>
         {photos.slice(0, 9).map((photo, i) => (
-          <figure key={i} className="group relative m-0 overflow-hidden rounded-lg">
+          <figure
+            key={i}
+            className="group relative m-0 overflow-hidden rounded-lg"
+            aria-label={`${photo.tag}: ${photo.who} — ${photo.where}`}
+          >
             <Image
               src={photo.src}
               alt={photo.who}
@@ -22,7 +26,7 @@ export function PhotoGallery({ photos }: PhotoGalleryProps) {
               style={{ objectPosition: photo.pos }}
               loading="lazy"
             />
-            <div className="absolute inset-0 flex flex-col justify-end bg-gradient-to-t from-black/80 via-black/20 to-transparent p-3 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+            <div className="absolute inset-0 flex flex-col justify-end bg-gradient-to-t from-black/80 via-black/20 to-transparent p-3 opacity-100 md:opacity-0 md:transition-opacity md:duration-300 md:group-hover:opacity-100">
               <span className="font-accent text-[length:var(--text-xs)] font-bold uppercase tracking-wider text-gold">
                 {photo.tag}
               </span>
