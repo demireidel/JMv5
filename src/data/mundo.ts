@@ -41,6 +41,16 @@ export interface CooperationItem {
   desc: string;
 }
 
+export interface ForumAppearance {
+  image: string;
+  imageAlt: string;
+  title: string;
+  location: string;
+  date: string;
+  desc: string;
+  highlight?: boolean;
+}
+
 // ── Data ────────────────────────────────────────────────
 
 export const leaders: Leader[] = [
@@ -429,6 +439,115 @@ export const cooperationGrid: CooperationItem[] = [
     desc: "Alineamiento con EE.UU. en controles de exportación, seguridad de inversiones y protección frente a prácticas no mercantiles de terceros estados. Argentina abandona la ambigüedad y elige su lugar en el tablero geopolítico global.",
   },
 ];
+
+export const forumAppearances: ForumAppearance[] = [
+  {
+    image: "/images/banco/davos-2024-discurso.jpg",
+    imageAlt: "Milei en el Foro de Davos 2024",
+    title: "Foro Económico Mundial — Davos I",
+    location: "Davos, Suiza",
+    date: "ENE 2024",
+    desc: "«Occidente está en peligro.» Primer Special Address ante la élite global. Ovación de pie inédita en la historia del WEF.",
+    highlight: true,
+  },
+  {
+    image: "/images/banco/cpac-argentina-02.jpg",
+    imageAlt: "Milei en CPAC Argentina",
+    title: "CPAC Washington",
+    location: "Washington D.C.",
+    date: "FEB 2024",
+    desc: "Deconstrucción de los 4 fallos de mercado. Primera foto con Trump — «MAGA: Make Argentina Great Again».",
+  },
+  {
+    image: "/images/banco/israel-netanyahu-bilateral.jpg",
+    imageAlt: "Milei con Netanyahu en Jerusalén",
+    title: "Bilateral con Netanyahu",
+    location: "Jerusalén, Israel",
+    date: "FEB 2024",
+    desc: "90 minutos con el PM. Acuerdos en ciberseguridad, defensa, drones y agtech. Visita al Muro de los Lamentos.",
+  },
+  {
+    image: "/images/banco/silicon-valley-tim-cook.jpg",
+    imageAlt: "Milei con Tim Cook en Apple Park",
+    title: "Silicon Valley — 7 CEOs en 36 horas",
+    location: "San Francisco, EE.UU.",
+    date: "MAY 2024",
+    desc: "Altman (OpenAI), Cook (Apple), Pichai (Google), Zuckerberg (Meta), Andreessen (a16z). Semilla de Stargate Argentina.",
+  },
+  {
+    image: "/images/banco/g7-italia-lideres.jpg",
+    imageAlt: "Milei en la Cumbre del G7, Italia",
+    title: "Cumbre del G7 — Invitado por Meloni",
+    location: "Borgo Egnazia, Italia",
+    date: "JUN 2024",
+    desc: "Primera invitación argentina al G7 en una década. Bilaterales con líderes del grupo de las 7 economías más grandes.",
+    highlight: true,
+  },
+  {
+    image: "/images/banco/trump-onu-bilateral.jpg",
+    imageAlt: "Bilateral Milei-Trump en la ONU",
+    title: "Asamblea General de la ONU",
+    location: "Nueva York",
+    date: "SEP 2024",
+    desc: "Rechazo a la Agenda 2030 ante la 79.ª Asamblea General. «La vida, la libertad y la propiedad» como pilares de la política exterior.",
+  },
+  {
+    image: "/images/banco/meloni-casarosada-pose.jpg",
+    imageAlt: "Milei con Meloni en Casa Rosada",
+    title: "Meloni visita Buenos Aires",
+    location: "Casa Rosada, Buenos Aires",
+    date: "NOV 2024",
+    desc: "Bilateral de 2 horas. Plan de Acción Italia-Argentina 2025-2030. Italia respalda ingreso de Argentina a la OCDE.",
+  },
+  {
+    image: "/images/banco/trump-casablanca-almuerzo.jpg",
+    imageAlt: "Milei con Trump en la Casa Blanca",
+    title: "Casa Blanca — Bilateral con Trump",
+    location: "Washington D.C.",
+    date: "OCT 2025",
+    desc: "Primer líder sudamericano recibido por Trump. Almuerzo de trabajo con delegaciones completas en el Salón Oval.",
+    highlight: true,
+  },
+  {
+    image: "/images/banco/davos-2026-discurso.jpg",
+    imageAlt: "Milei en Davos 2026",
+    title: "Davos III + Board of Peace",
+    location: "Davos, Suiza",
+    date: "ENE 2026",
+    desc: "Tercer Special Address consecutivo — récord para un líder latinoamericano. Firma del Board of Peace con Trump: 19 países.",
+    highlight: true,
+  },
+  {
+    image: "/images/banco/mercosur-ue-firma.jpg",
+    imageAlt: "Firma del acuerdo Mercosur-UE",
+    title: "Firma Mercosur-UE",
+    location: "Asunción, Paraguay",
+    date: "ENE 2026",
+    desc: "Después de 25 años, el acuerdo entre bloques más grande del planeta se materializa. 700 millones de personas, 30% del PBI global.",
+  },
+  {
+    image: "/images/banco/miami-cumbre-trump-lideres.jpg",
+    imageAlt: "Cumbre Shield of the Americas en Miami",
+    title: "Shield of the Americas",
+    location: "Miami, EE.UU.",
+    date: "MAR 2026",
+    desc: "Coalición de 17 naciones co-liderada por Argentina y EE.UU. Pacto de seguridad hemisférica más ambicioso en décadas.",
+    highlight: true,
+  },
+  {
+    image: "/images/banco/stargate-altman-milei.jpg",
+    imageAlt: "Milei y Sam Altman — Stargate Argentina",
+    title: "Stargate Argentina — OpenAI elige Patagonia",
+    location: "Buenos Aires",
+    date: "OCT 2025",
+    desc: "Primer proyecto de infraestructura IA fuera de EE.UU. Hasta 500 MW de cómputo con energía renovable patagónica. Hasta USD 25.000M.",
+  },
+];
+
+export const forosHeader = {
+  sectionTitle: "FOROS INTERNACIONALES",
+  sectionIntro: "En dos años, Milei pasó de ser un outsider desconocido a protagonista en los foros más exclusivos del mundo — Davos, G7, ONU, CPAC — y construyó relaciones directas con los líderes más influyentes del planeta.",
+} as const;
 
 // ── Section metadata ────────────────────────────────────
 

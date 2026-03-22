@@ -1,7 +1,8 @@
 "use client";
 
-import type { Leader, TimelineEvent, MegaStat, TradeAgreement } from "@/data/mundo";
-import { financialSupport, cooperationGrid, cooperacionHeader } from "@/data/mundo";
+import Image from "next/image";
+import type { Leader, TimelineEvent, MegaStat, TradeAgreement, ForumAppearance } from "@/data/mundo";
+import { financialSupport, cooperationGrid, cooperacionHeader, forumAppearances, forosHeader } from "@/data/mundo";
 import { SidebarLayout } from "@/components/ui/SidebarLayout";
 import { ChapterHeader } from "@/components/ui/ChapterHeader";
 import { Card } from "@/components/ui/Card";
@@ -9,10 +10,11 @@ import { Divider } from "@/components/ui/Divider";
 
 const sections = [
   { id: "estadisticas", num: "I", title: "Estadísticas clave" },
-  { id: "aliados", num: "II", title: "Aliados estratégicos" },
-  { id: "cronologia", num: "III", title: "Cronología diplomática" },
-  { id: "acuerdos", num: "IV", title: "Acuerdos comerciales" },
-  { id: "cooperacion", num: "V", title: "Cooperación" },
+  { id: "foros", num: "II", title: "Foros internacionales" },
+  { id: "aliados", num: "III", title: "Aliados estratégicos" },
+  { id: "cronologia", num: "IV", title: "Cronología diplomática" },
+  { id: "acuerdos", num: "V", title: "Acuerdos comerciales" },
+  { id: "cooperacion", num: "VI", title: "Cooperación" },
 ];
 
 function factColor(color: "gold" | "blue" | "green") {
@@ -38,6 +40,50 @@ function AgreementCard({ ta }: { ta: { tag: string; title: string; description: 
             </span>
           ))}
         </div>
+      </div>
+    </Card>
+  );
+}
+
+function ForumCard({ forum }: { forum: ForumAppearance }) {
+  return (
+    <Card className="overflow-hidden">
+      <div className="relative h-48 w-full">
+        <Image
+          src={forum.image}
+          alt={forum.imageAlt}
+          fill
+          className="object-cover"
+          sizes="(max-width: 640px) 100vw, 50vw"
+        />
+        {forum.highlight && (
+          <span className="absolute top-3 right-3 rounded-full bg-gold/90 px-2.5 py-0.5 text-[length:var(--text-xs)] font-bold text-dark">
+            DESTACADO
+          </span>
+        )}
+        <div
+          className="absolute inset-0"
+          style={{
+            background:
+              "linear-gradient(to top, oklch(0.10 0.01 270 / 0.8) 0%, transparent 50%)",
+          }}
+        />
+        <div className="absolute bottom-3 left-4 right-4">
+          <span className="font-accent text-[length:var(--text-xs)] uppercase tracking-[0.1em] text-gold">
+            {forum.date}
+          </span>
+          <span className="ml-2 text-[length:var(--text-xs)] text-text-tertiary">
+            {forum.location}
+          </span>
+        </div>
+      </div>
+      <div className="p-5">
+        <h4 className="m-0 mb-2 font-display text-[length:var(--text-sm)] text-text-primary">
+          {forum.title}
+        </h4>
+        <p className="m-0 text-[length:var(--text-xs)] leading-[1.6] text-text-secondary">
+          {forum.desc}
+        </p>
       </div>
     </Card>
   );
@@ -76,9 +122,25 @@ export function MundoContent({
 
       <Divider className="mb-12" />
 
-      {/* II — Leaders */}
+      {/* II — Forums */}
+      <article id="foros" className="mb-16">
+        <ChapterHeader
+          numeral="II"
+          title="Foros internacionales"
+          subtitle={forosHeader.sectionIntro}
+        />
+        <div className="grid gap-5 sm:grid-cols-2">
+          {forumAppearances.map((forum) => (
+            <ForumCard key={forum.title} forum={forum} />
+          ))}
+        </div>
+      </article>
+
+      <Divider className="mb-12" />
+
+      {/* III — Leaders */}
       <article id="aliados" className="mb-16">
-        <ChapterHeader numeral="II" title="Aliados y socios estratégicos" />
+        <ChapterHeader numeral="III" title="Aliados y socios estratégicos" />
         <div className="grid grid-cols-2 gap-3 sm:grid-cols-3">
           {leaders.map((l) => (
             <Card key={l.name} className="flex items-center gap-3 px-4 py-3">
@@ -98,9 +160,9 @@ export function MundoContent({
 
       <Divider className="mb-12" />
 
-      {/* III — Timeline */}
+      {/* IV — Timeline */}
       <article id="cronologia" className="mb-16">
-        <ChapterHeader numeral="III" title="Cronología diplomática" />
+        <ChapterHeader numeral="IV" title="Cronología diplomática" />
         <div className="space-y-4">
           {timeline.map((event, i) => (
             <Card key={i} className="flex gap-4 p-4">
@@ -122,9 +184,9 @@ export function MundoContent({
 
       <Divider className="mb-12" />
 
-      {/* IV — Trade Agreements */}
+      {/* V — Trade Agreements */}
       <article id="acuerdos" className="mb-16">
-        <ChapterHeader numeral="IV" title="Acuerdos comerciales" />
+        <ChapterHeader numeral="V" title="Acuerdos comerciales" />
         <div className="space-y-6">
           {tradeAgreements.map((ta) => (
             <AgreementCard key={ta.title} ta={ta} />
@@ -135,10 +197,10 @@ export function MundoContent({
 
       <Divider className="mb-12" />
 
-      {/* V — Cooperation */}
+      {/* VI — Cooperation */}
       <article id="cooperacion">
         <ChapterHeader
-          numeral="V"
+          numeral="VI"
           title="Cooperación y financiamiento"
           subtitle={cooperacionHeader.sectionIntro}
         />
