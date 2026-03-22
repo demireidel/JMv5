@@ -55,7 +55,7 @@ export function StatsStrip() {
       <div className="mx-auto max-w-[var(--width-content)] px-4 py-10 sm:px-6 md:py-14 lg:px-8">
         <div className="grid grid-cols-2 gap-8 md:grid-cols-4 md:gap-6">
           {stats.map((stat, i) => (
-            <AnimatedStat key={stat.label} stat={stat} delay={i * 150} />
+            <AnimatedStat key={stat.label} stat={stat} delay={i * 60} />
           ))}
         </div>
       </div>

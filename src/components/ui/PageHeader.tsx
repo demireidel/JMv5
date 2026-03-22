@@ -26,16 +26,12 @@ export function PageHeader({
 }: PageHeaderProps) {
   const sectionRef = useRef<HTMLDivElement>(null);
   const scrollProgress = useScrollProgress(sectionRef);
-  const [mounted, setMounted] = useState(false);
   const [reducedMotion, setReducedMotion] = useState(false);
 
   useEffect(() => {
     setReducedMotion(
       window.matchMedia("(prefers-reduced-motion: reduce)").matches
     );
-    // Slight delay to trigger entrance animations
-    const t = setTimeout(() => setMounted(true), 100);
-    return () => clearTimeout(t);
   }, []);
 
   // Parallax for background image
@@ -44,13 +40,13 @@ export function PageHeader({
   // Split title into words for staggered reveal
   const titleWords = title.split(" ");
   const totalWords = titleWords.length + (titleEmphasis ? titleEmphasis.split(" ").length : 0);
-  const baseDelay = 200; // ms delay for first word after mount
+  const baseDelay = 100; // ms delay for first word
   const stagger = 60; // ms between words
 
   return (
     <section
       ref={sectionRef}
-      className={`pb-12 pt-36 md:pt-40${backgroundImage ? " relative overflow-hidden" : ""}`}
+      className={`pb-12 pt-20 md:pt-24${backgroundImage ? " relative overflow-hidden" : ""}`}
     >
       {backgroundImage && (
         <>
@@ -61,7 +57,7 @@ export function PageHeader({
             sizes="100vw"
             className="object-cover"
             style={{
-              opacity: 0.2,
+              opacity: 0.4,
               transform: `translateY(${parallaxY}px)`,
               willChange: scrollProgress > 0 ? "transform" : undefined,
             }}
@@ -86,10 +82,7 @@ export function PageHeader({
             reducedMotion
               ? {}
               : {
-                  animation: mounted
-                    ? "anim-slide-right 600ms var(--ease-out-expo) 100ms both"
-                    : undefined,
-                  opacity: mounted ? undefined : 0,
+                  animation: "anim-slide-right 600ms var(--ease-out-expo) 50ms both",
                 }
           }
         >
@@ -106,10 +99,7 @@ export function PageHeader({
                 reducedMotion
                   ? {}
                   : {
-                      animation: mounted
-                        ? `anim-fade-up 500ms var(--ease-out-expo) ${baseDelay + i * stagger}ms both`
-                        : undefined,
-                      opacity: mounted ? undefined : 0,
+                      animation: `anim-fade-up 500ms var(--ease-out-expo) ${baseDelay + i * stagger}ms both`,
                     }
               }
             >
@@ -127,10 +117,7 @@ export function PageHeader({
                     reducedMotion
                       ? {}
                       : {
-                          animation: mounted
-                            ? `anim-fade-up 500ms var(--ease-out-expo) ${baseDelay + (titleWords.length + i) * stagger}ms both`
-                            : undefined,
-                          opacity: mounted ? undefined : 0,
+                          animation: `anim-fade-up 500ms var(--ease-out-expo) ${baseDelay + (titleWords.length + i) * stagger}ms both`,
                         }
                   }
                 >
@@ -150,10 +137,7 @@ export function PageHeader({
               reducedMotion
                 ? {}
                 : {
-                    animation: mounted
-                      ? `anim-fade-up 600ms var(--ease-out-expo) ${baseDelay + totalWords * stagger + 200}ms both`
-                      : undefined,
-                    opacity: mounted ? undefined : 0,
+                    animation: `anim-fade-up 600ms var(--ease-out-expo) ${baseDelay + totalWords * stagger + 200}ms both`,
                   }
             }
           >
