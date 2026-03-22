@@ -1,20 +1,60 @@
 "use client";
 
+import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import { heroImage } from "@/data/photos";
 
 export function Hero() {
+  const videoRef = useRef<HTMLVideoElement>(null);
+  const [showFallback, setShowFallback] = useState(false);
+
+  useEffect(() => {
+    // Respect reduced motion preference
+    const mq = window.matchMedia("(prefers-reduced-motion: reduce)");
+    if (mq.matches) {
+      videoRef.current?.pause();
+      setShowFallback(true);
+      return;
+    }
+
+    // Skip video on slow connections or data-saver mode
+    const conn = (navigator as Navigator & { connection?: { saveData?: boolean; effectiveType?: string } }).connection;
+    if (conn?.saveData || conn?.effectiveType === "2g") {
+      setShowFallback(true);
+    }
+  }, []);
+
   return (
     <section className="relative h-dvh w-full overflow-hidden">
-      {/* Background image */}
-      <Image
-        src={heroImage.src}
-        alt={heroImage.alt}
-        fill
-        priority
-        sizes="100vw"
-        className="object-cover object-[center_20%]"
-      />
+      {/* Background video */}
+      {!showFallback && (
+        <video
+          ref={videoRef}
+          autoPlay
+          muted
+          loop
+          playsInline
+          preload="auto"
+          poster={heroImage.src}
+          onError={() => setShowFallback(true)}
+          className="absolute inset-0 h-full w-full object-cover object-[center_20%]"
+        >
+          <source src="/videos/hero.webm" type="video/webm" />
+          <source src="/videos/hero.mp4" type="video/mp4" />
+        </video>
+      )}
+
+      {/* Fallback static image (reduced motion, slow connection, or video error) */}
+      {showFallback && (
+        <Image
+          src={heroImage.src}
+          alt={heroImage.alt}
+          fill
+          priority
+          sizes="100vw"
+          className="object-cover object-[center_20%]"
+        />
+      )}
 
       {/* Gradient overlay */}
       <div
