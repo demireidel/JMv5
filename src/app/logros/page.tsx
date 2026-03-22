@@ -57,7 +57,7 @@ export default function LogrosPage() {
       {/* Pobreza hero — the biggest achievement */}
       <PobrezaHero data={pobrezaData} />
 
-      {/* Remaining 7 achievements in bento grid */}
+      {/* Remaining achievements organized by theme */}
       <LogrosGrid logros={logros} />
     </>
   );
