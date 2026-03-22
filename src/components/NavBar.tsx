@@ -112,7 +112,7 @@ export function NavBar() {
       >
         <nav
           className="mx-auto flex h-full max-w-[var(--width-content)] items-center justify-between px-4 sm:px-6 lg:px-8"
-          aria-label="Navegacion principal"
+          aria-label="Navegación principal"
         >
           {/* Wordmark */}
           <Link
@@ -167,7 +167,7 @@ export function NavBar() {
             ref={hamburgerRef}
             onClick={toggleMenu}
             className="flex h-11 w-11 cursor-pointer flex-col items-center justify-center gap-1.5 rounded-full border border-white/15 bg-white/10 backdrop-blur-sm transition-colors duration-[var(--duration-fast)] hover:bg-white/15 md:hidden"
-            aria-label={menuOpen ? "Cerrar menu" : "Abrir menu"}
+            aria-label={menuOpen ? "Cerrar menú" : "Abrir menú"}
             aria-expanded={menuOpen}
           >
             <span
@@ -199,7 +199,7 @@ export function NavBar() {
         }`}
         aria-hidden={!menuOpen}
       >
-        <nav ref={menuNavRef} aria-label="Menu movil">
+        <nav ref={menuNavRef} aria-label="Menú móvil">
           <ul className="m-0 flex list-none flex-col items-center gap-2 p-0">
             {navLinks.map((link, i) => (
               <li

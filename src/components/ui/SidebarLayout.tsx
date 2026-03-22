@@ -57,13 +57,10 @@ export function SidebarLayout({
             </ul>
 
             {/* Volver arriba */}
-            <a
-              href="#"
-              onClick={(e) => {
-                e.preventDefault();
-                window.scrollTo({ top: 0, behavior: "smooth" });
-              }}
-              className="sidebar-nav-item mt-4 border-t border-border pt-4"
+            <button
+              type="button"
+              onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+              className="sidebar-nav-item mt-4 w-full border-t border-border pt-4 text-left"
             >
               <svg
                 className="h-4 w-4 shrink-0"
@@ -80,7 +77,7 @@ export function SidebarLayout({
                 />
               </svg>
               Volver arriba
-            </a>
+            </button>
           </nav>
 
           {/* Main content */}

@@ -1,6 +1,12 @@
 "use client";
 
-import { useRef, useEffect, useState, type ElementType, type ReactNode } from "react";
+import {
+  useRef,
+  useEffect,
+  useState,
+  type ElementType,
+  type ReactNode,
+} from "react";
 
 type AnimationVariant =
   | "fade-up"
@@ -12,6 +18,24 @@ type AnimationVariant =
   | "blur-in"
   | "none";
 
+interface VariantConfig {
+  hidden: React.CSSProperties;
+  visible: React.CSSProperties;
+  /** CSS property names separated by commas for transition string */
+  transition: string;
+}
+
+const variants = {
+  "fade-up":    { hidden: { opacity: 0, transform: "translateY(24px)" },  visible: { opacity: 1, transform: "translateY(0)" },    transition: "opacity,transform" },
+  "fade-in":    { hidden: { opacity: 0 },                                 visible: { opacity: 1 },                                transition: "opacity" },
+  "scale-in":   { hidden: { opacity: 0, transform: "scale(0.92)" },       visible: { opacity: 1, transform: "scale(1)" },         transition: "opacity,transform" },
+  "clip-reveal":{ hidden: { clipPath: "inset(100% 0 0 0)" },              visible: { clipPath: "inset(0)" },                      transition: "clip-path" },
+  "slide-left": { hidden: { opacity: 0, transform: "translateX(-40px)" }, visible: { opacity: 1, transform: "translateX(0)" },    transition: "opacity,transform" },
+  "slide-right":{ hidden: { opacity: 0, transform: "translateX(40px)" },  visible: { opacity: 1, transform: "translateX(0)" },    transition: "opacity,transform" },
+  "blur-in":    { hidden: { opacity: 0, filter: "blur(8px)" },            visible: { opacity: 1, filter: "blur(0px)" },           transition: "opacity,filter" },
+  "none":       { hidden: {},                                              visible: {},                                            transition: "" },
+} satisfies Record<AnimationVariant, VariantConfig>;
+
 interface ScrollRevealProps {
   children: ReactNode;
   variant?: AnimationVariant;
@@ -20,57 +44,9 @@ interface ScrollRevealProps {
   threshold?: number;
   once?: boolean;
   className?: string;
-  as?: ElementType;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  as?: ElementType<any>;
 }
-
-interface VariantStyles {
-  hidden: React.CSSProperties;
-  visible: React.CSSProperties;
-  transition: string;
-}
-
-const variants: Record<AnimationVariant, VariantStyles> = {
-  "fade-up": {
-    hidden: { opacity: 0, transform: "translateY(24px)" },
-    visible: { opacity: 1, transform: "translateY(0)" },
-    transition: "opacity,transform",
-  },
-  "fade-in": {
-    hidden: { opacity: 0 },
-    visible: { opacity: 1 },
-    transition: "opacity",
-  },
-  "scale-in": {
-    hidden: { opacity: 0, transform: "scale(0.92)" },
-    visible: { opacity: 1, transform: "scale(1)" },
-    transition: "opacity,transform",
-  },
-  "clip-reveal": {
-    hidden: { clipPath: "inset(100% 0 0 0)" },
-    visible: { clipPath: "inset(0)" },
-    transition: "clip-path",
-  },
-  "slide-left": {
-    hidden: { opacity: 0, transform: "translateX(-40px)" },
-    visible: { opacity: 1, transform: "translateX(0)" },
-    transition: "opacity,transform",
-  },
-  "slide-right": {
-    hidden: { opacity: 0, transform: "translateX(40px)" },
-    visible: { opacity: 1, transform: "translateX(0)" },
-    transition: "opacity,transform",
-  },
-  "blur-in": {
-    hidden: { opacity: 0, filter: "blur(8px)" },
-    visible: { opacity: 1, filter: "blur(0px)" },
-    transition: "opacity,filter",
-  },
-  none: {
-    hidden: {},
-    visible: {},
-    transition: "",
-  },
-};
 
 export function ScrollReveal({
   children,
@@ -110,8 +86,6 @@ export function ScrollReveal({
     return () => observer.disconnect();
   }, [threshold, once]);
 
-  const config = variants[variant];
-
   if (variant === "none") {
     return (
       <Tag ref={ref} className={className}>
@@ -120,10 +94,11 @@ export function ScrollReveal({
     );
   }
 
+  const config = variants[variant];
   const ease = "var(--ease-out-expo)";
-  const props = config.transition.split(",");
-  const transitionValue = props
-    .map((p) => `${p} ${duration}ms ${ease} ${delay}ms`)
+  const transitionValue = config.transition
+    .split(",")
+    .map((p) => `${p.trim()} ${duration}ms ${ease} ${delay}ms`)
     .join(", ");
 
   const style: React.CSSProperties = {

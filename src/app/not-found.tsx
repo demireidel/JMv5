@@ -6,9 +6,9 @@ export default function NotFound() {
     <section className="flex min-h-[70dvh] items-center justify-center">
       <Container className="text-center">
         <p className="badge-text mb-4">Error 404</p>
-        <h1 className="page-title mb-6">Pagina no encontrada</h1>
+        <h1 className="page-title mb-6">Página no encontrada</h1>
         <p className="prose-body mx-auto mb-10 max-w-md">
-          La pagina que buscas no existe o fue trasladada.
+          La página que buscas no existe o fue trasladada.
         </p>
         <Link
           href="/"

@@ -1,23 +1,26 @@
+type SectionVariant = "dark" | "navy" | "cream";
+
 interface SectionProps {
   children: React.ReactNode;
   id?: string;
-  variant?: "dark" | "navy" | "cream";
+  variant?: SectionVariant;
   bleedTop?: boolean;
   bleedBottom?: boolean;
   className?: string;
 }
 
-const variantClasses: Record<string, string> = {
-  dark: "bg-dark text-text-primary",
-  navy: "bg-navy text-text-primary",
+// satisfies ensures every variant key is covered at compile time
+const variantClasses = {
+  dark:  "bg-dark text-text-primary",
+  navy:  "bg-navy text-text-primary",
   cream: "bg-cream text-dark",
-};
+} satisfies Record<SectionVariant, string>;
 
-const variantBg: Record<string, string> = {
-  dark: "var(--color-dark)",
-  navy: "var(--color-navy)",
+const variantBg = {
+  dark:  "var(--color-dark)",
+  navy:  "var(--color-navy)",
   cream: "var(--color-cream)",
-};
+} satisfies Record<SectionVariant, string>;
 
 export function Section({
   children,
@@ -28,7 +31,7 @@ export function Section({
   className = "",
 }: SectionProps) {
   const bleedClasses = [
-    bleedTop ? "section-bleed-top" : "",
+    bleedTop    ? "section-bleed-top"    : "",
     bleedBottom ? "section-bleed-bottom" : "",
   ]
     .filter(Boolean)

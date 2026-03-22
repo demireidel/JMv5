@@ -9,10 +9,13 @@ export function Container({
   wide = false,
   className = "",
 }: ContainerProps) {
+  // Avoid !important — use conditional class for max-width
+  const maxW = wide
+    ? "max-w-[96rem]"
+    : "max-w-[var(--width-content)]";
+
   return (
-    <div
-      className={`mx-auto max-w-[var(--width-content)] px-4 sm:px-6 lg:px-8 ${wide ? "!max-w-[96rem]" : ""} ${className}`}
-    >
+    <div className={`mx-auto ${maxW} px-4 sm:px-6 lg:px-8 ${className}`}>
       {children}
     </div>
   );
