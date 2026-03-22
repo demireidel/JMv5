@@ -40,13 +40,13 @@ export function PageHeader({
   // Split title into words for staggered reveal
   const titleWords = title.split(" ");
   const totalWords = titleWords.length + (titleEmphasis ? titleEmphasis.split(" ").length : 0);
-  const baseDelay = 100; // ms delay for first word
-  const stagger = 60; // ms between words
+  const baseDelay = 0; // ms delay for first word — start immediately
+  const stagger = 30; // ms between words
 
   return (
     <section
       ref={sectionRef}
-      className={`pb-12 pt-20 md:pt-24${backgroundImage ? " relative overflow-hidden" : ""}`}
+      className={`pb-12 pt-14 md:pt-18${backgroundImage ? " relative overflow-hidden" : ""}`}
     >
       {backgroundImage && (
         <>
@@ -82,7 +82,7 @@ export function PageHeader({
             reducedMotion
               ? {}
               : {
-                  animation: "anim-slide-right 600ms var(--ease-out-expo) 50ms both",
+                  animation: "anim-slide-right 500ms var(--ease-out-expo) 0ms both",
                 }
           }
         >
@@ -137,7 +137,7 @@ export function PageHeader({
               reducedMotion
                 ? {}
                 : {
-                    animation: `anim-fade-up 600ms var(--ease-out-expo) ${baseDelay + totalWords * stagger + 200}ms both`,
+                    animation: `anim-fade-up 600ms var(--ease-out-expo) ${baseDelay + totalWords * stagger}ms both`,
                   }
             }
           >

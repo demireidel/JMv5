@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef, useState, useCallback, useEffect } from "react";
+import { useRef, useState, useCallback, useEffect, useMemo } from "react";
 import Image from "next/image";
 
 interface Photo {
@@ -15,7 +15,7 @@ interface PhotoStripProps {
 
 export function PhotoStrip({ photos, direction }: PhotoStripProps) {
   const scrollRight = direction === "right";
-  const doubled = [...photos, ...photos];
+  const doubled = useMemo(() => [...photos, ...photos], [photos]);
   const wrapperRef = useRef<HTMLDivElement>(null);
   const stripRef = useRef<HTMLDivElement>(null);
   const [isDragging, setIsDragging] = useState(false);
@@ -83,6 +83,15 @@ export function PhotoStrip({ photos, direction }: PhotoStripProps) {
     return () => observer.disconnect();
   }, []);
 
+  useEffect(() => {
+    const handleResize = () => {
+      anim.current.offset = wrapOffset(anim.current.offset);
+      applyTransform(anim.current.offset);
+    };
+    window.addEventListener("resize", handleResize, { passive: true });
+    return () => window.removeEventListener("resize", handleResize);
+  }, [wrapOffset, applyTransform]);
+
   const handlePointerDown = useCallback((e: React.PointerEvent) => {
     if (!wrapperRef.current) return;
     e.preventDefault();
@@ -126,7 +135,7 @@ export function PhotoStrip({ photos, direction }: PhotoStripProps) {
     <div
       ref={wrapperRef}
       role="region"
-      aria-label="Galería de fotos"
+      aria-label="Galería de fotos — arrastrá o deslizá para ver más"
       className={`select-none overflow-hidden bg-dark py-[var(--spacing-xs)] ${
         isDragging ? "cursor-grabbing" : "cursor-grab"
       }`}

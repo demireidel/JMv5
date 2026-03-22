@@ -59,6 +59,7 @@ export function SidebarLayout({
             {/* Volver arriba */}
             <button
               type="button"
+              aria-label="Volver al inicio de la página"
               onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
               className="sidebar-nav-item mt-4 w-full border-t border-border pt-4 text-left"
             >

@@ -18,10 +18,20 @@ export function BeforeAfterPanel({
   return (
     <div className={panelClass}>
       <span
-        className={`badge-text mb-1 block ${
+        className={`badge-text mb-1 flex items-center gap-1 ${
           type === "before" ? "!text-danger" : "!text-success"
         }`}
       >
+        <svg
+          width="10"
+          height="10"
+          viewBox="0 0 10 10"
+          fill="currentColor"
+          aria-hidden="true"
+          className={type === "before" ? "rotate-180" : ""}
+        >
+          <path d="M5 1l4 8H1z" />
+        </svg>
         {label ?? defaultLabel}
       </span>
       {value && (

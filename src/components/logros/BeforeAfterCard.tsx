@@ -5,12 +5,10 @@ import type { Logro } from "@/data/logros";
 import { Card } from "@/components/ui/Card";
 import { BeforeAfterPanel } from "@/components/ui/BeforeAfterPanel";
 import { ExpandableSection } from "@/components/ui/ExpandableSection";
-import { ScrollReveal } from "@/components/ui/ScrollReveal";
 
 export function BeforeAfterCard({ logro }: { logro: Logro }) {
   return (
-    <ScrollReveal variant="scale-in">
-      <Card className="overflow-hidden">
+    <Card className="overflow-hidden">
         {/* Banner image */}
         {logro.img && (
           <Image
@@ -24,47 +22,37 @@ export function BeforeAfterCard({ logro }: { logro: Logro }) {
         )}
 
         {/* Header with badge */}
-        <ScrollReveal variant="fade-in" delay={100}>
-          <div className="flex items-center justify-between border-b border-border px-5 py-4">
-            <span className="badge-text">{logro.badge}</span>
-          </div>
-        </ScrollReveal>
+        <div className="flex items-center justify-between border-b border-border px-5 py-4">
+          <span className="badge-text">{logro.badge}</span>
+        </div>
 
         {/* Title */}
-        <ScrollReveal variant="fade-up" delay={150}>
-          <div className="px-5 pb-3 pt-4">
-            <h3 className="m-0 font-display text-[length:var(--text-lg)] leading-snug text-text-primary">
-              {logro.title}
-            </h3>
-          </div>
-        </ScrollReveal>
+        <div className="px-5 pb-3 pt-4">
+          <h3 className="m-0 font-display text-[length:var(--text-lg)] leading-snug text-text-primary">
+            {logro.title}
+          </h3>
+        </div>
 
-        {/* Before / After comparison — panels slide in from opposite sides */}
+        {/* Before / After comparison */}
         <div className="mx-5 mb-4 grid grid-cols-2 gap-px overflow-hidden rounded-lg">
-          <ScrollReveal variant="slide-left" delay={200}>
-            <BeforeAfterPanel type="before" value={logro.before.val}>
-              <span className="text-[length:var(--text-xs)] leading-snug text-text-secondary">
-                {logro.before.label}
-              </span>
-            </BeforeAfterPanel>
-          </ScrollReveal>
-          <ScrollReveal variant="slide-right" delay={200}>
-            <BeforeAfterPanel type="after" value={logro.after.val}>
-              <span className="text-[length:var(--text-xs)] leading-snug text-text-secondary">
-                {logro.after.label}
-              </span>
-            </BeforeAfterPanel>
-          </ScrollReveal>
+          <BeforeAfterPanel type="before" value={logro.before.val}>
+            <span className="text-[length:var(--text-xs)] leading-snug text-text-secondary">
+              {logro.before.label}
+            </span>
+          </BeforeAfterPanel>
+          <BeforeAfterPanel type="after" value={logro.after.val}>
+            <span className="text-[length:var(--text-xs)] leading-snug text-text-secondary">
+              {logro.after.label}
+            </span>
+          </BeforeAfterPanel>
         </div>
 
         {/* Callout */}
-        <ScrollReveal variant="fade-up" delay={300}>
-          <div className="px-5 pb-4">
-            <p className="pullquote m-0 text-[length:var(--text-sm)]">
-              {logro.callout}
-            </p>
-          </div>
-        </ScrollReveal>
+        <div className="px-5 pb-4">
+          <p className="pullquote m-0 text-[length:var(--text-sm)]">
+            {logro.callout}
+          </p>
+        </div>
 
         {/* Expandable details */}
         {logro.paragraphs.length > 0 && (
@@ -105,6 +93,5 @@ export function BeforeAfterCard({ logro }: { logro: Logro }) {
           </ExpandableSection>
         )}
       </Card>
-    </ScrollReveal>
   );
 }
