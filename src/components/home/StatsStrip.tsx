@@ -6,18 +6,20 @@ import { ScrollReveal } from "@/components/ui/ScrollReveal";
 
 export function StatsStrip() {
   return (
-    <section className="border-y border-border bg-navy">
-      <div className="mx-auto max-w-[var(--width-content)] px-4 py-10 sm:px-6 md:py-14 lg:px-8">
-        <div className="grid grid-cols-2 gap-8 md:grid-cols-4 md:gap-6">
+    <section className="section-light-text bg-cream">
+      <div className="mx-auto max-w-[var(--width-content)] px-4 sm:px-6 lg:px-8">
+        <div className="grid grid-cols-2 divide-x divide-y divide-[oklch(1_0_0/0.07)] md:grid-cols-4 md:divide-y-0">
           {homeStats.map((stat, i) => (
-            <ScrollReveal key={stat.label} variant="scale-in" delay={i * 60}>
-              <AnimatedNumber
-                target={stat.target}
-                suffix={stat.suffix}
-                label={stat.label}
-                decimals={stat.decimals}
-                variant="strip"
-              />
+            <ScrollReveal key={stat.label} variant="scale-in" delay={i * 80} className="flex justify-center">
+              <div className="px-6 py-12 text-center md:px-8">
+                <AnimatedNumber
+                  target={stat.target}
+                  suffix={stat.suffix}
+                  label={stat.label}
+                  decimals={stat.decimals}
+                  variant="strip"
+                />
+              </div>
             </ScrollReveal>
           ))}
         </div>

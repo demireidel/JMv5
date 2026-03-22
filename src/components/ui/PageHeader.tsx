@@ -89,6 +89,17 @@ export function PageHeader({
           {eyebrow}
         </p>
 
+        {/* Gold ornamental rule */}
+        <span
+          className="gold-rule"
+          aria-hidden="true"
+          style={
+            reducedMotion
+              ? {}
+              : { animation: "anim-fade-up 400ms var(--ease-out-expo) 150ms both" }
+          }
+        />
+
         {/* Title — word-by-word reveal */}
         <h1 className="page-title">
           {titleWords.map((word, i) => (

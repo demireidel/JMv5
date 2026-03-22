@@ -50,10 +50,10 @@
   --color-text-tertiary: oklch(0.50 0.02 270);
 
   /* ── Before / After Tints ──────────────────────────────── */
-  --color-tint-before: oklch(0.82 0.09 20);
-  --color-tint-after: oklch(0.82 0.10 145);
-  --color-border-before: oklch(0.55 0.18 20 / 0.6);
-  --color-border-after: oklch(0.50 0.18 145 / 0.6);
+  --color-tint-before: oklch(0.88 0.14 20);
+  --color-tint-after: oklch(0.88 0.16 145);
+  --color-border-before: oklch(0.50 0.22 20 / 0.75);
+  --color-border-after: oklch(0.45 0.22 145 / 0.75);
 
   /* ── Gold on dark backgrounds (overlay/dark sections) ─── */
   --color-gold-light: oklch(0.80 0.17 85);
@@ -284,6 +284,8 @@
     background: var(--color-surface-1);
     border: 1px solid var(--color-border);
     border-radius: var(--radius-xl);
+    transition: border-color var(--duration-fast) var(--ease-standard),
+                box-shadow var(--duration-fast) var(--ease-standard);
   }
 
   /* Surface card with gold accent border */
@@ -301,18 +303,18 @@
     margin: 0 0 3rem;
   }
 
-  /* Before panel (tinted red) */
+  /* Before panel (tinted red — gradient for depth) */
   .panel-before {
-    background: var(--color-tint-before);
-    border: 1px solid var(--color-border-before);
+    background: linear-gradient(160deg, oklch(0.88 0.14 20) 0%, oklch(0.93 0.06 20) 100%);
+    border: 1.5px solid var(--color-border-before);
     border-radius: var(--radius-md);
     padding: var(--spacing-md);
   }
 
-  /* After panel (tinted green) */
+  /* After panel (tinted green — gradient for depth) */
   .panel-after {
-    background: var(--color-tint-after);
-    border: 1px solid var(--color-border-after);
+    background: linear-gradient(160deg, oklch(0.88 0.16 145) 0%, oklch(0.93 0.07 145) 100%);
+    border: 1.5px solid var(--color-border-after);
     border-radius: var(--radius-md);
     padding: var(--spacing-md);
   }
@@ -553,6 +555,37 @@ html {
     border-color: var(--color-border-hover);
     transition-duration: 100ms;
   }
+}
+
+/* ── Gold Rule — decorative section ornament ─────────────── */
+.gold-rule {
+  display: block;
+  width: 2.5rem;
+  height: 2px;
+  background: var(--color-gold);
+  border-radius: 1px;
+  margin-bottom: 1.25rem;
+}
+
+/* ── Link Slide — animated underline on hover ─────────────── */
+.link-slide {
+  position: relative;
+  text-decoration: none;
+}
+
+.link-slide::after {
+  content: "";
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background: currentColor;
+  transition: width var(--duration-fast) var(--ease-out-expo);
+}
+
+.link-slide:hover::after {
+  width: 100%;
 }
 
 /* ── Link Hover ───────────────────────────────────────────── */

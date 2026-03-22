@@ -78,7 +78,7 @@ export function LogrosGrid({ logros, pobrezaData }: LogrosGridProps) {
       {blocks.map((block, i) => {
         const blockLogros = block.nums
           .map((num) => logros.find((l) => l.num === num))
-          .filter(Boolean) as Logro[];
+          .filter((l): l is Logro => l !== undefined);
 
         if (blockLogros.length === 0) return null;
 

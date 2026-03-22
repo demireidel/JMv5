@@ -23,15 +23,15 @@ export function Footer() {
             {/* Nav links */}
             <nav aria-label="Navegación del pie de página">
               <ul className="m-0 grid list-none grid-cols-2 gap-x-12 gap-y-3 p-0 sm:grid-cols-3">
-                {navLinks.map((link, i) => (
-                  <ScrollReveal key={link.href} variant="fade-up" delay={i * 50} as="li">
+                {navLinks.map((link) => (
+                  <li key={link.href}>
                     <Link
                       href={link.href}
                       className="link-slide text-[length:var(--text-sm)] text-text-secondary no-underline transition-colors duration-[var(--duration-fast)] hover:text-gold"
                     >
                       {link.label}
                     </Link>
-                  </ScrollReveal>
+                  </li>
                 ))}
               </ul>
             </nav>
