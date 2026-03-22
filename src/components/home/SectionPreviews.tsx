@@ -71,7 +71,7 @@ export function SectionPreviews() {
           </h2>
         </ScrollReveal>
 
-        <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
+        <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
           {sections.map((s, i) => (
             <ScrollReveal key={s.href} variant="scale-in" delay={i * 80}>
               <Link href={s.href} className="group block no-underline">

@@ -58,6 +58,23 @@ export function NavBar() {
         if (e.key === "Escape") {
           setMenuOpen(false);
           hamburgerRef.current?.focus();
+          return;
+        }
+        // Focus trap: keep Tab within the mobile menu
+        if (e.key === "Tab") {
+          const focusable = document.querySelectorAll<HTMLElement>(
+            '[aria-label="Menu movil"] a[tabindex="0"]'
+          );
+          if (focusable.length === 0) return;
+          const first = focusable[0];
+          const last = focusable[focusable.length - 1];
+          if (e.shiftKey && document.activeElement === first) {
+            e.preventDefault();
+            last.focus();
+          } else if (!e.shiftKey && document.activeElement === last) {
+            e.preventDefault();
+            first.focus();
+          }
         }
       };
       window.addEventListener("keydown", onKeyDown);

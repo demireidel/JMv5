@@ -47,7 +47,7 @@
   /* ── Text Hierarchy ────────────────────────────────────── */
   --color-text-primary: oklch(1 0 0 / 0.92);
   --color-text-secondary: oklch(1 0 0 / 0.56);
-  --color-text-tertiary: oklch(1 0 0 / 0.55);
+  --color-text-tertiary: oklch(1 0 0 / 0.40);
 
   /* ── Before / After Tints ──────────────────────────────── */
   --color-tint-before: oklch(0.30 0.05 25 / 0.3);
@@ -455,6 +455,15 @@ html {
   transform: translateY(-2px);
   border-color: var(--color-border-hover);
   box-shadow: var(--shadow-glow-gold);
+}
+
+/* Touch tap feedback for devices without hover */
+@media (hover: none) {
+  .card-hover:active {
+    transform: scale(0.97);
+    border-color: var(--color-border-hover);
+    transition-duration: 100ms;
+  }
 }
 
 /* ── Link Hover ───────────────────────────────────────────── */
