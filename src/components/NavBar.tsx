@@ -138,11 +138,11 @@ export function NavBar() {
                     if (el) linkRefs.current.set(link.href, el);
                   }}
                   href={link.href}
-                  className={`group relative px-3 py-2 font-accent text-xs font-bold uppercase tracking-[0.15em] no-underline transition-colors duration-[var(--duration-fast)] ${
+                  className={`group relative px-3.5 py-2 font-accent text-sm font-bold uppercase tracking-[0.12em] no-underline transition-colors duration-[var(--duration-fast)] ${
                     isActive(link.href)
                       ? "text-gold"
                       : isHome && !scrolled
-                        ? "text-white/80 hover:text-white"
+                        ? "text-white hover:text-gold"
                         : "text-text-secondary hover:text-text-primary"
                   }`}
                   {...(isActive(link.href) ? { "aria-current": "page" as const } : {})}
