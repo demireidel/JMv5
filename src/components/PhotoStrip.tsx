@@ -1,0 +1,143 @@
+"use client";
+
+import { useRef, useState, useCallback, useEffect } from "react";
+
+interface Photo {
+  src: string;
+  alt: string;
+}
+
+interface PhotoStripProps {
+  photos: Photo[];
+  reverse?: boolean;
+}
+
+export function PhotoStrip({ photos, reverse = false }: PhotoStripProps) {
+  const doubled = [...photos, ...photos];
+  const wrapperRef = useRef<HTMLDivElement>(null);
+  const stripRef = useRef<HTMLDivElement>(null);
+  const [isDragging, setIsDragging] = useState(false);
+
+  const anim = useRef({
+    offset: 0,
+    speed: reverse ? 1.2 : -1,
+    dragging: false,
+    dragStartX: 0,
+    dragStartOffset: 0,
+    rafId: 0,
+    hovering: false,
+  });
+
+  const getHalfWidth = useCallback(() => {
+    if (!stripRef.current) return 1;
+    return stripRef.current.scrollWidth / 2;
+  }, []);
+
+  const wrapOffset = useCallback(
+    (x: number) => {
+      const hw = getHalfWidth();
+      let wrapped = x % hw;
+      if (wrapped > 0) wrapped -= hw;
+      if (wrapped <= -hw) wrapped += hw;
+      return wrapped;
+    },
+    [getHalfWidth]
+  );
+
+  const applyTransform = useCallback((x: number) => {
+    if (stripRef.current) {
+      stripRef.current.style.transform = `translateX(${x}px)`;
+    }
+  }, []);
+
+  const tick = useCallback(() => {
+    const a = anim.current;
+    if (!a.dragging && !a.hovering) {
+      a.offset = wrapOffset(a.offset + a.speed);
+      applyTransform(a.offset);
+    }
+    a.rafId = requestAnimationFrame(tick);
+  }, [wrapOffset, applyTransform]);
+
+  useEffect(() => {
+    anim.current.rafId = requestAnimationFrame(tick);
+    return () => cancelAnimationFrame(anim.current.rafId);
+  }, [tick]);
+
+  const handlePointerDown = useCallback((e: React.PointerEvent) => {
+    if (!wrapperRef.current) return;
+    e.preventDefault();
+    const a = anim.current;
+    a.dragging = true;
+    a.dragStartX = e.clientX;
+    a.dragStartOffset = a.offset;
+    setIsDragging(true);
+    wrapperRef.current.setPointerCapture(e.pointerId);
+  }, []);
+
+  const handlePointerMove = useCallback(
+    (e: React.PointerEvent) => {
+      const a = anim.current;
+      if (!a.dragging) return;
+      e.preventDefault();
+      const dx = e.clientX - a.dragStartX;
+      a.offset = wrapOffset(a.dragStartOffset + dx);
+      applyTransform(a.offset);
+    },
+    [wrapOffset, applyTransform]
+  );
+
+  const handlePointerUp = useCallback((e: React.PointerEvent) => {
+    const a = anim.current;
+    if (!a.dragging) return;
+    a.dragging = false;
+    setIsDragging(false);
+    wrapperRef.current?.releasePointerCapture(e.pointerId);
+  }, []);
+
+  const handleMouseEnter = useCallback(() => {
+    anim.current.hovering = true;
+  }, []);
+
+  const handleMouseLeave = useCallback(() => {
+    anim.current.hovering = false;
+  }, []);
+
+  return (
+    <div
+      ref={wrapperRef}
+      className="overflow-hidden select-none"
+      style={{
+        paddingBlock: "var(--space-xs)",
+        background: "var(--dark)",
+        cursor: isDragging ? "grabbing" : "grab",
+        touchAction: "pan-y",
+      }}
+      onPointerDown={handlePointerDown}
+      onPointerMove={handlePointerMove}
+      onPointerUp={handlePointerUp}
+      onPointerCancel={handlePointerUp}
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
+    >
+      <div ref={stripRef} className="flex gap-3 w-max">
+        {doubled.map((p, i) => (
+          // eslint-disable-next-line @next/next/no-img-element
+          <img
+            key={i}
+            src={p.src}
+            alt={p.alt}
+            loading="eager"
+            draggable={false}
+            className="rounded-md object-cover"
+            style={{
+              height: "clamp(8rem, 6rem + 8vw, 14rem)",
+              width: "auto",
+              aspectRatio: "16/10",
+            }}
+          />
+        ))}
+      </div>
+    </div>
+  );
+}

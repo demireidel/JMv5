@@ -1,0 +1,157 @@
+/* ── Tailwind ─────────────────────────────────────────────── */
+@import "tailwindcss";
+
+/* ── Design Tokens ────────────────────────────────────────── */
+@import "../styles/tokens.css";
+
+/* ── Tailwind Theme Extensions ────────────────────────────── */
+/* Fonts loaded via next/font/local in layout.tsx — CSS vars
+   --font-fraunces, --font-oswald, --font-inter are set on <html> */
+@theme {
+  --font-display: var(--font-fraunces), Georgia, serif;
+  --font-accent: var(--font-oswald), Impact, sans-serif;
+  --font-body: var(--font-inter), system-ui, sans-serif;
+
+  --color-gold: oklch(0.80 0.17 85);
+  --color-celeste: oklch(0.72 0.11 240);
+  --color-dark: oklch(0.10 0.01 270);
+  --color-navy: oklch(0.16 0.04 255);
+  --color-cream: #f5f0e8;
+  --color-success: #51cf66;
+  --color-danger: #ff6b6b;
+  --color-lla-violet: #743BBC;
+  --color-lla-deep: #280071;
+  --color-lla-indigo: #250E62;
+
+  --color-surface-1: oklch(0.20 0.02 270 / 0.4);
+  --color-surface-2: oklch(0.20 0.02 270 / 0.6);
+  --color-surface-3: oklch(0.20 0.02 270 / 0.8);
+  --color-border: oklch(1 0 0 / 0.06);
+  --color-border-hover: oklch(1 0 0 / 0.12);
+
+  --color-text-primary: oklch(1 0 0 / 0.92);
+  --color-text-secondary: oklch(1 0 0 / 0.56);
+  --color-text-tertiary: oklch(1 0 0 / 0.32);
+}
+
+/* ── Base Styles ──────────────────────────────────────────── */
+html {
+  color-scheme: dark;
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+body {
+  font-family: var(--font-body);
+  background: var(--dark);
+  color: var(--text-1);
+  line-height: 1.6;
+  min-height: 100dvh;
+}
+
+/* ── Typography Defaults ──────────────────────────────────── */
+h1, h2, h3, h4 {
+  font-family: var(--font-display);
+  line-height: 1.1;
+  text-wrap: balance;
+}
+
+h5, h6 {
+  font-family: var(--font-accent);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  line-height: 1.2;
+}
+
+/* ── Selection ────────────────────────────────────────────── */
+::selection {
+  background: oklch(0.80 0.17 85 / 0.3);
+  color: white;
+}
+
+/* ── Focus Indicators (WCAG 2.2) ──────────────────────────── */
+:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 2px;
+  border-radius: var(--radius-sm);
+}
+
+/* ── Skip Link ────────────────────────────────────────────── */
+.skip-link {
+  position: absolute;
+  top: -100%;
+  left: 1rem;
+  z-index: 9999;
+  padding: 0.75rem 1.5rem;
+  background: var(--gold);
+  color: var(--dark);
+  font-family: var(--font-accent);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  border-radius: var(--radius-md);
+  transition: top var(--duration-fast) var(--ease-standard);
+}
+
+.skip-link:focus {
+  top: 1rem;
+}
+
+/* ── Scrollbar ────────────────────────────────────────────── */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--dark);
+}
+
+::-webkit-scrollbar-thumb {
+  background: oklch(1 0 0 / 0.15);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: oklch(1 0 0 / 0.25);
+}
+
+/* Firefox */
+html {
+  scrollbar-width: thin;
+  scrollbar-color: oklch(1 0 0 / 0.15) var(--dark-hex, #0a0a0f);
+}
+
+/* ── Reduced Motion ───────────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* ── View Transitions ─────────────────────────────────────── */
+@view-transition {
+  navigation: auto;
+}
+
+::view-transition-old(root) {
+  animation: fade-out var(--duration-normal) var(--ease-accelerate);
+}
+
+::view-transition-new(root) {
+  animation: fade-in var(--duration-normal) var(--ease-decelerate);
+}
+
+@keyframes fade-out {
+  from { opacity: 1; }
+  to { opacity: 0; }
+}
+
+@keyframes fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
