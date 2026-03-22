@@ -6,7 +6,7 @@ import { Card } from "@/components/ui/Card";
 export function LibrosSection({ etapas }: { etapas: Etapa[] }) {
   return (
     <article id="libros" className="mb-16">
-      <ChapterHeader numeral="I" title="Libros" />
+      <ChapterHeader numeral="III" title="Libros" />
       <div className="space-y-10">
         {etapas.map((etapa) => (
           <div key={etapa.label}>

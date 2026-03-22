@@ -23,7 +23,7 @@ function YouTubeEmbed({ videoId, title }: { videoId: string; title: string }) {
 export function EntrevistasSection({ entrevistas }: { entrevistas: Entrevista[] }) {
   return (
     <article id="entrevistas" className="mb-16">
-      <ChapterHeader numeral="III" title="Entrevistas" />
+      <ChapterHeader numeral="II" title="Entrevistas" />
       <div className="space-y-6">
         {entrevistas.map((e, i) => (
           <Card key={i} accent={e.highlight} className="p-5">

@@ -23,7 +23,7 @@ function YouTubeEmbed({ videoId, title }: { videoId: string; title: string }) {
 export function DiscursosSection({ discursos }: { discursos: Discurso[] }) {
   return (
     <article id="discursos" className="mb-16">
-      <ChapterHeader numeral="II" title="Discursos" />
+      <ChapterHeader numeral="I" title="Discursos" />
       <div className="space-y-6">
         {discursos.map((d, i) => (
           <Card key={i} accent={d.keynote} className="p-5">

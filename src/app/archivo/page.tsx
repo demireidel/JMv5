@@ -7,7 +7,6 @@ import {
   papers,
   discursos,
   entrevistas,
-  influencias,
   reconocimientos,
 } from "@/data/archivo";
 
@@ -31,7 +30,6 @@ export default function ArchivoPage() {
         papers={papers}
         discursos={discursos}
         entrevistas={entrevistas}
-        influencias={influencias}
         reconocimientos={reconocimientos}
       />
     </>
