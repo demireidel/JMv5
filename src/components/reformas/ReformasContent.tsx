@@ -1,8 +1,10 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import type { ReformBlock, Reforma } from "@/data/reformas";
 import { Container } from "@/components/ui/Container";
+
+const romanNumerals = ["I", "II", "III", "IV", "V", "VI"];
 
 function ReformCard({ reforma }: { reforma: Reforma }) {
   const [expanded, setExpanded] = useState(false);
@@ -46,9 +48,8 @@ function ReformCard({ reforma }: { reforma: Reforma }) {
         </h4>
       </div>
 
-      {/* ANTES / AHORA / IMPACTO */}
+      {/* ANTES / AHORA */}
       <div className="px-5 pb-4 space-y-3">
-        {/* Antes */}
         <div
           className="rounded-lg p-4"
           style={{ background: "var(--tint-before)" }}
@@ -76,7 +77,6 @@ function ReformCard({ reforma }: { reforma: Reforma }) {
           </div>
         </div>
 
-        {/* Ahora */}
         <div
           className="rounded-lg p-4"
           style={{ background: "var(--tint-after)" }}
@@ -148,6 +148,7 @@ function ReformCard({ reforma }: { reforma: Reforma }) {
           letterSpacing: "0.1em",
         }}
         aria-expanded={expanded}
+        aria-controls={`reforma-detail-${reforma.num}`}
       >
         {expanded ? "Cerrar" : "Impacto"}
         <svg
@@ -171,6 +172,7 @@ function ReformCard({ reforma }: { reforma: Reforma }) {
       </button>
 
       <div
+        id={`reforma-detail-${reforma.num}`}
         className="overflow-hidden transition-all"
         style={{
           maxHeight: expanded ? "200rem" : "0",
@@ -195,7 +197,7 @@ function ReformCard({ reforma }: { reforma: Reforma }) {
                 fontFamily: "var(--font-display)",
                 fontSize: "var(--text-sm)",
                 color: "var(--text-2)",
-                borderLeft: "2px solid var(--gold)",
+                borderLeft: "3px solid var(--gold)",
                 paddingLeft: "0.75rem",
               }}
             >
@@ -225,74 +227,133 @@ export function ReformasContent({
   blocks: ReformBlock[];
   reformas: Reforma[];
 }) {
-  const [activeBlock, setActiveBlock] = useState(0);
-  const block = blocks[activeBlock];
-  const blockReformas = reformas.slice(block.range[0], block.range[1]);
+  const [activeBlock, setActiveBlock] = useState(blocks[0]?.title ?? "");
+
+  useEffect(() => {
+    const observers: IntersectionObserver[] = [];
+    blocks.forEach((b) => {
+      const id = `bloque-${b.title.replace(/\s+/g, "-").toLowerCase()}`;
+      const el = document.getElementById(id);
+      if (!el) return;
+      const obs = new IntersectionObserver(
+        ([entry]) => {
+          if (entry.isIntersecting) setActiveBlock(b.title);
+        },
+        { rootMargin: "-30% 0px -60% 0px" }
+      );
+      obs.observe(el);
+      observers.push(obs);
+    });
+    return () => observers.forEach((o) => o.disconnect());
+  }, [blocks]);
 
   return (
     <section style={{ background: "var(--navy)", paddingBlock: "var(--section-py)" }}>
-      <Container>
-        {/* Block tabs */}
-        <div className="flex flex-wrap gap-2 mb-10">
-          {blocks.map((b, i) => (
-            <button
-              key={b.title}
-              onClick={() => setActiveBlock(i)}
-              className="px-5 py-2.5 rounded-full border-none cursor-pointer transition-all"
+      <Container wide>
+        <div className="flex gap-12">
+          {/* Sticky sidebar TOC — desktop only */}
+          <nav
+            className="hidden lg:block shrink-0 sticky self-start"
+            style={{ top: "6rem", width: "14rem" }}
+            aria-label="Bloques de reforma"
+          >
+            <p
+              className="mb-4"
               style={{
                 fontFamily: "var(--font-accent)",
-                fontSize: "var(--text-sm)",
+                fontSize: "var(--text-xs)",
+                color: "var(--text-3)",
                 textTransform: "uppercase",
-                letterSpacing: "0.05em",
-                background: i === activeBlock ? "var(--gold)" : "var(--surface-2)",
-                color: i === activeBlock ? "var(--dark-hex, #0a0a0f)" : "var(--text-2)",
-                transitionDuration: "var(--duration-fast)",
+                letterSpacing: "0.1em",
               }}
             >
-              Bloque {i + 1}
-            </button>
-          ))}
-        </div>
+              Bloques
+            </p>
+            <ul className="list-none m-0 p-0 space-y-1">
+              {blocks.map((b, i) => {
+                const id = `bloque-${b.title.replace(/\s+/g, "-").toLowerCase()}`;
+                const cleanTitle = b.title.replace(/^BLOQUE\s+[IVX]+\s*—\s*/i, "");
+                return (
+                  <li key={b.title}>
+                    <a
+                      href={`#${id}`}
+                      className="block px-3 py-2 rounded-md no-underline transition-colors"
+                      style={{
+                        fontSize: "var(--text-xs)",
+                        color: activeBlock === b.title ? "var(--gold)" : "var(--text-3)",
+                        background: activeBlock === b.title ? "var(--surface-1)" : "transparent",
+                        transitionDuration: "var(--duration-fast)",
+                      }}
+                    >
+                      <span style={{ fontFamily: "var(--font-accent)" }}>{romanNumerals[i]}</span>{" "}
+                      {cleanTitle}
+                    </a>
+                  </li>
+                );
+              })}
+            </ul>
+          </nav>
 
-        {/* Block header — Vision chapter style */}
-        <div className="flex items-baseline gap-4 mb-2">
-          <span
-            style={{
-              fontFamily: "var(--font-accent)",
-              fontSize: "var(--text-2xl)",
-              color: "var(--gold)",
-            }}
-          >
-            {["I", "II", "III", "IV"][activeBlock]}
-          </span>
-          <h2
-            className="m-0"
-            style={{
-              fontFamily: "var(--font-display)",
-              fontSize: "var(--text-xl)",
-              color: "var(--text-1)",
-            }}
-          >
-            {block.title.replace(/^BLOQUE\s+[IVX]+\s*—\s*/i, "")}
-          </h2>
-        </div>
-        <p
-          className="mb-8"
-          style={{
-            fontSize: "var(--text-sm)",
-            color: "var(--text-2)",
-            maxWidth: "44rem",
-            lineHeight: 1.6,
-          }}
-        >
-          {block.subtitle}
-        </p>
+          {/* Main content — all blocks visible */}
+          <div className="flex-1 min-w-0" style={{ maxWidth: "52rem" }}>
+            {blocks.map((block, i) => {
+              const id = `bloque-${block.title.replace(/\s+/g, "-").toLowerCase()}`;
+              const cleanTitle = block.title.replace(/^BLOQUE\s+[IVX]+\s*—\s*/i, "");
+              const blockReformas = reformas.slice(block.range[0], block.range[1]);
 
-        {/* Reform cards */}
-        <div className="grid md:grid-cols-2 gap-5">
-          {blockReformas.map((r) => (
-            <ReformCard key={r.num} reforma={r} />
-          ))}
+              return (
+                <article key={block.title} id={id} className="mb-16">
+                  {/* Block header */}
+                  <div className="flex items-baseline gap-4 mb-2">
+                    <span
+                      style={{
+                        fontFamily: "var(--font-accent)",
+                        fontSize: "var(--text-2xl)",
+                        color: "var(--gold)",
+                      }}
+                    >
+                      {romanNumerals[i]}
+                    </span>
+                    <h2
+                      className="m-0"
+                      style={{
+                        fontFamily: "var(--font-display)",
+                        fontSize: "var(--text-xl)",
+                        color: "var(--text-1)",
+                      }}
+                    >
+                      {cleanTitle}
+                    </h2>
+                  </div>
+                  <p
+                    className="mb-8"
+                    style={{
+                      fontSize: "var(--text-sm)",
+                      color: "var(--text-2)",
+                      maxWidth: "44rem",
+                      lineHeight: 1.7,
+                    }}
+                  >
+                    {block.subtitle}
+                  </p>
+
+                  {/* Reform cards */}
+                  <div className="grid md:grid-cols-2 gap-5">
+                    {blockReformas.map((r) => (
+                      <ReformCard key={r.num} reforma={r} />
+                    ))}
+                  </div>
+
+                  {i < blocks.length - 1 && (
+                    <hr
+                      className="mt-16"
+                      style={{ border: "none", borderTop: "1px solid var(--border)" }}
+                    />
+                  )}
+                </article>
+              );
+            })}
+          </div>
         </div>
       </Container>
     </section>
