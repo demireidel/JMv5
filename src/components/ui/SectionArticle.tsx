@@ -18,7 +18,7 @@ export function SectionArticle({
 }: SectionArticleProps) {
   return (
     <article id={id} className={className ?? "mb-20"}>
-      <ScrollReveal variant="fade-up" duration={500}>
+      <ScrollReveal variant="cinematic" duration={700}>
         {children}
       </ScrollReveal>
       {!last && <Divider animated className="mt-16" />}

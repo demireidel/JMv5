@@ -16,6 +16,8 @@ type AnimationVariant =
   | "slide-left"
   | "slide-right"
   | "blur-in"
+  | "cinematic"
+  | "rise-up"
   | "none";
 
 interface VariantConfig {
@@ -26,14 +28,16 @@ interface VariantConfig {
 }
 
 const variants = {
-  "fade-up":    { hidden: { opacity: 0, transform: "translateY(24px)" },  visible: { opacity: 1, transform: "translateY(0)" },    transition: "opacity,transform" },
-  "fade-in":    { hidden: { opacity: 0 },                                 visible: { opacity: 1 },                                transition: "opacity" },
-  "scale-in":   { hidden: { opacity: 0, transform: "scale(0.92)" },       visible: { opacity: 1, transform: "scale(1)" },         transition: "opacity,transform" },
-  "clip-reveal":{ hidden: { clipPath: "inset(100% 0 0 0)" },              visible: { clipPath: "inset(0)" },                      transition: "clip-path" },
-  "slide-left": { hidden: { opacity: 0, transform: "translateX(-40px)" }, visible: { opacity: 1, transform: "translateX(0)" },    transition: "opacity,transform" },
-  "slide-right":{ hidden: { opacity: 0, transform: "translateX(40px)" },  visible: { opacity: 1, transform: "translateX(0)" },    transition: "opacity,transform" },
-  "blur-in":    { hidden: { opacity: 0, filter: "blur(8px)" },            visible: { opacity: 1, filter: "blur(0px)" },           transition: "opacity,filter" },
-  "none":       { hidden: {},                                              visible: {},                                            transition: "" },
+  "fade-up":    { hidden: { opacity: 0, transform: "translateY(28px)" },                           visible: { opacity: 1, transform: "translateY(0)" },                  transition: "opacity,transform" },
+  "fade-in":    { hidden: { opacity: 0 },                                                           visible: { opacity: 1 },                                              transition: "opacity" },
+  "scale-in":   { hidden: { opacity: 0, transform: "scale(0.91)" },                                visible: { opacity: 1, transform: "scale(1)" },                       transition: "opacity,transform" },
+  "clip-reveal":{ hidden: { clipPath: "inset(100% 0 0 0)" },                                       visible: { clipPath: "inset(0)" },                                    transition: "clip-path" },
+  "slide-left": { hidden: { opacity: 0, transform: "translateX(-48px)" },                          visible: { opacity: 1, transform: "translateX(0)" },                  transition: "opacity,transform" },
+  "slide-right":{ hidden: { opacity: 0, transform: "translateX(48px)" },                           visible: { opacity: 1, transform: "translateX(0)" },                  transition: "opacity,transform" },
+  "blur-in":    { hidden: { opacity: 0, filter: "blur(10px)" },                                    visible: { opacity: 1, filter: "blur(0px)" },                         transition: "opacity,filter" },
+  "cinematic":  { hidden: { opacity: 0, transform: "translateY(36px) scale(0.96)", filter: "blur(10px)" }, visible: { opacity: 1, transform: "translateY(0) scale(1)", filter: "blur(0px)" }, transition: "opacity,transform,filter" },
+  "rise-up":    { hidden: { opacity: 0, transform: "translateY(52px) scale(0.97)" },               visible: { opacity: 1, transform: "translateY(0) scale(1)" },         transition: "opacity,transform" },
+  "none":       { hidden: {},                                                                       visible: {},                                                          transition: "" },
 } satisfies Record<AnimationVariant, VariantConfig>;
 
 interface ScrollRevealProps {
@@ -52,7 +56,7 @@ export function ScrollReveal({
   children,
   variant = "fade-up",
   delay = 0,
-  duration = 600,
+  duration = 750,
   threshold = 0.15,
   once = true,
   className = "",

@@ -138,7 +138,7 @@ export function NavBar() {
                     if (el) linkRefs.current.set(link.href, el);
                   }}
                   href={link.href}
-                  className={`group relative px-3.5 py-2 font-accent text-sm font-bold uppercase tracking-[0.12em] no-underline transition-colors duration-[var(--duration-fast)] ${
+                  className={`nav-link-cinematic group relative px-3.5 py-2 font-accent text-sm font-bold uppercase tracking-[0.12em] no-underline transition-colors duration-[var(--duration-fast)] ${
                     isActive(link.href)
                       ? "text-gold"
                       : isHome && !scrolled

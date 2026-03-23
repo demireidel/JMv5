@@ -33,19 +33,21 @@ export function AnimatedNumber({
   });
 
   if (variant === "strip") {
-    // Scale pop: 0.85 → 1.0 as value approaches target
+    // Scale pop: 0.82 → 1.0 as value approaches target
     const progress = target > 0 ? Math.min(value / target, 1) : 1;
-    const scale = progress < 1 ? 0.85 + 0.15 * progress : 1;
+    const scale = progress < 1 ? 0.82 + 0.18 * progress : 1;
+    const done = progress >= 1;
 
     return (
       <div className="text-center" ref={ref}>
         <p
-          className="stat-number m-0 leading-snug"
+          className={`stat-number m-0 leading-snug${done ? " gold-glow-pulse" : ""}`}
           aria-live="polite"
           style={{
             transform: `scale(${scale})`,
-            textShadow:
-              "0 0 40px color-mix(in oklch, var(--color-gold-light), transparent 80%)",
+            textShadow: done
+              ? undefined
+              : `0 0 40px oklch(0.80 0.17 85 / ${0.1 + progress * 0.4})`,
           }}
         >
           {display}

@@ -260,23 +260,28 @@
 
   /* Hero gradient overlay — replaces inline background in Hero.tsx */
   .hero-overlay {
-    background: linear-gradient(
-      to bottom,
-      color-mix(in oklch, var(--color-overlay-dark), transparent 45%) 0%,
-      color-mix(in oklch, var(--color-overlay-dark), transparent 75%) 25%,
-      color-mix(in oklch, var(--color-overlay-dark), transparent 70%) 50%,
-      color-mix(in oklch, var(--color-overlay-dark), transparent 20%) 80%,
-      color-mix(in oklch, var(--color-overlay-dark), transparent 5%) 100%
-    );
+    background:
+      /* Vignette corners */
+      radial-gradient(ellipse 120% 100% at 50% 50%, transparent 40%, oklch(0.05 0.01 270 / 0.55) 100%),
+      /* Vertical gradient: dark top + dark bottom */
+      linear-gradient(
+        to bottom,
+        oklch(0.08 0.01 270 / 0.65) 0%,
+        oklch(0.08 0.01 270 / 0.20) 20%,
+        oklch(0.08 0.01 270 / 0.05) 45%,
+        oklch(0.08 0.01 270 / 0.30) 70%,
+        oklch(0.05 0.01 270 / 0.85) 100%
+      );
   }
 
   /* Card spotlight glow — reads --mx/--my set directly on parent by useMousePosition.
      Zero React re-renders per mousemove frame; gradient computed entirely by CSS. */
   .card-glow {
     background: radial-gradient(
-      circle 200px at var(--mx, 50%) var(--my, 50%),
-      oklch(0.80 0.17 85 / 0.15),
-      transparent 70%
+      circle 280px at var(--mx, 50%) var(--my, 50%),
+      oklch(0.80 0.17 85 / 0.22),
+      oklch(0.80 0.17 85 / 0.06) 50%,
+      transparent 75%
     );
   }
 
@@ -490,21 +495,21 @@ html {
 }
 
 ::view-transition-old(root) {
-  animation: vt-exit var(--duration-normal) var(--ease-accelerate) forwards;
+  animation: vt-exit 400ms var(--ease-accelerate) forwards;
 }
 
 ::view-transition-new(root) {
-  animation: vt-enter var(--duration-normal) var(--ease-decelerate) forwards;
+  animation: vt-enter 500ms var(--ease-decelerate) forwards;
 }
 
 @keyframes vt-exit {
-  from { opacity: 1; transform: translateY(0); filter: blur(0); }
-  to { opacity: 0; transform: translateY(-8px); filter: blur(2px); }
+  from { opacity: 1; transform: translateY(0) scale(1); filter: blur(0); }
+  to { opacity: 0; transform: translateY(-14px) scale(0.99); filter: blur(4px); }
 }
 
 @keyframes vt-enter {
-  from { opacity: 0; transform: translateY(8px); filter: blur(2px); }
-  to { opacity: 1; transform: translateY(0); filter: blur(0); }
+  from { opacity: 0; transform: translateY(14px) scale(0.99); filter: blur(4px); }
+  to { opacity: 1; transform: translateY(0) scale(1); filter: blur(0); }
 }
 
 /* ── Gold Shimmer ─────────────────────────────────────────── */
@@ -512,18 +517,20 @@ html {
   background-image: linear-gradient(
     105deg,
     #c9a227 0%,
-    #f0d060 20%,
+    #f0d060 18%,
+    #fff3a0 28%,
     #c9a227 40%,
-    #9a7b1a 60%,
-    #c9a227 80%,
-    #f0d060 100%
+    #9a7b1a 58%,
+    #c9a227 72%,
+    #f0d060 85%,
+    #c9a227 100%
   );
-  background-size: 200% 100%;
+  background-size: 250% 100%;
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   color: transparent;
-  animation: shimmer 3s ease-in-out infinite;
+  animation: shimmer 2s ease-in-out infinite;
 }
 
 @keyframes shimmer {
@@ -539,14 +546,17 @@ html {
 
 /* ── Card Hover States ────────────────────────────────────── */
 .card-hover {
-  transition: transform var(--duration-fast) var(--ease-standard),
-              border-color var(--duration-fast) var(--ease-standard),
-              box-shadow var(--duration-fast) var(--ease-standard);
+  transition: transform 250ms var(--ease-out-expo),
+              border-color 250ms var(--ease-out-expo),
+              box-shadow 250ms var(--ease-out-expo);
 }
 
 .card-hover:hover {
-  border-color: var(--color-border-hover);
-  box-shadow: var(--shadow-glow-gold);
+  transform: translateY(-3px);
+  border-color: oklch(0.55 0.17 75 / 0.35);
+  box-shadow: 0 0 0 1px oklch(0.55 0.17 75 / 0.1),
+              0 8px 32px oklch(0 0 0 / 0.12),
+              0 0 40px oklch(0.80 0.17 85 / 0.18);
 }
 
 /* Touch tap feedback for devices without hover */
@@ -725,11 +735,12 @@ img {
 }
 
 .img-zoom-hover img {
-  transition: transform var(--duration-slow) var(--ease-standard);
+  transition: transform 700ms var(--ease-out-expo), filter 700ms var(--ease-out-expo);
 }
 
 .img-zoom-hover:hover img {
-  transform: scale(1.04);
+  transform: scale(1.07);
+  filter: brightness(1.05);
 }
 
 /* ── Film Grain Overlay (cinematic texture) ──────────────── */
@@ -739,9 +750,9 @@ body::after {
   inset: 0;
   z-index: 9998;
   pointer-events: none;
-  opacity: 0.025;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-  mix-blend-mode: multiply;
+  opacity: 0.04;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  mix-blend-mode: overlay;
 }
 
 /* ── Vignette Effect ─────────────────────────────────────── */
@@ -816,4 +827,116 @@ body::after {
   background: linear-gradient(to right, transparent, var(--color-gold), transparent);
   transform: scaleX(0);
   transform-origin: center;
+}
+
+/* ══════════════════════════════════════════════════════════════
+   Cinematic Premium Upgrades
+   ══════════════════════════════════════════════════════════════ */
+
+/* ── Float animation — subtle levitation for decorative elements */
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50%       { transform: translateY(-7px); }
+}
+
+/* ── Gold glow pulse — pulsing text-shadow for stat numbers */
+@keyframes gold-glow-pulse {
+  0%, 100% { text-shadow: 0 0 12px oklch(0.80 0.17 85 / 0.0), 0 0 40px oklch(0.80 0.17 85 / 0.0); }
+  50%       { text-shadow: 0 0 12px oklch(0.80 0.17 85 / 0.55), 0 0 48px oklch(0.80 0.17 85 / 0.25); }
+}
+
+/* ── Cinematic entrance — blur + scale + translate combined */
+@keyframes anim-cinematic-in {
+  from {
+    opacity: 0;
+    transform: translateY(36px) scale(0.96);
+    filter: blur(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    filter: blur(0px);
+  }
+}
+
+/* ── Border glow scan — gold border animation */
+@keyframes border-glow-scan {
+  0%   { box-shadow: 0 0 0 1px oklch(0.55 0.17 75 / 0.15); }
+  50%  { box-shadow: 0 0 0 1px oklch(0.55 0.17 75 / 0.45), 0 0 20px oklch(0.80 0.17 85 / 0.2); }
+  100% { box-shadow: 0 0 0 1px oklch(0.55 0.17 75 / 0.15); }
+}
+
+/* ── Hover lift — universal premium lift effect */
+.hover-lift {
+  transition: transform 280ms var(--ease-out-expo),
+              box-shadow 280ms var(--ease-out-expo);
+  cursor: pointer;
+}
+
+.hover-lift:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 40px oklch(0 0 0 / 0.15),
+              0 4px 16px oklch(0 0 0 / 0.08);
+}
+
+/* ── Float utility */
+.animate-float {
+  animation: float 4s ease-in-out infinite;
+}
+
+/* ── Gold glow text — for stats / numbers */
+.gold-glow-text {
+  text-shadow: 0 0 24px oklch(0.80 0.17 85 / 0.4), 0 0 60px oklch(0.80 0.17 85 / 0.15);
+}
+
+/* ── Pulsing gold glow text */
+.gold-glow-pulse {
+  animation: gold-glow-pulse 2.8s ease-in-out infinite;
+}
+
+/* ── Surface card — hover micro-lift */
+.surface-card {
+  cursor: default;
+}
+.surface-card:has(a, button) {
+  cursor: pointer;
+}
+
+/* ── Scroll dot more cinematic */
+@keyframes scroll-dot {
+  0%, 100% { opacity: 1; transform: translateY(0); }
+  60%       { opacity: 0.2; transform: translateY(8px); }
+}
+
+/* ── Section bleed deeper */
+.section-bleed-top::before {
+  height: 10rem;
+  top: -5rem;
+}
+
+.section-bleed-bottom::after {
+  height: 10rem;
+  bottom: -5rem;
+}
+
+/* ── Gold rule — animated on appear */
+.gold-rule-animated {
+  display: block;
+  width: 2.5rem;
+  height: 2px;
+  background: var(--color-gold);
+  border-radius: 1px;
+  margin-bottom: 1.25rem;
+  animation: anim-line-expand 600ms var(--ease-out-expo) both;
+}
+
+/* ── Cinematic nav link hover */
+.nav-link-cinematic {
+  position: relative;
+  transition: color var(--duration-fast) var(--ease-out-expo),
+              transform var(--duration-fast) var(--ease-out-expo);
+}
+
+.nav-link-cinematic:hover {
+  transform: translateY(-1px);
 }
