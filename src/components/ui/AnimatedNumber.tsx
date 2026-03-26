@@ -33,27 +33,28 @@ export function AnimatedNumber({
   });
 
   if (variant === "strip") {
-    // Scale pop: 0.82 → 1.0 as value approaches target
+    // Scale pop: 0.85 → 1.0 as value approaches target (more subtle)
     const progress = target > 0 ? Math.min(value / target, 1) : 1;
-    const scale = progress < 1 ? 0.82 + 0.18 * progress : 1;
+    const scale = progress < 1 ? 0.85 + 0.15 * progress : 1;
     const done = progress >= 1;
 
     return (
       <div className="text-center" ref={ref}>
         <p
-          className={`stat-number m-0 leading-snug${done ? " gold-glow-pulse" : ""}`}
+          className={`stat-number m-0 leading-none${done ? " gold-glow-pulse" : ""}`}
           aria-live="polite"
           style={{
             transform: `scale(${scale})`,
             textShadow: done
-              ? undefined
-              : `0 0 40px oklch(0.80 0.17 85 / ${0.1 + progress * 0.4})`,
+              ? "0 0 30px oklch(0.72 0.16 75 / 0.25)"
+              : `0 0 50px oklch(0.72 0.16 75 / ${0.15 + progress * 0.35})`,
+            transition: "text-shadow 400ms var(--ease-out-expo)",
           }}
         >
           {display}
-          <span className="text-[0.7em]">{suffix}</span>
+          <span className="ml-1 text-[0.65em] opacity-80">{suffix}</span>
         </p>
-        <p className="stat-label m-0 mt-2">{label}</p>
+        <p className="stat-label m-0 mt-3 opacity-60">{label}</p>
       </div>
     );
   }

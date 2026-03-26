@@ -6,13 +6,25 @@ import { stripPhotos1, stripPhotos2, stripPhotos3 } from "@/data/photos";
 
 export default function Home() {
   return (
-    <>
+    <div className="relative">
       <Hero />
       <StatsStrip />
-      <PhotoStrip photos={stripPhotos1} />
+      
+      {/* Photo gallery section with refined spacing */}
+      <div className="relative overflow-hidden bg-dark py-4">
+        <PhotoStrip photos={stripPhotos1} />
+      </div>
+      
       <SectionPreviews />
-      <PhotoStrip photos={stripPhotos2} direction="right" />
-      <PhotoStrip photos={stripPhotos3} />
-    </>
+      
+      {/* Additional photo galleries with visual rhythm */}
+      <div className="relative overflow-hidden bg-dark py-4">
+        <PhotoStrip photos={stripPhotos2} direction="right" />
+      </div>
+      
+      <div className="relative overflow-hidden bg-dark pb-8 pt-4">
+        <PhotoStrip photos={stripPhotos3} />
+      </div>
+    </div>
   );
 }

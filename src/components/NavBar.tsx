@@ -105,11 +105,11 @@ export function NavBar() {
   return (
     <>
       <header
-        className={`fixed inset-x-0 top-0 z-50 h-[var(--height-nav)] transition-all duration-[var(--duration-normal)] ease-[var(--ease-standard)] ${
+        className={`fixed inset-x-0 top-0 z-50 h-[var(--height-nav)] transition-all duration-[var(--duration-normal)] ease-[var(--ease-out-expo)] ${
           scrolled
-            ? "border-b border-border bg-nav-bg backdrop-blur-[12px] backdrop-saturate-[1.2]"
+            ? "border-b border-border/50 bg-nav-bg shadow-sm backdrop-blur-[16px] backdrop-saturate-[1.3]"
             : isHome
-              ? "border-b border-white/10 bg-gradient-to-b from-black/50 to-transparent backdrop-blur-[2px]"
+              ? "border-b border-white/8 bg-gradient-to-b from-black/60 to-transparent backdrop-blur-[4px]"
               : "border-b border-transparent bg-transparent"
         }`}
       >

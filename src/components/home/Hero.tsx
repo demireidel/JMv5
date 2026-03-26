@@ -90,47 +90,49 @@ export function Hero() {
         }}
       />
 
-      {/* Content — no scroll-driven transform */}
-      <div className="relative z-10 flex h-full flex-col items-center justify-end px-4 pb-12">
+      {/* Content — centered with dramatic positioning */}
+      <div className="relative z-10 flex h-full flex-col items-center justify-end px-4 pb-16 md:pb-20">
         {/* Eyebrow */}
         <p
-          className="mb-6 text-center font-accent text-sm uppercase tracking-[0.35em] text-white/85"
+          className="mb-8 text-center font-accent text-xs uppercase tracking-[0.4em] text-white/70"
           style={{
             opacity: shown || step >= 2 ? 1 : 0,
-            transform: shown || step >= 2 ? "translateY(0)" : "translateY(12px)",
-            transition: "opacity 600ms var(--ease-out-expo), transform 600ms var(--ease-out-expo)",
+            transform: shown || step >= 2 ? "translateY(0)" : "translateY(16px)",
+            transition: "opacity 700ms var(--ease-out-expo), transform 700ms var(--ease-out-expo)",
+            letterSpacing: "0.35em",
           }}
         >
-          Presidente de la Nación Argentina
+          Presidente de la Nacion Argentina
         </p>
 
         <h1
           className="text-center"
           style={{
-            lineHeight: 0.88,
-            textShadow: "0 4px 48px oklch(0 0 0 / 0.6)",
+            lineHeight: 0.82,
+            textShadow: "0 4px 60px oklch(0 0 0 / 0.5), 0 2px 20px oklch(0 0 0 / 0.3)",
           }}
         >
-          {/* "Javier" — slightly smaller, white, clip-path reveal from bottom */}
+          {/* "Javier" — elegant, white with subtle tracking */}
           <span
             className="block font-accent font-bold uppercase text-white"
             style={{
-              fontSize: "clamp(3rem, 11vw, 6.5rem)",
-              letterSpacing: "0.18em",
+              fontSize: "clamp(2.5rem, 9vw, 5.5rem)",
+              letterSpacing: "0.25em",
               clipPath: shown || step >= 3 ? "inset(0)" : "inset(100% 0 0 0)",
-              transition: "clip-path 800ms var(--ease-out-expo)",
+              transition: "clip-path 900ms var(--ease-out-expo)",
+              marginBottom: "0.1em",
             }}
           >
             Javier
           </span>
-          {/* "Milei" — larger, gold shimmer, clip-path reveal */}
+          {/* "Milei" — massive, gold shimmer, commanding presence */}
           <span
             className={`block font-accent font-bold uppercase ${shown || step >= 4 ? "gold-shimmer" : ""}`}
             style={{
-              fontSize: "clamp(5rem, 19vw, 11rem)",
-              letterSpacing: "0.08em",
+              fontSize: "clamp(5.5rem, 22vw, 14rem)",
+              letterSpacing: "0.04em",
               clipPath: shown || step >= 4 ? "inset(0)" : "inset(100% 0 0 0)",
-              transition: "clip-path 900ms var(--ease-out-expo)",
+              transition: "clip-path 1000ms var(--ease-out-expo)",
               ...(!(shown || step >= 4) ? { color: "var(--color-gold)" } : {}),
             }}
           >
@@ -140,24 +142,25 @@ export function Hero() {
 
         {/* Gold divider — expands from center */}
         <div
-          className="mx-auto mb-5 mt-7 h-px w-20 bg-gold"
+          className="mx-auto mb-6 mt-8 h-[2px] w-24 bg-gradient-to-r from-transparent via-gold to-transparent"
           style={{
             transform: shown || step >= 5 ? "scaleX(1)" : "scaleX(0)",
             transformOrigin: "center",
-            transition: "transform 700ms var(--ease-out-expo)",
+            transition: "transform 800ms var(--ease-out-expo)",
           }}
         />
 
-        {/* Subtitle — max-w-lg so the phrase fits on 1–2 lines */}
+        {/* Subtitle — elegant, refined typography */}
         <p
-          className="max-w-[36rem] text-center font-display text-xl italic leading-snug text-white/90"
+          className="max-w-[42rem] text-center font-display text-lg italic leading-relaxed text-white/85 md:text-xl"
           style={{
             opacity: shown || step >= 6 ? 1 : 0,
-            transform: shown || step >= 6 ? "translateY(0)" : "translateY(10px)",
-            transition: "opacity 700ms var(--ease-out-expo), transform 700ms var(--ease-out-expo)",
+            transform: shown || step >= 6 ? "translateY(0)" : "translateY(12px)",
+            transition: "opacity 800ms var(--ease-out-expo), transform 800ms var(--ease-out-expo)",
+            textShadow: "0 2px 20px oklch(0 0 0 / 0.4)",
           }}
         >
-          Argentina será el país más libre del mundo
+          Argentina sera el pais mas libre del mundo
         </p>
 
         {/* Scroll indicator */}

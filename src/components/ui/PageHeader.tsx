@@ -46,7 +46,7 @@ export function PageHeader({
   return (
     <section
       ref={sectionRef}
-      className={`pb-12 pt-14 md:pt-18${backgroundImage ? " relative overflow-hidden" : ""}`}
+      className={`pb-16 pt-16 md:pb-20 md:pt-24${backgroundImage ? " relative overflow-hidden" : ""}`}
     >
       {backgroundImage && (
         <>
@@ -57,8 +57,8 @@ export function PageHeader({
             sizes="100vw"
             className="object-cover"
             style={{
-              opacity: 0.4,
-              transform: `translateY(${parallaxY}px)`,
+              opacity: 0.35,
+              transform: `translateY(${parallaxY}px) scale(1.05)`,
               willChange: scrollProgress > 0 ? "transform" : undefined,
             }}
             priority
@@ -67,7 +67,7 @@ export function PageHeader({
             className="absolute inset-0"
             style={{
               background:
-                "linear-gradient(to bottom, color-mix(in oklch, var(--color-overlay-dark), transparent 45%) 0%, color-mix(in oklch, var(--color-overlay-dark), transparent 5%) 100%)",
+                "linear-gradient(to bottom, color-mix(in oklch, var(--color-overlay-dark), transparent 40%) 0%, color-mix(in oklch, var(--color-overlay-dark), transparent 5%) 100%)",
             }}
           />
         </>

@@ -135,8 +135,8 @@ export function PhotoStrip({ photos, direction }: PhotoStripProps) {
     <div
       ref={wrapperRef}
       role="region"
-      aria-label="Galería de fotos — arrastrá o deslizá para ver más"
-      className={`select-none overflow-hidden bg-dark py-[var(--spacing-xs)] ${
+      aria-label="Galeria de fotos — arrasta o desliza para ver mas"
+      className={`relative select-none overflow-hidden bg-dark py-[var(--spacing-sm)] ${
         isDragging ? "cursor-grabbing" : "cursor-grab"
       }`}
       style={{ touchAction: "pan-y" }}
@@ -147,18 +147,28 @@ export function PhotoStrip({ photos, direction }: PhotoStripProps) {
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
     >
-      <div ref={stripRef} className="flex w-max gap-3">
+      {/* Fade edges for seamless loop illusion */}
+      <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-24 bg-gradient-to-r from-dark to-transparent" />
+      <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-24 bg-gradient-to-l from-dark to-transparent" />
+      
+      <div ref={stripRef} className="flex w-max gap-4">
         {doubled.map((p, i) => (
-          <Image
+          <div 
             key={`${p.src}-${i}`}
-            src={p.src}
-            alt={p.alt}
-            width={448}
-            height={280}
-            draggable={false}
-            className="h-[clamp(8rem,6rem+8vw,14rem)] w-auto rounded-md object-cover"
-            sizes="(max-width: 768px) 200px, 300px"
-          />
+            className="group relative overflow-hidden rounded-lg"
+          >
+            <Image
+              src={p.src}
+              alt={p.alt}
+              width={480}
+              height={300}
+              draggable={false}
+              className="h-[clamp(9rem,7rem+9vw,16rem)] w-auto object-cover transition-transform duration-700 group-hover:scale-105"
+              sizes="(max-width: 768px) 220px, 320px"
+            />
+            {/* Subtle overlay on hover */}
+            <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
+          </div>
         ))}
       </div>
     </div>
