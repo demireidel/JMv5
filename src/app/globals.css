@@ -4,7 +4,7 @@
 /* ══════════════════════════════════════════════════════════════
    Design Tokens — Single Source of Truth
    Presidential Website — Javier Milei
-   All design decisions as Tailwind @theme tokens.
+   Premium Editorial Design System
    ══════════════════════════════════════════════════════════════ */
 @theme {
   /* ── Font Families ─────────────────────────────────────────
@@ -15,18 +15,20 @@
   --font-accent: var(--font-oswald), Impact, sans-serif;
   --font-body: var(--font-inter), system-ui, sans-serif;
 
-  /* ── Core Colors (oklch) ───────────────────────────────── */
-  --color-gold: oklch(0.55 0.17 75);
-  --color-celeste: oklch(0.55 0.11 240);
-  --color-dark: oklch(0.97 0.005 80);
-  --color-navy: oklch(0.91 0.012 250);
-  --color-midnight: #1a1a2e;
+  /* ── Core Colors (oklch) — Refined Luxury Palette ──────── */
+  --color-gold: oklch(0.58 0.155 70);
+  --color-gold-bright: oklch(0.72 0.16 75);
+  --color-celeste: oklch(0.52 0.12 235);
+  --color-dark: oklch(0.965 0.006 85);
+  --color-navy: oklch(0.94 0.008 250);
+  --color-midnight: oklch(0.12 0.025 270);
+  --color-charcoal: oklch(0.18 0.02 270);
 
   /* Hex fallbacks (OG images, scrollbar, etc.) */
-  --color-gold-hex: #b8860b;
+  --color-gold-hex: #c4a052;
   --color-celeste-hex: #3a7abf;
-  --color-dark-hex: #f5f2ed;
-  --color-navy-hex: #e8eaf0;
+  --color-dark-hex: #f7f5f0;
+  --color-navy-hex: #eef0f4;
 
   /* ── Party Colors (La Libertad Avanza) ─────────────────── */
   --color-lla-violet: #743BBC;
@@ -34,20 +36,20 @@
   --color-lla-indigo: #250E62;
 
   /* ── Semantic Colors ───────────────────────────────────── */
-  --color-success: #51cf66;
-  --color-danger: #ff6b6b;
+  --color-success: oklch(0.72 0.18 145);
+  --color-danger: oklch(0.65 0.22 25);
 
-  /* ── Surface System (light layers) ──────────────────────── */
-  --color-surface-1: oklch(0 0 0 / 0.03);
-  --color-surface-2: oklch(0 0 0 / 0.05);
-  --color-surface-3: oklch(0 0 0 / 0.08);
-  --color-border: oklch(0 0 0 / 0.08);
-  --color-border-hover: oklch(0 0 0 / 0.15);
+  /* ── Surface System (refined glassmorphism) ─────────────── */
+  --color-surface-1: oklch(1 0 0 / 0.55);
+  --color-surface-2: oklch(1 0 0 / 0.7);
+  --color-surface-3: oklch(0 0 0 / 0.04);
+  --color-border: oklch(0 0 0 / 0.06);
+  --color-border-hover: oklch(0.58 0.155 70 / 0.4);
 
-  /* ── Text Hierarchy ────────────────────────────────────── */
-  --color-text-primary: oklch(0.15 0.02 270);
-  --color-text-secondary: oklch(0.35 0.02 270);
-  --color-text-tertiary: oklch(0.50 0.02 270);
+  /* ── Text Hierarchy (refined contrast) ─────────────────── */
+  --color-text-primary: oklch(0.12 0.02 270);
+  --color-text-secondary: oklch(0.38 0.015 270);
+  --color-text-tertiary: oklch(0.52 0.01 270);
 
   /* ── Before / After Tints ──────────────────────────────── */
   --color-tint-before: oklch(0.88 0.14 20);
@@ -63,15 +65,16 @@
   --color-nav-bg: oklch(0.97 0.005 80 / 0.85);
   --color-nav-bg-mobile: oklch(0.97 0.005 80 / 0.97);
 
-  /* ── Typography Scale (fluid clamp) ────────────────────── */
-  --text-xs: clamp(0.75rem, 0.7rem + 0.25vw, 0.875rem);
-  --text-sm: clamp(0.875rem, 0.8rem + 0.35vw, 1rem);
-  --text-base: clamp(1rem, 0.9rem + 0.5vw, 1.125rem);
-  --text-lg: clamp(1.125rem, 1rem + 0.6vw, 1.375rem);
-  --text-xl: clamp(1.375rem, 1.1rem + 1.2vw, 2rem);
-  --text-2xl: clamp(1.75rem, 1.3rem + 2vw, 3rem);
-  --text-3xl: clamp(2.25rem, 1.5rem + 3vw, 4.5rem);
-  --text-hero: clamp(3rem, 2rem + 5vw, 7rem);
+  /* ── Typography Scale (refined fluid clamp) ─────────────── */
+  --text-xs: clamp(0.6875rem, 0.65rem + 0.2vw, 0.8125rem);
+  --text-sm: clamp(0.8125rem, 0.75rem + 0.3vw, 0.9375rem);
+  --text-base: clamp(0.9375rem, 0.875rem + 0.35vw, 1.0625rem);
+  --text-lg: clamp(1.0625rem, 0.95rem + 0.5vw, 1.3125rem);
+  --text-xl: clamp(1.375rem, 1.1rem + 1.2vw, 2.125rem);
+  --text-2xl: clamp(1.875rem, 1.4rem + 2.2vw, 3.25rem);
+  --text-3xl: clamp(2.5rem, 1.75rem + 3.5vw, 5rem);
+  --text-hero: clamp(3.5rem, 2.5rem + 6vw, 8rem);
+  --text-display: clamp(4.5rem, 3rem + 8vw, 12rem);
 
   /* ── Spacing Scale (fluid clamp) ───────────────────────── */
   --spacing-xs: clamp(0.25rem, 0.2rem + 0.25vw, 0.5rem);
@@ -89,12 +92,15 @@
   --radius-lg: 1rem;
   --radius-xl: 1.5rem;
 
-  /* ── Shadows ───────────────────────────────────────────── */
-  --shadow-sm: 0 1px 3px oklch(0 0 0 / 0.08);
-  --shadow-md: 0 4px 12px oklch(0 0 0 / 0.1);
-  --shadow-lg: 0 8px 32px oklch(0 0 0 / 0.15);
-  --shadow-glow-gold: 0 0 24px oklch(0.55 0.17 75 / 0.2);
-  --shadow-glow-celeste: 0 0 24px oklch(0.55 0.11 240 / 0.15);
+  /* ── Shadows (refined depth system) ─────────────────────── */
+  --shadow-sm: 0 1px 2px oklch(0 0 0 / 0.04), 0 1px 3px oklch(0 0 0 / 0.06);
+  --shadow-md: 0 2px 4px oklch(0 0 0 / 0.03), 0 4px 16px oklch(0 0 0 / 0.08);
+  --shadow-lg: 0 4px 8px oklch(0 0 0 / 0.04), 0 12px 40px oklch(0 0 0 / 0.12);
+  --shadow-xl: 0 8px 16px oklch(0 0 0 / 0.05), 0 24px 64px oklch(0 0 0 / 0.15);
+  --shadow-glow-gold: 0 0 40px oklch(0.58 0.155 70 / 0.25), 0 0 80px oklch(0.58 0.155 70 / 0.1);
+  --shadow-glow-celeste: 0 0 32px oklch(0.52 0.12 235 / 0.2);
+  --shadow-card: 0 0 0 1px oklch(0 0 0 / 0.03), 0 2px 4px oklch(0 0 0 / 0.02), 0 8px 24px oklch(0 0 0 / 0.06);
+  --shadow-card-hover: 0 0 0 1px oklch(0.58 0.155 70 / 0.15), 0 4px 8px oklch(0 0 0 / 0.03), 0 16px 48px oklch(0 0 0 / 0.1);
 
   /* ── Motion ────────────────────────────────────────────── */
   --ease-standard: cubic-bezier(0.4, 0, 0.2, 1);
@@ -122,13 +128,14 @@
    Extracted from 364 inline style={{}} patterns.
    ══════════════════════════════════════════════════════════════ */
 @layer components {
-  /* Badge / tag text — kicker labels, category badges (25+ uses) */
+  /* Badge / tag text — refined kicker labels, category badges */
   .badge-text {
     font-family: var(--font-accent);
     font-size: var(--text-xs);
+    font-weight: 600;
     color: var(--color-gold);
     text-transform: uppercase;
-    letter-spacing: 0.1em;
+    letter-spacing: 0.15em;
   }
 
   /* Prose body paragraphs (20+ uses) */
@@ -146,22 +153,24 @@
     max-width: 65ch;
   }
 
-  /* Stat number — big gold metric (12+ uses) */
+  /* Stat number — premium gold metric */
   .stat-number {
     font-family: var(--font-accent);
     font-size: var(--text-2xl);
     color: var(--color-gold);
     font-weight: 700;
     line-height: 1;
+    letter-spacing: -0.02em;
   }
 
-  /* Stat label — small text below stat number */
+  /* Stat label — refined small text below stat number */
   .stat-label {
     font-family: var(--font-accent);
     font-size: var(--text-xs);
+    font-weight: 500;
     color: var(--color-text-secondary);
     text-transform: uppercase;
-    letter-spacing: 0.05em;
+    letter-spacing: 0.08em;
   }
 
   /* Chapter heading numeral (25+ uses) */
@@ -181,15 +190,26 @@
     margin: 0;
   }
 
-  /* Pullquote / blockquote (8+ uses) */
+  /* Pullquote / blockquote (refined elegance) */
   .pullquote {
     font-family: var(--font-display);
     font-style: italic;
     font-size: var(--text-lg);
     color: var(--color-text-secondary);
-    border-left: 3px solid var(--color-gold);
-    padding-left: var(--spacing-lg);
+    border-left: 2px solid var(--color-gold);
+    padding-left: var(--spacing-xl);
     margin: 0;
+    position: relative;
+  }
+  
+  .pullquote::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: linear-gradient(to bottom, var(--color-gold), oklch(0.58 0.155 70 / 0.3));
   }
 
   /* ─── Semantic typography helpers ───────────────────────────────────────── */
@@ -258,19 +278,20 @@
     --color-gold: oklch(0.80 0.17 85);
   }
 
-  /* Hero gradient overlay — replaces inline background in Hero.tsx */
+  /* Hero gradient overlay — cinematic film-grade overlay */
   .hero-overlay {
     background:
-      /* Vignette corners */
-      radial-gradient(ellipse 120% 100% at 50% 50%, transparent 40%, oklch(0.05 0.01 270 / 0.55) 100%),
-      /* Vertical gradient: dark top + dark bottom */
+      /* Vignette corners — more pronounced */
+      radial-gradient(ellipse 130% 110% at 50% 50%, transparent 35%, oklch(0.03 0.01 270 / 0.6) 100%),
+      /* Vertical gradient: dramatic dark top + rich dark bottom */
       linear-gradient(
         to bottom,
-        oklch(0.08 0.01 270 / 0.65) 0%,
-        oklch(0.08 0.01 270 / 0.20) 20%,
-        oklch(0.08 0.01 270 / 0.05) 45%,
-        oklch(0.08 0.01 270 / 0.30) 70%,
-        oklch(0.05 0.01 270 / 0.85) 100%
+        oklch(0.06 0.015 270 / 0.75) 0%,
+        oklch(0.06 0.01 270 / 0.25) 18%,
+        oklch(0.06 0.01 270 / 0.05) 40%,
+        oklch(0.06 0.01 270 / 0.15) 60%,
+        oklch(0.04 0.01 270 / 0.35) 75%,
+        oklch(0.03 0.01 270 / 0.9) 100%
       );
   }
 
@@ -278,28 +299,43 @@
      Zero React re-renders per mousemove frame; gradient computed entirely by CSS. */
   .card-glow {
     background: radial-gradient(
-      circle 280px at var(--mx, 50%) var(--my, 50%),
-      oklch(0.80 0.17 85 / 0.22),
-      oklch(0.80 0.17 85 / 0.06) 50%,
-      transparent 75%
+      circle 320px at var(--mx, 50%) var(--my, 50%),
+      oklch(0.72 0.16 75 / 0.2),
+      oklch(0.72 0.16 75 / 0.06) 45%,
+      transparent 70%
     );
   }
 
-  /* Surface card — glassmorphic card base (30+ uses) */
+  /* Surface card — refined glassmorphic card base */
   .surface-card {
-    background: var(--color-surface-1);
-    border: 1px solid var(--color-border);
+    background: linear-gradient(135deg, oklch(1 0 0 / 0.65) 0%, oklch(1 0 0 / 0.45) 100%);
+    border: 1px solid oklch(0 0 0 / 0.05);
     border-radius: var(--radius-xl);
-    transition: border-color var(--duration-fast) var(--ease-standard),
-                box-shadow var(--duration-fast) var(--ease-standard);
+    box-shadow: var(--shadow-card);
+    backdrop-filter: blur(12px);
+    transition: all var(--duration-normal) var(--ease-out-expo);
+  }
+
+  .surface-card:hover {
+    border-color: oklch(0.58 0.155 70 / 0.25);
+    box-shadow: var(--shadow-card-hover);
   }
 
   /* Surface card with gold accent border */
   .surface-card-accent {
-    background: var(--color-surface-1);
-    border: 1px solid var(--color-border);
+    background: linear-gradient(135deg, oklch(1 0 0 / 0.7) 0%, oklch(1 0 0 / 0.5) 100%);
+    border: 1px solid oklch(0 0 0 / 0.04);
     border-left: 3px solid var(--color-gold);
     border-radius: var(--radius-xl);
+    box-shadow: var(--shadow-card);
+    backdrop-filter: blur(12px);
+    transition: all var(--duration-normal) var(--ease-out-expo);
+  }
+
+  .surface-card-accent:hover {
+    border-color: oklch(0.58 0.155 70 / 0.2);
+    border-left-color: var(--color-gold-bright);
+    box-shadow: var(--shadow-card-hover);
   }
 
   /* Section divider — horizontal rule (10+ uses) */
@@ -325,32 +361,34 @@
     padding: var(--spacing-md);
   }
 
-  /* Page eyebrow — section label above h1 */
+  /* Page eyebrow — refined section label above h1 */
   .page-eyebrow {
     font-family: var(--font-accent);
-    font-size: var(--text-sm);
+    font-size: var(--text-xs);
+    font-weight: 600;
     color: var(--color-gold);
     text-transform: uppercase;
-    letter-spacing: 0.15em;
-    margin-bottom: var(--spacing-sm);
+    letter-spacing: 0.2em;
+    margin-bottom: var(--spacing-md);
   }
 
-  /* Page title — main h1 */
+  /* Page title — premium main h1 */
   .page-title {
     font-family: var(--font-display);
     font-size: var(--text-3xl);
     color: var(--color-text-primary);
-    line-height: 1.05;
+    line-height: 1.02;
+    letter-spacing: -0.02em;
     margin: 0;
   }
 
-  /* Page subtitle — description under h1 */
+  /* Page subtitle — elegant description under h1 */
   .page-subtitle {
     font-size: var(--text-base);
     color: var(--color-text-secondary);
-    line-height: 1.6;
-    max-width: 52ch;
-    margin-top: var(--spacing-md);
+    line-height: 1.7;
+    max-width: 56ch;
+    margin-top: var(--spacing-lg);
   }
 
   /* Sidebar nav container */
@@ -512,29 +550,32 @@ html {
   to { opacity: 1; transform: translateY(0) scale(1); filter: blur(0); }
 }
 
-/* ── Gold Shimmer ─────────────────────────────────────────── */
+/* ── Gold Shimmer (refined premium effect) ────────────────── */
 .gold-shimmer {
   background-image: linear-gradient(
     105deg,
-    #c9a227 0%,
-    #f0d060 18%,
-    #fff3a0 28%,
-    #c9a227 40%,
-    #9a7b1a 58%,
-    #c9a227 72%,
-    #f0d060 85%,
-    #c9a227 100%
+    #c4a052 0%,
+    #d4b76a 15%,
+    #f5e4b0 25%,
+    #fff8dc 35%,
+    #f5e4b0 45%,
+    #c4a052 55%,
+    #a08040 65%,
+    #c4a052 75%,
+    #d4b76a 85%,
+    #c4a052 100%
   );
-  background-size: 250% 100%;
+  background-size: 300% 100%;
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   color: transparent;
-  animation: shimmer 2s ease-in-out infinite;
+  animation: shimmer 3s ease-in-out infinite;
 }
 
 @keyframes shimmer {
   0% { background-position: 100% center; }
+  50% { background-position: 0% center; }
   100% { background-position: -100% center; }
 }
 
@@ -544,27 +585,27 @@ html {
   50% { opacity: 0.4; transform: translateY(6px); }
 }
 
-/* ── Card Hover States ────────────────────────────────────── */
+/* ── Card Hover States (refined interactions) ────────────── */
 .card-hover {
-  transition: transform 250ms var(--ease-out-expo),
-              border-color 250ms var(--ease-out-expo),
-              box-shadow 250ms var(--ease-out-expo);
+  transition: transform 400ms var(--ease-out-expo),
+              border-color 400ms var(--ease-out-expo),
+              box-shadow 400ms var(--ease-out-expo);
 }
 
 .card-hover:hover {
-  transform: translateY(-3px);
-  border-color: oklch(0.55 0.17 75 / 0.35);
-  box-shadow: 0 0 0 1px oklch(0.55 0.17 75 / 0.1),
-              0 8px 32px oklch(0 0 0 / 0.12),
-              0 0 40px oklch(0.80 0.17 85 / 0.18);
+  transform: translateY(-6px);
+  border-color: oklch(0.58 0.155 70 / 0.35);
+  box-shadow: 0 0 0 1px oklch(0.58 0.155 70 / 0.1),
+              0 12px 40px oklch(0 0 0 / 0.14),
+              0 0 60px oklch(0.72 0.16 75 / 0.15);
 }
 
 /* Touch tap feedback for devices without hover */
 @media (hover: none) {
   .card-hover:active {
-    transform: scale(0.97);
+    transform: scale(0.98);
     border-color: var(--color-border-hover);
-    transition-duration: 100ms;
+    transition-duration: 150ms;
   }
 }
 
@@ -675,20 +716,21 @@ img {
   to { opacity: 1; transform: scale(1); }
 }
 
-/* ── Scroll Progress Bar (pure CSS) ─────────────────────── */
+/* ── Scroll Progress Bar (refined premium) ───────────────── */
 .scroll-progress {
   position: fixed;
   top: var(--height-nav);
   left: 0;
   right: 0;
   height: 2px;
-  background: var(--color-gold);
+  background: linear-gradient(90deg, var(--color-gold) 0%, var(--color-gold-bright) 50%, var(--color-gold) 100%);
   transform-origin: left;
   transform: scaleX(0);
   animation: scroll-scale linear;
   animation-timeline: scroll();
   z-index: 51;
   pointer-events: none;
+  box-shadow: 0 0 12px oklch(0.58 0.155 70 / 0.4);
 }
 
 @keyframes scroll-scale {
@@ -719,39 +761,39 @@ img {
   transform-origin: left;
 }
 
-/* ── Gold Gradient Text (static, no shimmer) ─────────────── */
+/* ── Gold Gradient Text (refined static gradient) ────────── */
 .gold-gradient {
-  background-image: linear-gradient(105deg, #c9a227 0%, #f0d060 50%, #c9a227 100%);
+  background-image: linear-gradient(105deg, #c4a052 0%, #d4b76a 30%, #f5e4b0 50%, #d4b76a 70%, #c4a052 100%);
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   color: transparent;
 }
 
-/* ── Image Reveal Animation ──────────────────────────────── */
+/* ── Image Reveal Animation (refined) ────────────────────── */
 .img-zoom-hover {
   overflow: hidden;
   border-radius: var(--radius-md);
 }
 
 .img-zoom-hover img {
-  transition: transform 700ms var(--ease-out-expo), filter 700ms var(--ease-out-expo);
+  transition: transform 800ms var(--ease-out-expo), filter 800ms var(--ease-out-expo);
 }
 
 .img-zoom-hover:hover img {
-  transform: scale(1.07);
-  filter: brightness(1.05);
+  transform: scale(1.05);
+  filter: brightness(1.03) contrast(1.02);
 }
 
-/* ── Film Grain Overlay (cinematic texture) ──────────────── */
+/* ── Film Grain Overlay (subtle cinematic texture) ───────── */
 body::after {
   content: "";
   position: fixed;
   inset: 0;
   z-index: 9998;
   pointer-events: none;
-  opacity: 0.04;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  opacity: 0.025;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
   mix-blend-mode: overlay;
 }
 
@@ -839,10 +881,10 @@ body::after {
   50%       { transform: translateY(-7px); }
 }
 
-/* ── Gold glow pulse — pulsing text-shadow for stat numbers */
+/* ── Gold glow pulse — refined pulsing text-shadow for stat numbers */
 @keyframes gold-glow-pulse {
-  0%, 100% { text-shadow: 0 0 12px oklch(0.80 0.17 85 / 0.0), 0 0 40px oklch(0.80 0.17 85 / 0.0); }
-  50%       { text-shadow: 0 0 12px oklch(0.80 0.17 85 / 0.55), 0 0 48px oklch(0.80 0.17 85 / 0.25); }
+  0%, 100% { text-shadow: 0 0 20px oklch(0.72 0.16 75 / 0.2), 0 0 50px oklch(0.72 0.16 75 / 0.08); }
+  50%       { text-shadow: 0 0 30px oklch(0.72 0.16 75 / 0.45), 0 0 70px oklch(0.72 0.16 75 / 0.2); }
 }
 
 /* ── Cinematic entrance — blur + scale + translate combined */
