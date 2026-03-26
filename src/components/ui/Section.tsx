@@ -1,3 +1,5 @@
+import { cn } from "@/lib/cn";
+
 type SectionVariant = "dark" | "navy" | "midnight";
 
 interface SectionProps {
@@ -9,16 +11,15 @@ interface SectionProps {
   className?: string;
 }
 
-// satisfies ensures every variant key is covered at compile time
 const variantClasses = {
-  dark:  "bg-dark text-text-primary",
-  navy:  "bg-navy text-text-primary",
+  dark:     "bg-dark text-text-primary",
+  navy:     "bg-navy text-text-primary",
   midnight: "bg-midnight text-dark",
 } satisfies Record<SectionVariant, string>;
 
 const variantBg = {
-  dark:  "var(--color-dark)",
-  navy:  "var(--color-navy)",
+  dark:     "var(--color-dark)",
+  navy:     "var(--color-navy)",
   midnight: "var(--color-midnight)",
 } satisfies Record<SectionVariant, string>;
 
@@ -28,19 +29,18 @@ export function Section({
   variant = "dark",
   bleedTop = false,
   bleedBottom = false,
-  className = "",
+  className,
 }: SectionProps) {
-  const bleedClasses = [
-    bleedTop    ? "section-bleed-top"    : "",
-    bleedBottom ? "section-bleed-bottom" : "",
-  ]
-    .filter(Boolean)
-    .join(" ");
-
   return (
     <section
       id={id}
-      className={`py-[var(--spacing-section)] ${variantClasses[variant]} ${bleedClasses} ${className}`}
+      className={cn(
+        "py-[var(--spacing-section)]",
+        variantClasses[variant],
+        bleedTop && "section-bleed-top",
+        bleedBottom && "section-bleed-bottom",
+        className
+      )}
       style={
         bleedTop || bleedBottom
           ? ({ "--section-bg": variantBg[variant] } as React.CSSProperties)

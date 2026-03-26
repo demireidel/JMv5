@@ -7,7 +7,7 @@ export default function Loading() {
           role="status"
           aria-label="Cargando"
         />
-        <p className="badge-text">Cargando</p>
+        <p className="font-accent text-[length:var(--text-xs)] uppercase tracking-[0.1em] text-gold">Cargando…</p>
       </div>
     </div>
   );

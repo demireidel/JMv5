@@ -11,10 +11,10 @@ export function PillarGrid({ items }: PillarGridProps) {
       {items.map((p) => (
         <Card key={p.title} className="p-5 text-center">
           <div className="mb-2 text-[2rem]">{p.icon}</div>
-          <h4 className="chapter-title m-0 mb-2 text-[length:var(--text-base)]">
+          <h4 className="font-display text-[length:var(--text-xl)] leading-[1.1] text-text-primary m-0 mb-2 text-[length:var(--text-base)]">
             {p.title}
           </h4>
-          <p className="prose-body m-0">{p.desc}</p>
+          <p className="text-[length:var(--text-sm)] leading-[1.7] text-text-secondary m-0">{p.desc}</p>
         </Card>
       ))}
     </div>

@@ -13,14 +13,13 @@ export function BeforeAfterPanel({
 }: BeforeAfterPanelProps) {
   const panelClass = type === "before" ? "panel-before" : "panel-after";
   const valueColor = type === "before" ? "text-danger" : "text-success";
+  const badgeColor = type === "before" ? "!text-danger" : "!text-success";
   const defaultLabel = type === "before" ? "Antes" : "Ahora";
 
   return (
     <div className={panelClass}>
       <span
-        className={`badge-text mb-1 flex items-center gap-1 ${
-          type === "before" ? "!text-danger" : "!text-success"
-        }`}
+        className={`mb-1 flex items-center gap-1 font-accent text-[length:var(--text-xs)] uppercase tracking-[0.1em] ${badgeColor}`}
       >
         <svg
           width="10"
@@ -35,10 +34,14 @@ export function BeforeAfterPanel({
         {label ?? defaultLabel}
       </span>
       {value && (
-        <span className={`stat-number ${valueColor}`}>{value}</span>
+        <span className={`font-accent text-[length:var(--text-2xl)] font-bold leading-none ${valueColor}`}>
+          {value}
+        </span>
       )}
       {children && (
-        <div className="prose-body mt-1">{children}</div>
+        <div className="mt-1 text-[length:var(--text-sm)] leading-[1.7] text-text-secondary">
+          {children}
+        </div>
       )}
     </div>
   );

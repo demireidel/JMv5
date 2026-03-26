@@ -1,3 +1,5 @@
+import { cn } from "@/lib/cn";
+
 interface ContentGridProps {
   cols?: 2 | 3 | 4;
   children: React.ReactNode;
@@ -12,7 +14,7 @@ const colClasses: Record<number, string> = {
 
 export function ContentGrid({ cols = 2, children, className }: ContentGridProps) {
   return (
-    <div className={`${colClasses[cols]}${className ? ` ${className}` : ""}`}>
+    <div className={cn(colClasses[cols], className)}>
       {children}
     </div>
   );

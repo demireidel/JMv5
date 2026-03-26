@@ -8,37 +8,19 @@ import {
   type ReactNode,
 } from "react";
 
-type AnimationVariant =
-  | "fade-up"
-  | "fade-in"
-  | "scale-in"
-  | "clip-reveal"
-  | "slide-left"
-  | "slide-right"
-  | "blur-in"
-  | "cinematic"
-  | "rise-up"
-  | "none";
+type AnimationVariant = "fade-up" | "fade-in" | "scale-in";
 
 interface VariantConfig {
   hidden: React.CSSProperties;
   visible: React.CSSProperties;
-  /** CSS property names separated by commas for transition string */
   transition: string;
 }
 
-const variants = {
-  "fade-up":    { hidden: { opacity: 0, transform: "translateY(32px)" },                           visible: { opacity: 1, transform: "translateY(0)" },                  transition: "opacity,transform" },
-  "fade-in":    { hidden: { opacity: 0 },                                                           visible: { opacity: 1 },                                              transition: "opacity" },
-  "scale-in":   { hidden: { opacity: 0, transform: "scale(0.93)" },                                visible: { opacity: 1, transform: "scale(1)" },                       transition: "opacity,transform" },
-  "clip-reveal":{ hidden: { clipPath: "inset(100% 0 0 0)" },                                       visible: { clipPath: "inset(0)" },                                    transition: "clip-path" },
-  "slide-left": { hidden: { opacity: 0, transform: "translateX(-56px)" },                          visible: { opacity: 1, transform: "translateX(0)" },                  transition: "opacity,transform" },
-  "slide-right":{ hidden: { opacity: 0, transform: "translateX(56px)" },                           visible: { opacity: 1, transform: "translateX(0)" },                  transition: "opacity,transform" },
-  "blur-in":    { hidden: { opacity: 0, filter: "blur(12px)" },                                    visible: { opacity: 1, filter: "blur(0px)" },                         transition: "opacity,filter" },
-  "cinematic":  { hidden: { opacity: 0, transform: "translateY(40px) scale(0.95)", filter: "blur(12px)" }, visible: { opacity: 1, transform: "translateY(0) scale(1)", filter: "blur(0px)" }, transition: "opacity,transform,filter" },
-  "rise-up":    { hidden: { opacity: 0, transform: "translateY(60px) scale(0.96)" },               visible: { opacity: 1, transform: "translateY(0) scale(1)" },         transition: "opacity,transform" },
-  "none":       { hidden: {},                                                                       visible: {},                                                          transition: "" },
-} satisfies Record<AnimationVariant, VariantConfig>;
+const variants: Record<AnimationVariant, VariantConfig> = {
+  "fade-up":  { hidden: { opacity: 0, transform: "translateY(28px)" }, visible: { opacity: 1, transform: "translateY(0)" }, transition: "opacity,transform" },
+  "fade-in":  { hidden: { opacity: 0 },                                visible: { opacity: 1 },                            transition: "opacity" },
+  "scale-in": { hidden: { opacity: 0, transform: "scale(0.91)" },     visible: { opacity: 1, transform: "scale(1)" },     transition: "opacity,transform" },
+};
 
 interface ScrollRevealProps {
   children: ReactNode;
@@ -52,6 +34,11 @@ interface ScrollRevealProps {
   as?: ElementType<any>;
 }
 
+/**
+ * Lightweight IntersectionObserver-based reveal.
+ * Use this only when you need staggered delays or complex orchestration.
+ * For simple reveals, use CSS classes: .reveal-fade-up, .reveal-fade-in, .reveal-scale-in
+ */
 export function ScrollReveal({
   children,
   variant = "fade-up",
@@ -90,14 +77,6 @@ export function ScrollReveal({
     return () => observer.disconnect();
   }, [threshold, once]);
 
-  if (variant === "none") {
-    return (
-      <Tag ref={ref} className={className}>
-        {children}
-      </Tag>
-    );
-  }
-
   const config = variants[variant];
   const ease = "var(--ease-out-expo)";
   const transitionValue = config.transition
@@ -108,7 +87,6 @@ export function ScrollReveal({
   const style: React.CSSProperties = {
     ...(visible ? config.visible : config.hidden),
     transition: transitionValue,
-    willChange: visible ? undefined : config.transition.split(",").join(" "),
   };
 
   return (

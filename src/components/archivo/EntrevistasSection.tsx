@@ -10,9 +10,9 @@ export function EntrevistasSection({ entrevistas }: { entrevistas: Entrevista[] 
       <ChapterHeader numeral="II" title="Entrevistas" />
       <div className="space-y-6">
         {entrevistas.map((e, i) => (
-          <Card key={i} accent={e.highlight} className="p-5">
+          <Card key={i} accent={e.highlight ? "gold" : "none"} className="p-5">
             <div className="mb-2 flex items-center gap-3">
-              <span className="card-label !mb-0 !text-gold inline">
+              <span className="block font-accent text-[length:var(--text-xs)] font-semibold uppercase tracking-[0.05em] text-text-tertiary mb-1 !mb-0 !text-gold inline">
                 {e.date}
               </span>
               {e.duration && (
@@ -25,14 +25,14 @@ export function EntrevistasSection({ entrevistas }: { entrevistas: Entrevista[] 
               {e.outlet}
             </h4>
             {e.journalist && (
-              <p className="card-body mb-2">
+              <p className="text-[length:var(--text-xs)] leading-relaxed text-text-secondary mb-2">
                 Con {e.journalist}
               </p>
             )}
             {e.videoId && (
               <YouTubeEmbed videoId={e.videoId} title={e.outlet} />
             )}
-            <p className="card-body mt-3">
+            <p className="text-[length:var(--text-xs)] leading-relaxed text-text-secondary mt-3">
               {e.desc}
             </p>
             {e.impact && (

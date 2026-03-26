@@ -12,7 +12,7 @@ export function LibrosSection({ etapas }: { etapas: Etapa[] }) {
       <div className="space-y-10">
         {etapas.map((etapa) => (
           <div key={etapa.label}>
-            <h3 className="badge-text mb-4 !text-gold">
+            <h3 className="font-accent text-[length:var(--text-xs)] uppercase tracking-[0.1em] text-gold mb-4 !text-gold">
               {etapa.label}{" "}
               <span className="text-text-tertiary">({etapa.desc})</span>
             </h3>
@@ -20,7 +20,7 @@ export function LibrosSection({ etapas }: { etapas: Etapa[] }) {
               {etapa.books.map((book) => (
                 <Card
                   key={book.title}
-                  accent={book.highlight}
+                  accent={book.highlight ? "gold" : "none"}
                   className="flex gap-4 p-4"
                 >
                   {book.cover && (
@@ -34,19 +34,19 @@ export function LibrosSection({ etapas }: { etapas: Etapa[] }) {
                     />
                   )}
                   <div>
-                    <p className="card-body">
+                    <p className="text-[length:var(--text-xs)] leading-relaxed text-text-secondary">
                       {book.year}
                     </p>
-                    <h4 className="card-heading mt-1">
+                    <h4 className="font-display text-[length:var(--text-sm)] leading-[1.3] text-text-primary mt-1">
                       {book.title}
                     </h4>
                     {book.publisher && (
-                      <p className="card-body mt-1">
+                      <p className="text-[length:var(--text-xs)] leading-relaxed text-text-secondary mt-1">
                         {book.publisher}
                       </p>
                     )}
                     {book.desc && (
-                      <p className="card-body mt-1">
+                      <p className="text-[length:var(--text-xs)] leading-relaxed text-text-secondary mt-1">
                         {book.desc}
                       </p>
                     )}

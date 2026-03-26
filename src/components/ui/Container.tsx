@@ -1,3 +1,5 @@
+import { cn } from "@/lib/cn";
+
 interface ContainerProps {
   children: React.ReactNode;
   wide?: boolean;
@@ -7,15 +9,16 @@ interface ContainerProps {
 export function Container({
   children,
   wide = false,
-  className = "",
+  className,
 }: ContainerProps) {
-  // Avoid !important — use conditional class for max-width
-  const maxW = wide
-    ? "max-w-[96rem]"
-    : "max-w-[var(--width-content)]";
-
   return (
-    <div className={`mx-auto ${maxW} px-4 sm:px-6 lg:px-8 ${className}`}>
+    <div
+      className={cn(
+        "mx-auto px-4 sm:px-6 lg:px-8",
+        wide ? "max-w-[96rem]" : "max-w-[var(--width-content)]",
+        className
+      )}
+    >
       {children}
     </div>
   );

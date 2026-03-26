@@ -41,7 +41,7 @@ export function AnimatedNumber({
     return (
       <div className="text-center" ref={ref}>
         <p
-          className={`stat-number m-0 leading-none${done ? " gold-glow-pulse" : ""}`}
+          className="m-0 font-accent text-[length:var(--text-2xl)] font-bold leading-snug text-gold"
           aria-live="polite"
           style={{
             transform: `scale(${scale})`,
@@ -54,7 +54,7 @@ export function AnimatedNumber({
           {display}
           <span className="ml-1 text-[0.65em] opacity-80">{suffix}</span>
         </p>
-        <p className="stat-label m-0 mt-3 opacity-60">{label}</p>
+        <p className="m-0 mt-2 font-accent text-[length:var(--text-xs)] uppercase tracking-[0.05em] text-text-secondary">{label}</p>
       </div>
     );
   }
@@ -63,7 +63,7 @@ export function AnimatedNumber({
   return (
     <div ref={ref} className="text-center">
       <p
-        className="stat-number m-0 text-[length:var(--text-3xl)] leading-none"
+        className="m-0 font-accent text-[length:var(--text-3xl)] font-bold leading-none text-gold"
         aria-live="polite"
       >
         {display}

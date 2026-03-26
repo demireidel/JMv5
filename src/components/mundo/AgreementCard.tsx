@@ -15,9 +15,9 @@ export function AgreementCard({ ta }: AgreementCardProps) {
   return (
     <Card className="overflow-hidden">
       <div className="p-6">
-        <span className="badge-text mb-2 block">{ta.tag}</span>
-        <h3 className="chapter-title m-0 mb-3">{ta.title}</h3>
-        <p className="prose-body m-0 mb-4">{ta.description}</p>
+        <span className="font-accent text-[length:var(--text-xs)] uppercase tracking-[0.1em] text-gold mb-2 block">{ta.tag}</span>
+        <h3 className="font-display text-[length:var(--text-xl)] leading-[1.1] text-text-primary m-0 mb-3">{ta.title}</h3>
+        <p className="text-[length:var(--text-sm)] leading-[1.7] text-text-secondary m-0 mb-4">{ta.description}</p>
         <div className="flex flex-wrap gap-2">
           {ta.keyFacts.map((f, i) => {
             const style = factStyles[f.color];

@@ -37,7 +37,7 @@ export function ArchivoContent({
   reconocimientos: string[];
 }) {
   return (
-    <SidebarLayout label="Secciones del archivo" items={sections} variant="navy">
+    <SidebarLayout label="Secciones del archivo" items={sections}>
       <DiscursosSection discursos={discursos} />
 
       <EntrevistasSection entrevistas={entrevistas} />
@@ -56,7 +56,7 @@ export function ArchivoContent({
               className="flex items-start gap-3 border-b border-border py-2"
             >
               <span className="mt-0.5 text-gold">&#9670;</span>
-              <span className="card-body text-[length:var(--text-sm)]">{r}</span>
+              <span className="text-[length:var(--text-xs)] leading-relaxed text-text-secondary text-[length:var(--text-sm)]">{r}</span>
             </li>
           ))}
         </ul>

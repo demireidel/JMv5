@@ -1,51 +1,30 @@
-"use client";
-
-import { useRef, useEffect, useState } from "react";
+import { cn } from "@/lib/cn";
 
 interface DividerProps {
   className?: string;
   animated?: boolean;
 }
 
-export function Divider({ className = "", animated = true }: DividerProps) {
-  const ref = useRef<HTMLHRElement>(null);
-  const [visible, setVisible] = useState(false);
-
-  useEffect(() => {
-    if (!animated) return;
-    const el = ref.current;
-    if (!el) return;
-
-    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-      setVisible(true);
-      return;
-    }
-
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setVisible(true);
-          observer.disconnect();
-        }
-      },
-      { threshold: 0.1 }
-    );
-
-    observer.observe(el);
-    return () => observer.disconnect();
-  }, [animated]);
-
+export function Divider({ className, animated = true }: DividerProps) {
   if (!animated) {
-    return <hr className={`section-divider ${className}`} />;
+    return <hr className={cn("border-none border-t border-border mb-12", className)} />;
   }
 
   return (
     <hr
-      ref={ref}
-      className={`divider-animated ${className}`}
+      className={cn(
+        "border-none h-px bg-gradient-to-r from-transparent via-gold to-transparent",
+        className
+      )}
       style={{
-        transform: visible ? "scaleX(1)" : "scaleX(0)",
-        transition: "transform 800ms var(--ease-out-expo)",
+        transform: "scaleX(1)",
+        transformOrigin: "center",
+        animationName: "anim-line-expand",
+        animationDuration: "800ms",
+        animationTimingFunction: "var(--ease-out-expo)",
+        animationFillMode: "both",
+        animationTimeline: "view()",
+        animationRange: "entry 0% entry 50%",
       }}
     />
   );

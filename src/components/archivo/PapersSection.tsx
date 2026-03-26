@@ -11,24 +11,24 @@ export function PapersSection({ papers }: { papers: Paper[] }) {
       <ContentGrid cols={2}>
         {papers.map((p, i) => (
           <Card key={i} className="p-4">
-            <span className="card-label !text-celeste">
+            <span className="block font-accent text-[length:var(--text-xs)] font-semibold uppercase tracking-[0.05em] text-text-tertiary mb-1 !text-celeste">
               {p.topic}
             </span>
-            <h4 className="card-heading">
+            <h4 className="font-display text-[length:var(--text-sm)] leading-[1.3] text-text-primary">
               {p.title}
             </h4>
             {p.coauthors && (
-              <p className="card-body">
+              <p className="text-[length:var(--text-xs)] leading-relaxed text-text-secondary">
                 Con {p.coauthors}
               </p>
             )}
             {p.venue && (
-              <p className="card-body">
+              <p className="text-[length:var(--text-xs)] leading-relaxed text-text-secondary">
                 {p.venue}
               </p>
             )}
             {p.desc && (
-              <p className="card-body mt-1">
+              <p className="text-[length:var(--text-xs)] leading-relaxed text-text-secondary mt-1">
                 {p.desc}
               </p>
             )}

@@ -31,8 +31,8 @@ function StatRow({ stats }: { stats: FuturoStat[] }) {
     <div className="mb-8 flex flex-wrap gap-6">
       {stats.map((s) => (
         <div key={s.label}>
-          <span className="stat-number">{s.val}</span>
-          <span className="stat-label mt-1 block">{s.label}</span>
+          <span className="font-accent text-[length:var(--text-2xl)] font-bold leading-none text-gold">{s.val}</span>
+          <span className="font-accent text-[length:var(--text-xs)] uppercase tracking-[0.05em] text-text-secondary mt-1 block">{s.label}</span>
         </div>
       ))}
     </div>
@@ -57,7 +57,7 @@ export function FuturoContent({
   closing,
 }: FuturoContentProps) {
   return (
-    <SidebarLayout label="Proyectos" items={sidebarItems} variant="navy">
+    <SidebarLayout label="Proyectos" items={sidebarItems}>
       {/* I — Silicon Valley */}
       <SectionArticle id="silicon-valley">
         <ChapterHeader
@@ -102,15 +102,15 @@ export function FuturoContent({
         <div className="mb-8 space-y-6">
           {nuclear.phases.map((phase, i) => (
             <Card key={i} className="p-5">
-              <h4 className="badge-text m-0 mb-2 !text-gold">{phase.label}</h4>
-              <p className="prose-body m-0">{phase.text}</p>
+              <h4 className="font-accent text-[length:var(--text-xs)] uppercase tracking-[0.1em] text-gold m-0 mb-2 !text-gold">{phase.label}</h4>
+              <p className="text-[length:var(--text-sm)] leading-[1.7] text-text-secondary m-0">{phase.text}</p>
             </Card>
           ))}
         </div>
         <Pullquote cite={`— ${nuclear.quote.cite}`}>
           {nuclear.quote.text}
         </Pullquote>
-        <p className="prose-body m-0">{nuclear.closingParagraph}</p>
+        <p className="text-[length:var(--text-sm)] leading-[1.7] text-text-secondary m-0">{nuclear.closingParagraph}</p>
       </SectionArticle>
 
       {/* IV — Vaca Muerta */}
@@ -132,7 +132,7 @@ export function FuturoContent({
         <blockquote className="m-0 mx-auto max-w-[44rem] font-display text-[length:var(--text-xl)] italic text-text-primary">
           {closing.text}
         </blockquote>
-        <p className="badge-text mt-4">— {closing.attr}</p>
+        <p className="font-accent text-[length:var(--text-xs)] uppercase tracking-[0.1em] text-gold mt-4">— {closing.attr}</p>
       </div>
     </SidebarLayout>
   );

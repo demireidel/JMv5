@@ -39,8 +39,8 @@ export function ForumCard({ forum }: ForumCardProps) {
         </div>
       </div>
       <div className="p-5">
-        <h4 className="card-heading m-0 mb-2">{forum.title}</h4>
-        <p className="card-body m-0">{forum.desc}</p>
+        <h4 className="font-display text-[length:var(--text-sm)] leading-[1.3] text-text-primary m-0 mb-2">{forum.title}</h4>
+        <p className="text-[length:var(--text-xs)] leading-relaxed text-text-secondary m-0">{forum.desc}</p>
       </div>
     </Card>
   );

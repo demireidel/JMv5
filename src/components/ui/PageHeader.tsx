@@ -1,9 +1,6 @@
-"use client";
-
-import { useRef, useEffect, useState } from "react";
 import Image from "next/image";
 import { Container } from "@/components/ui/Container";
-import { useScrollProgress } from "@/hooks/useScrollProgress";
+import { cn } from "@/lib/cn";
 
 interface PageHeaderProps {
   eyebrow: string;
@@ -24,29 +21,16 @@ export function PageHeader({
   backgroundImage,
   backgroundAlt,
 }: PageHeaderProps) {
-  const sectionRef = useRef<HTMLDivElement>(null);
-  const scrollProgress = useScrollProgress(sectionRef);
-  const [reducedMotion, setReducedMotion] = useState(false);
-
-  useEffect(() => {
-    setReducedMotion(
-      window.matchMedia("(prefers-reduced-motion: reduce)").matches
-    );
-  }, []);
-
-  // Parallax for background image
-  const parallaxY = reducedMotion ? 0 : scrollProgress * -30;
-
-  // Split title into words for staggered reveal
   const titleWords = title.split(" ");
   const totalWords = titleWords.length + (titleEmphasis ? titleEmphasis.split(" ").length : 0);
-  const baseDelay = 0; // ms delay for first word — start immediately
-  const stagger = 30; // ms between words
+  const stagger = 30;
 
   return (
     <section
-      ref={sectionRef}
-      className={`pb-16 pt-16 md:pb-20 md:pt-24${backgroundImage ? " relative overflow-hidden" : ""}`}
+      className={cn(
+        "bg-cream-dark pb-12 pt-14 md:pt-18",
+        backgroundImage && "relative overflow-hidden"
+      )}
     >
       {backgroundImage && (
         <>
@@ -55,12 +39,7 @@ export function PageHeader({
             alt={backgroundAlt || ""}
             fill
             sizes="100vw"
-            className="object-cover"
-            style={{
-              opacity: 0.35,
-              transform: `translateY(${parallaxY}px) scale(1.05)`,
-              willChange: scrollProgress > 0 ? "transform" : undefined,
-            }}
+            className="object-cover opacity-40"
             priority
           />
           <div
@@ -72,91 +51,64 @@ export function PageHeader({
           />
         </>
       )}
-      <Container className={backgroundImage ? "relative z-10" : ""}>
-      {/* Force light-on-dark text for pages with background images */}
-      <div className={backgroundImage ? "section-light-text" : undefined}>
-        {/* Eyebrow — slide in from right */}
-        <p
-          className="page-eyebrow"
-          style={
-            reducedMotion
-              ? {}
-              : {
-                  animation: "anim-slide-right 500ms var(--ease-out-expo) 0ms both",
-                }
-          }
-        >
-          {eyebrow}
-        </p>
-
-        {/* Gold ornamental rule */}
-        <span
-          className="gold-rule"
-          aria-hidden="true"
-          style={
-            reducedMotion
-              ? {}
-              : { animation: "anim-fade-up 400ms var(--ease-out-expo) 150ms both" }
-          }
-        />
-
-        {/* Title — word-by-word reveal */}
-        <h1 className="page-title">
-          {titleWords.map((word, i) => (
-            <span
-              key={i}
-              className="inline-block"
-              style={
-                reducedMotion
-                  ? {}
-                  : {
-                      animation: `anim-fade-up 500ms var(--ease-out-expo) ${baseDelay + i * stagger}ms both`,
-                    }
-              }
-            >
-              {word}
-              {i < titleWords.length - 1 || titleEmphasis ? "\u00A0" : ""}
-            </span>
-          ))}
-          {titleEmphasis && (
-            <>
-              {titleEmphasis.split(" ").map((word, i) => (
-                <span
-                  key={`em-${i}`}
-                  className="inline-block italic text-gold"
-                  style={
-                    reducedMotion
-                      ? {}
-                      : {
-                          animation: `anim-fade-up 500ms var(--ease-out-expo) ${baseDelay + (titleWords.length + i) * stagger}ms both`,
-                        }
-                  }
-                >
-                  {word}
-                  {i < titleEmphasis.split(" ").length - 1 ? "\u00A0" : ""}
-                </span>
-              ))}
-            </>
-          )}
-        </h1>
-
-        {/* Subtitle — fade in after title completes */}
-        {subtitle && (
+      <Container className={backgroundImage ? "relative z-10" : undefined}>
+        <div className={backgroundImage ? "section-light-text" : undefined}>
+          {/* Eyebrow */}
           <p
-            className="page-subtitle"
-            style={
-              reducedMotion
-                ? {}
-                : {
-                    animation: `anim-fade-up 600ms var(--ease-out-expo) ${baseDelay + totalWords * stagger}ms both`,
-                  }
-            }
+            className="m-0 mb-[var(--spacing-sm)] font-accent text-[length:var(--text-sm)] uppercase tracking-[0.15em] text-gold"
+            style={{ animation: "anim-slide-right 500ms var(--ease-out-expo) both" }}
           >
-            {subtitle}
+            {eyebrow}
           </p>
-        )}
-        {children}
-      </div>
+
+          {/* Gold ornamental rule */}
+          <span
+            className="block h-0.5 w-10 rounded-sm bg-gold mb-5"
+            aria-hidden="true"
+            style={{ animation: "anim-fade-up 400ms var(--ease-out-expo) 150ms both" }}
+          />
+
+          {/* Title — word-by-word reveal */}
+          <h1 className="m-0 font-display text-[length:var(--text-3xl)] leading-[1.05] text-text-primary">
+            {titleWords.map((word, i) => (
+              <span
+                key={i}
+                className="inline-block"
+                style={{
+                  animation: `anim-fade-up 500ms var(--ease-out-expo) ${i * stagger}ms both`,
+                }}
+              >
+                {word}
+                {i < titleWords.length - 1 || titleEmphasis ? "\u00A0" : ""}
+              </span>
+            ))}
+            {titleEmphasis?.split(" ").map((word, i) => (
+              <span
+                key={`em-${i}`}
+                className="inline-block italic text-gold"
+                style={{
+                  animation: `anim-fade-up 500ms var(--ease-out-expo) ${(titleWords.length + i) * stagger}ms both`,
+                }}
+              >
+                {word}
+                {i < (titleEmphasis.split(" ").length - 1) ? "\u00A0" : ""}
+              </span>
+            ))}
+          </h1>
+
+          {/* Subtitle */}
+          {subtitle && (
+            <p
+              className="mt-[var(--spacing-md)] max-w-[52ch] text-[length:var(--text-base)] leading-relaxed text-text-secondary"
+              style={{
+                animation: `anim-fade-up 600ms var(--ease-out-expo) ${totalWords * stagger}ms both`,
+              }}
+            >
+              {subtitle}
+            </p>
+          )}
+          {children}
+        </div>
       </Container>
     </section>
   );

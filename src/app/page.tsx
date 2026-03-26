@@ -1,30 +1,42 @@
 import { Hero } from "@/components/home/Hero";
-import { StatsStrip } from "@/components/home/StatsStrip";
-import { PhotoStrip } from "@/components/home/PhotoStrip";
-import { SectionPreviews } from "@/components/home/SectionPreviews";
-import { stripPhotos1, stripPhotos2, stripPhotos3 } from "@/data/photos";
+import { ProofBar } from "@/components/home/ProofBar";
+import { InheritanceSection } from "@/components/home/InheritanceSection";
+import { ReformsTimeline } from "@/components/home/ReformsTimeline";
+import { ResultsSection } from "@/components/home/ResultsSection";
+import { ResearchPreview } from "@/components/home/ResearchPreview";
+import { WorldSection } from "@/components/home/WorldSection";
+import { FutureBetsSection } from "@/components/home/FutureBetsSection";
+import { CTABand } from "@/components/home/CTABand";
 
 export default function Home() {
   return (
-    <div className="relative">
+    <>
+      {/* 1. Hero — single client component above the fold */}
       <Hero />
-      <StatsStrip />
-      
-      {/* Photo gallery section with refined spacing */}
-      <div className="relative overflow-hidden bg-dark py-4">
-        <PhotoStrip photos={stripPhotos1} />
-      </div>
-      
-      <SectionPreviews />
-      
-      {/* Additional photo galleries with visual rhythm */}
-      <div className="relative overflow-hidden bg-dark py-4">
-        <PhotoStrip photos={stripPhotos2} direction="right" />
-      </div>
-      
-      <div className="relative overflow-hidden bg-dark pb-8 pt-4">
-        <PhotoStrip photos={stripPhotos3} />
-      </div>
-    </div>
+
+      {/* 2. Proof bar — static metrics, server rendered */}
+      <ProofBar />
+
+      {/* 3. What Milei inherited */}
+      <InheritanceSection />
+
+      {/* 4. Key reforms timeline */}
+      <ReformsTimeline />
+
+      {/* 5. Results with before/after */}
+      <ResultsSection />
+
+      {/* 6. Research / archive preview */}
+      <ResearchPreview />
+
+      {/* 7. Argentina in the world */}
+      <WorldSection />
+
+      {/* 8. Future bets */}
+      <FutureBetsSection />
+
+      {/* 9. Final CTA */}
+      <CTABand />
+    </>
   );
 }

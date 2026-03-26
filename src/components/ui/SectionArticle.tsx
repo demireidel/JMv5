@@ -1,7 +1,5 @@
-"use client";
-
+import { cn } from "@/lib/cn";
 import { Divider } from "@/components/ui/Divider";
-import { ScrollReveal } from "@/components/ui/ScrollReveal";
 
 interface SectionArticleProps {
   id: string;
@@ -17,10 +15,8 @@ export function SectionArticle({
   children,
 }: SectionArticleProps) {
   return (
-    <article id={id} className={className ?? "mb-20"}>
-      <ScrollReveal variant="cinematic" duration={700}>
-        {children}
-      </ScrollReveal>
+    <article id={id} className={cn("reveal-fade-up mb-20", className)}>
+      {children}
       {!last && <Divider animated className="mt-16" />}
     </article>
   );

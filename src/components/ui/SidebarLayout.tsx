@@ -14,7 +14,6 @@ interface SidebarLayoutProps {
   label: string;
   count?: string;
   items: SidebarItem[];
-  variant?: "dark" | "navy";
   children: React.ReactNode;
 }
 
@@ -22,16 +21,13 @@ export function SidebarLayout({
   label,
   count,
   items,
-  variant = "dark",
   children,
 }: SidebarLayoutProps) {
   const sectionIds = useMemo(() => items.map((item) => item.id), [items]);
   const active = useSectionObserver(sectionIds);
 
-  const bg = variant === "navy" ? "bg-navy" : "bg-dark";
-
   return (
-    <section className={`${bg} py-[var(--spacing-section)]`}>
+    <section className="bg-dark py-[var(--spacing-section)]">
       <Container wide>
         <div className="flex gap-12">
           {/* Sticky sidebar — desktop only */}
@@ -39,7 +35,7 @@ export function SidebarLayout({
             className="sidebar-nav hidden shrink-0 lg:block"
             aria-label={label}
           >
-            {count && <p className="badge-text mb-4">{count}</p>}
+            {count && <p className="mb-4 font-accent text-[length:var(--text-xs)] uppercase tracking-[0.1em] text-gold">{count}</p>}
             <ul className="m-0 list-none space-y-1 p-0">
               {items.map((item) => (
                 <li key={item.id}>

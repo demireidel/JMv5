@@ -31,18 +31,18 @@ export function MundoContent({
   tradeAgreements: TradeAgreement[];
 }) {
   return (
-    <SidebarLayout label="Secciones" items={sections} variant="navy">
+    <SidebarLayout label="Secciones" items={sections}>
       {/* I — Stats */}
       <SectionArticle id="estadisticas">
         <ChapterHeader numeral="I" title="Estadísticas clave" />
         <div className="grid grid-cols-2 gap-4">
           {megaStats.map((stat) => (
             <Card key={stat.label} className="p-5">
-              <p className="stat-number m-0">{stat.value}</p>
-              <p className="card-label !text-text-primary m-0 mt-2">
+              <p className="font-accent text-[length:var(--text-2xl)] font-bold leading-none text-gold m-0">{stat.value}</p>
+              <p className="block font-accent text-[length:var(--text-xs)] font-semibold uppercase tracking-[0.05em] text-text-tertiary mb-1 !text-text-primary m-0 mt-2">
                 {stat.label}
               </p>
-              <p className="card-body mt-1 m-0">
+              <p className="text-[length:var(--text-xs)] leading-relaxed text-text-secondary mt-1 m-0">
                 {stat.detail}
               </p>
             </Card>
@@ -75,7 +75,7 @@ export function MundoContent({
                 <p className="m-0 text-[length:var(--text-sm)] font-semibold text-text-primary">
                   {l.name}
                 </p>
-                <p className="card-body m-0">
+                <p className="text-[length:var(--text-xs)] leading-relaxed text-text-secondary m-0">
                   {l.role}
                 </p>
               </div>
@@ -94,8 +94,8 @@ export function MundoContent({
                 {event.date}
               </div>
               <div>
-                <h4 className="card-heading m-0 mb-1">{event.title}</h4>
-                <p className="card-body m-0">{event.desc}</p>
+                <h4 className="font-display text-[length:var(--text-sm)] leading-[1.3] text-text-primary m-0 mb-1">{event.title}</h4>
+                <p className="text-[length:var(--text-xs)] leading-relaxed text-text-secondary m-0">{event.desc}</p>
               </div>
             </Card>
           ))}
@@ -125,11 +125,11 @@ export function MundoContent({
             <Card key={item.title} className="p-5">
               <div className="mb-2 flex items-center gap-2">
                 <span className="text-xl">{item.icon}</span>
-                <h4 className="card-label !text-text-primary !mb-0 m-0">
+                <h4 className="block font-accent text-[length:var(--text-xs)] font-semibold uppercase tracking-[0.05em] text-text-tertiary mb-1 !text-text-primary !mb-0 m-0">
                   {item.title}
                 </h4>
               </div>
-              <p className="card-body m-0">{item.desc}</p>
+              <p className="text-[length:var(--text-xs)] leading-relaxed text-text-secondary m-0">{item.desc}</p>
             </Card>
           ))}
         </ContentGrid>

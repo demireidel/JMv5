@@ -43,7 +43,7 @@ function ReformCard({ reforma }: { reforma: Reforma }) {
       )}
       {/* Header */}
       <div className="border-b border-border px-5 py-3">
-        <span className="badge-text">{reforma.num} — {reforma.title}</span>
+        <span className="font-accent text-[length:var(--text-xs)] uppercase tracking-[0.1em] text-gold">{reforma.num} — {reforma.title}</span>
       </div>
 
       <div className="px-5 pb-3 pt-4">
@@ -63,7 +63,7 @@ function ReformCard({ reforma }: { reforma: Reforma }) {
             {reforma.impactStats.map((s) => (
               <div
                 key={s.label}
-                className="surface-card rounded-full px-3 py-1.5"
+                className="rounded-[var(--radius-xl)] border border-border bg-surface-1 rounded-full px-3 py-1.5"
               >
                 <span className="font-accent text-[length:var(--text-xs)] font-bold text-gold">
                   {s.val}
@@ -83,7 +83,7 @@ function ReformCard({ reforma }: { reforma: Reforma }) {
         labelExpanded="Cerrar"
         id={`reforma-detail-${reforma.num}`}
       >
-        <div className="prose-body">{reforma.impactText}</div>
+        <div className="text-[length:var(--text-sm)] leading-[1.7] text-text-secondary">{reforma.impactText}</div>
         {reforma.quote && (
           <Pullquote cite={`— ${reforma.quote.cite}`}>
             {reforma.quote.text}
@@ -112,7 +112,6 @@ export function ReformasContent({
       label="Bloques de reforma"
       count="12 reformas"
       items={sidebarItems}
-      variant="navy"
     >
       {blocks.map((block, i) => {
         const id = toId(block.title);

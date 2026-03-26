@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import { PageHeader } from "@/components/ui/PageHeader";
+import { MetricRow } from "@/components/ui/MetricRow";
+import { PageCTA } from "@/components/ui/PageCTA";
 import { leaders, timeline, megaStats, tradeAgreements } from "@/data/mundo";
 import { MundoContent } from "@/components/mundo/MundoContent";
 
@@ -9,6 +11,12 @@ export const metadata: Metadata = {
     "Argentina en el mundo: acuerdos comerciales, relaciones bilaterales y posicionamiento global.",
 };
 
+const headerMetrics = [
+  { value: "3", label: "TLCs firmados" },
+  { value: "20+", label: "Bilaterales con líderes" },
+  { value: "USD 55.000M", label: "Inversiones comprometidas" },
+];
+
 export default function MundoPage() {
   return (
     <>
@@ -17,13 +25,21 @@ export default function MundoPage() {
         title="De país paria a"
         titleEmphasis="líder global"
         subtitle="En dos años, Argentina pasó de estar aislada del mundo a firmar los acuerdos comerciales más ambiciosos de su historia, atraer USD 55.000M en inversiones y construir alianzas con las principales potencias."
-      />
+      >
+        <MetricRow metrics={headerMetrics} />
+      </PageHeader>
 
       <MundoContent
         leaders={leaders}
         timeline={timeline}
         megaStats={megaStats}
         tradeAgreements={tradeAgreements}
+      />
+
+      <PageCTA
+        headline="La Argentina volvió al mundo. Y el mundo tomó nota."
+        cta="Ver los proyectos del futuro"
+        href="/futuro"
       />
     </>
   );

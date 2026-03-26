@@ -6,7 +6,8 @@ import {
   reformas,
 } from "@/data/reformas";
 import { PageHeader } from "@/components/ui/PageHeader";
-import { StatCard } from "@/components/ui/StatCard";
+import { MetricRow } from "@/components/ui/MetricRow";
+import { PageCTA } from "@/components/ui/PageCTA";
 import { ReformasContent } from "@/components/reformas/ReformasContent";
 
 export const metadata: Metadata = {
@@ -14,6 +15,11 @@ export const metadata: Metadata = {
   description:
     "Las 12 reformas estructurales del gobierno: estabilización, desregulación, legislación y seguridad.",
 };
+
+const headerMetrics = heroCounters.map((c) => ({
+  value: c.num,
+  label: c.label,
+}));
 
 export default function ReformasPage() {
   return (
@@ -23,14 +29,16 @@ export default function ReformasPage() {
         title={reformasHero.title}
         subtitle={reformasHero.desc}
       >
-        <div className="mt-10 grid grid-cols-2 gap-6 md:grid-cols-4">
-          {heroCounters.map((c) => (
-            <StatCard key={c.label} value={c.num} label={c.label} />
-          ))}
-        </div>
+        <MetricRow metrics={headerMetrics} />
       </PageHeader>
 
       <ReformasContent blocks={reformBlocks} reformas={reformas} />
+
+      <PageCTA
+        headline="Las reformas son la base. Los resultados son la prueba."
+        cta="Ver los 19 logros"
+        href="/logros"
+      />
     </>
   );
 }

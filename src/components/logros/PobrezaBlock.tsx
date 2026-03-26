@@ -22,10 +22,10 @@ export function PobrezaBlock({ data }: { data: PobrezaData }) {
       )}
 
       {/* Badge */}
-      <p className="badge-text mb-2">{data.badge}</p>
+      <p className="font-accent text-[length:var(--text-xs)] uppercase tracking-[0.1em] text-gold mb-2">{data.badge}</p>
 
       {/* Kicker */}
-      <p className="prose-body mb-8 max-w-[44rem]">{data.kicker}</p>
+      <p className="text-[length:var(--text-sm)] leading-[1.7] text-text-secondary mb-8 max-w-[44rem]">{data.kicker}</p>
 
       {/* Headline */}
       <h2 className="mb-10 font-display text-[length:var(--text-3xl)] text-text-primary">
@@ -51,10 +51,10 @@ export function PobrezaBlock({ data }: { data: PobrezaData }) {
       {/* Before / After flow */}
       <div className="mb-10 grid gap-4 md:grid-cols-2">
         <BeforeAfterPanel type="before" label={data.flowBefore.tag} value={data.flowBefore.big}>
-          <p className="prose-body m-0">{data.flowBefore.desc}</p>
+          <p className="text-[length:var(--text-sm)] leading-[1.7] text-text-secondary m-0">{data.flowBefore.desc}</p>
         </BeforeAfterPanel>
         <BeforeAfterPanel type="after" label={data.flowAfter.tag} value={data.flowAfter.big}>
-          <p className="prose-body m-0">{data.flowAfter.desc}</p>
+          <p className="text-[length:var(--text-sm)] leading-[1.7] text-text-secondary m-0">{data.flowAfter.desc}</p>
         </BeforeAfterPanel>
       </div>
 

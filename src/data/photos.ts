@@ -24,9 +24,9 @@ export const stripPhotos2 = [
 /** Photo strip images — strip 3 (between Mundo and Archivo — bilateral y global) */
 export const stripPhotos3 = [
   { src: "/images/banco/mercosur-ue-escenario.jpg", alt: "Firma Mercosur-UE en Asunción" },
-  { src: "/images/banco/miami-cumbre-trump-lideres.jpg", alt: "Cumbre Escudo de las Américas, Miami" },
+  { src: "/images/banco/cordoba-25mayo-gabinete.jpg", alt: "Milei con el gabinete en Córdoba — 25 de Mayo" },
   { src: "/images/banco/trump-onu-bilateral.jpg", alt: "Bilateral Milei-Trump en la ONU" },
-  { src: "/images/banco/inauguracion-discurso-congreso.jpg", alt: "Milei en su discurso inaugural en el Congreso" },
+  { src: "/images/banco/apertura-sesiones-2024.jpg", alt: "Milei en la apertura de sesiones ordinarias 2024" },
   { src: "/images/banco/mercosur-ue-firma.jpg", alt: "Firma del acuerdo Mercosur-UE" },
   { src: "/images/banco/davos-2024-fmi.jpg", alt: "Milei con directivos del FMI en Davos" },
   { src: "/images/banco/pacto-mayo-tucuman.jpg", alt: "Pacto de Mayo en Tucumán" },

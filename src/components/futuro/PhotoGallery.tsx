@@ -9,7 +9,7 @@ interface PhotoGalleryProps {
 export function PhotoGallery({ photos }: PhotoGalleryProps) {
   return (
     <div className="mt-10">
-      <h4 className="badge-text mb-5 !text-gold">Galería — La gira en imágenes</h4>
+      <h4 className="font-accent text-[length:var(--text-xs)] uppercase tracking-[0.1em] text-gold mb-5 !text-gold">Galería — La gira en imágenes</h4>
       <ContentGrid cols={3}>
         {photos.slice(0, 9).map((photo, i) => (
           <figure

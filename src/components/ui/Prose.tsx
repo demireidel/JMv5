@@ -1,3 +1,5 @@
+import { cn } from "@/lib/cn";
+
 interface ProseProps {
   children: React.ReactNode;
   className?: string;
@@ -5,7 +7,7 @@ interface ProseProps {
 
 export function Prose({ children, className }: ProseProps) {
   return (
-    <div className={`content-prose${className ? ` ${className}` : ""}`}>
+    <div className={cn("content-prose", className)}>
       {children}
     </div>
   );

@@ -25,7 +25,7 @@ interface Photo {
 
 export function VisionChapters({ photos }: { photos: Photo[] }) {
   return (
-    <SidebarLayout label="Capítulos" items={chapters} variant="navy">
+    <SidebarLayout label="Capítulos" items={chapters}>
       {/* Chapter I */}
       <SectionArticle id="ch1" className="mb-16">
         <ChapterHeader numeral="I" title="El proyecto de la libertad" />

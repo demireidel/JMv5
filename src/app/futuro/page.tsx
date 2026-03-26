@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { PageHeader } from "@/components/ui/PageHeader";
+import { MetricRow } from "@/components/ui/MetricRow";
 import { Pullquote } from "@/components/ui/Pullquote";
+import { PageCTA } from "@/components/ui/PageCTA";
 import {
   futuroHeader,
   siliconValley,
@@ -18,6 +20,12 @@ export const metadata: Metadata = {
     "Proyectos estratégicos: Silicon Valley, Stargate AI, energía nuclear y Vaca Muerta.",
 };
 
+const headerMetrics = [
+  { value: "4", label: "Pilares estratégicos" },
+  { value: "$20B", label: "Stargate Argentina" },
+  { value: "7", label: "CEOs tech reunidos" },
+];
+
 export default function FuturoPage() {
   return (
     <>
@@ -25,8 +33,11 @@ export default function FuturoPage() {
         eyebrow={futuroHeader.sectionTitle}
         title="El Futuro de Argentina"
       >
-        <Pullquote>{futuroHeader.introQuote}</Pullquote>
-        <p className="prose-body max-w-[44rem]">{futuroHeader.introText}</p>
+        <Pullquote className="mt-6">{futuroHeader.introQuote}</Pullquote>
+        <p className="mt-4 max-w-[44rem] text-[length:var(--text-sm)] leading-[1.7] text-text-secondary">
+          {futuroHeader.introText}
+        </p>
+        <MetricRow metrics={headerMetrics} />
       </PageHeader>
 
       <FuturoContent
@@ -36,6 +47,12 @@ export default function FuturoPage() {
         nuclear={nuclear}
         vacaMuerta={vacaMuerta}
         closing={futuroClosing}
+      />
+
+      <PageCTA
+        headline="El futuro no se espera. Se construye."
+        cta="Ver la visión completa"
+        href="/vision"
       />
     </>
   );

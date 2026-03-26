@@ -1,14 +1,25 @@
+import { cn } from "@/lib/cn";
+
 interface PullquoteProps {
   children: React.ReactNode;
   cite?: string;
+  className?: string;
 }
 
-export function Pullquote({ children, cite }: PullquoteProps) {
+/**
+ * @deprecated Use QuoteBlock instead. Kept for backward compatibility.
+ */
+export function Pullquote({ children, cite, className }: PullquoteProps) {
   return (
-    <blockquote className="pullquote my-10">
-      <p className="m-0 leading-relaxed">{children}</p>
+    <blockquote
+      className={cn(
+        "my-8 m-0 border-l-3 border-gold pl-[var(--spacing-lg)] font-display text-[length:var(--text-lg)] italic text-text-secondary",
+        className
+      )}
+    >
+      <p className="m-0">{children}</p>
       {cite && (
-        <footer className="badge-text mt-4 not-italic opacity-60">
+        <footer className="mt-2 font-accent text-[length:var(--text-xs)] uppercase tracking-[0.1em] not-italic text-gold/70">
           {cite}
         </footer>
       )}

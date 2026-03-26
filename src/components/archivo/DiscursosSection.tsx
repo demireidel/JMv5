@@ -10,9 +10,9 @@ export function DiscursosSection({ discursos }: { discursos: Discurso[] }) {
       <ChapterHeader numeral="I" title="Discursos" />
       <div className="space-y-6">
         {discursos.map((d, i) => (
-          <Card key={i} accent={d.keynote} className="p-5">
+          <Card key={i} accent={d.keynote ? "gold" : "none"} className="p-5">
             <div className="mb-2 flex items-center gap-3">
-              <span className="card-label !mb-0 !text-gold inline">
+              <span className="block font-accent text-[length:var(--text-xs)] font-semibold uppercase tracking-[0.05em] text-text-tertiary mb-1 !mb-0 !text-gold inline">
                 {d.date}
               </span>
               {d.keynote && (
@@ -29,17 +29,17 @@ export function DiscursosSection({ discursos }: { discursos: Discurso[] }) {
             <h4 className="m-0 mb-1 font-display text-[length:var(--text-base)] text-text-primary">
               {d.title}
             </h4>
-            <p className="card-body mb-2">
+            <p className="text-[length:var(--text-xs)] leading-relaxed text-text-secondary mb-2">
               {d.location}
             </p>
             {d.videoId && (
               <YouTubeEmbed videoId={d.videoId} title={d.title} />
             )}
-            <p className="card-body mt-3">
+            <p className="text-[length:var(--text-xs)] leading-relaxed text-text-secondary mt-3">
               {d.desc}
             </p>
             {d.frase && (
-              <p className="pullquote m-0 mt-3 text-[length:var(--text-sm)]">
+              <p className="m-0 mt-3 border-l-3 border-gold pl-[var(--spacing-lg)] font-display text-[length:var(--text-sm)] italic text-text-secondary">
                 &laquo;{d.frase}&raquo;
               </p>
             )}
