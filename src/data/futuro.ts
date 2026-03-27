@@ -79,9 +79,9 @@ export interface ClosingData {
 // ── Section header ──────────────────────────────────────────
 
 export const futuroHeader = {
-  sectionTitle: "ARGENTINA DEL FUTURO",
+  sectionTitle: "Proyectos estratégicos",
   introQuote: "Solo reencontrándonos con las verdades de nuestro pasado profundo podemos dar un salto hacia el futuro.",
-  introText: "Cuatro pilares transforman a la Argentina en protagonista de la revolución tecnológica y energética global: Silicon Valley, Stargate, energía nuclear e hidrocarburos.",
+  introText: "Cuatro ejes de desarrollo posicionan a Argentina en la intersección de la revolución tecnológica y la transición energética global: inteligencia artificial, infraestructura de datos, energía nuclear e hidrocarburos no convencionales.",
 } as const;
 
 // ── Gallery photos ──────────────────────────────────────────

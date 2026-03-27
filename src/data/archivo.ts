@@ -273,8 +273,8 @@ export const reconocimientos: string[] = [
 // ── Section metadata ────────────────────────────────────
 
 export const archivoHeader = {
-  sectionTitle: "ARCHIVO INTELECTUAL",
-  sectionIntro: "9 libros, 7 papers académicos, 11 discursos que redefinieron el debate global y entrevistas con audiencias de cientos de millones. La producción intelectual completa de un presidente-economista sin precedentes.",
+  sectionTitle: "Archivo intelectual",
+  sectionIntro: "Nueve libros, siete artículos académicos y once discursos institucionales. El registro completo de la producción intelectual del presidente Milei, desde sus trabajos como economista hasta los discursos en foros internacionales.",
 } as const;
 
 export const collabProject = {

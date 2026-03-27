@@ -2,37 +2,44 @@ import type { Metadata } from "next";
 import { PageHeader } from "@/components/ui/PageHeader";
 import { Pullquote } from "@/components/ui/Pullquote";
 import { PageCTA } from "@/components/ui/PageCTA";
-import { visionPhotos } from "@/data/photos";
-import { VisionChapters } from "@/components/vision/VisionChapters";
+import { Container } from "@/components/ui/Container";
+import VisionContent from "@/content/vision.mdx";
 
 export const metadata: Metadata = {
-  title: "Visión y Filosofía",
+  title: "Visión y principios",
   description:
-    "La visión filosófica y los principios que guían el gobierno del Presidente Javier Milei. Cinco capítulos sobre libertad, capitalismo, Estado, cultura y Occidente.",
+    "Fundamentos filosóficos y principios rectores del gobierno del presidente Javier Milei. Cinco capítulos sobre libertad, capitalismo, Estado, cultura y defensa de Occidente.",
 };
 
 export default function VisionPage() {
   return (
     <>
       <PageHeader
-        eyebrow="La visión"
-        title="Argentina será"
-        titleEmphasis="el país más libre del mundo"
-        subtitle="No vine a administrar decadencia. Vine a refundar la Argentina sobre la libertad, la propiedad privada y la cooperación social voluntaria."
+        eyebrow="Visión y principios"
+        title="Los fundamentos del proyecto"
+        titleEmphasis="de gobierno"
+        subtitle="Un programa de transformación fundado en la libertad individual, la propiedad privada y la cooperación social voluntaria."
+        updated="Marzo 2025"
       >
-        <Pullquote cite="Alberto Benegas Lynch (h) — Discurso de asunción, diciembre 2023" className="mt-6">
-          &laquo;El liberalismo es el respeto irrestricto del proyecto de vida del
+        <Pullquote cite="Alberto Benegas Lynch (h) — citado en el discurso de asunción, 10 de diciembre de 2023" className="mt-6">
+          «El liberalismo es el respeto irrestricto del proyecto de vida del
           prójimo, basado en el principio de no agresión, en defensa del derecho a
           la vida, a la libertad y a la propiedad, donde solo se puede ser exitoso
-          sirviendo al prójimo con bienes de mejor calidad a un mejor precio.&raquo;
+          sirviendo al prójimo con bienes de mejor calidad a un mejor precio.»
         </Pullquote>
       </PageHeader>
 
-      <VisionChapters photos={visionPhotos} />
+      <section className="bg-dark py-[var(--spacing-section)]">
+        <Container>
+          <article className="content-prose">
+            <VisionContent />
+          </article>
+        </Container>
+      </section>
 
       <PageCTA
-        headline="De las ideas a los hechos. De los hechos a los resultados."
-        cta="Ver los logros concretos"
+        headline="Las ideas orientan la acción. La acción produce resultados."
+        cta="Ver los resultados de gestión"
         href="/logros"
       />
     </>

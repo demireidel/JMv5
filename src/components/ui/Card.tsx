@@ -2,7 +2,7 @@ import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "@/lib/cn";
 
 const card = cva(
-  "rounded-[var(--radius-xl)] border border-border bg-surface-1 transition-[border-color,box-shadow] duration-[var(--duration-fast)] ease-[var(--ease-standard)]",
+  "rounded-[var(--radius-lg)] border border-border bg-surface-1 transition-[border-color,box-shadow] duration-[var(--duration-fast)] ease-[var(--ease-standard)]",
   {
     variants: {
       accent: {

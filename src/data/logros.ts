@@ -467,6 +467,6 @@ export const logros: Logro[] = [
 ];
 
 export const logrosSectionHeader = {
-  sectionTitle: "LOGROS DE GESTIÓN",
-  sectionIntro: "El 10 de diciembre de 2023, Argentina estaba en crisis terminal. La inflación corría al 1 % diario, el Banco Central tenía reservas negativas de USD 13.000 M, el déficit consolidado era de 15 % del PBI, y los indicadores sociales eran peores que en 2001 — la peor herencia de la historia. 19 batallas. 19 transformaciones. Este es el antes y el después.",
+  sectionTitle: "Resultados de gestión",
+  sectionIntro: "El 10 de diciembre de 2023, la inflación mayorista superaba el 1 % diario, el Banco Central operaba con reservas netas negativas por USD 13.000 M, el déficit consolidado era de 15 % del PBI y los indicadores sociales eran los peores desde 2001. Cada uno de los 19 indicadores siguientes se presenta con la cifra heredada, la cifra actual y la fuente oficial.",
 } as const;

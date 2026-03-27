@@ -4,7 +4,6 @@ import { MetricRow } from "@/components/ui/MetricRow";
 import { PageCTA } from "@/components/ui/PageCTA";
 import { ArchivoContent } from "@/components/archivo/ArchivoContent";
 import {
-  archivoHeader,
   etapas,
   papers,
   discursos,
@@ -13,24 +12,24 @@ import {
 } from "@/data/archivo";
 
 export const metadata: Metadata = {
-  title: "Archivo Intelectual",
+  title: "Archivo intelectual",
   description:
-    "Archivo intelectual: libros, artículos académicos, discursos y entrevistas del Presidente Milei.",
+    "Producción intelectual del presidente Milei: libros, artículos académicos, discursos institucionales y entrevistas.",
 };
 
 const headerMetrics = [
   { value: "9", label: "Libros" },
-  { value: "7", label: "Papers académicos" },
-  { value: "11", label: "Discursos históricos" },
+  { value: "7", label: "Artículos académicos" },
+  { value: "11", label: "Discursos institucionales" },
 ];
 
 export default function ArchivoPage() {
   return (
     <>
       <PageHeader
-        eyebrow={archivoHeader.sectionTitle}
-        title="Obra Intelectual"
-        subtitle={archivoHeader.sectionIntro}
+        eyebrow="Archivo intelectual"
+        title="Producción intelectual"
+        subtitle="Libros, artículos académicos, discursos y entrevistas del presidente Milei. El registro de una trayectoria que combina formación económica, debate público y ejercicio del poder."
       >
         <MetricRow metrics={headerMetrics} />
       </PageHeader>
@@ -44,8 +43,8 @@ export default function ArchivoPage() {
       />
 
       <PageCTA
-        headline="Las ideas preceden a la acción. La acción precede a los resultados."
-        cta="Ver los logros"
+        headline="Las ideas orientan la acción. La acción produce resultados."
+        cta="Ver los indicadores de gestión"
         href="/logros"
       />
     </>

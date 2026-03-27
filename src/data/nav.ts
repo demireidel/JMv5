@@ -7,10 +7,10 @@ export interface NavLink {
 }
 
 export const navLinks: NavLink[] = [
-  { href: "/vision",   label: "Visión",    sublabel: "Ideas & valores" },
-  { href: "/logros",   label: "Logros",    sublabel: "Gestión de gobierno" },
-  { href: "/reformas", label: "Reformas",  sublabel: "La transformación" },
-  { href: "/futuro",   label: "Futuro",    sublabel: "El proyecto país" },
-  { href: "/mundo",    label: "Mundo",     sublabel: "Argentina global" },
-  { href: "/archivo",  label: "Archivo",   sublabel: "Multimedia & prensa" },
+  { href: "/vision",   label: "Visión",    sublabel: "Principios de gobierno" },
+  { href: "/logros",   label: "Logros",    sublabel: "Resultados de gestión" },
+  { href: "/reformas", label: "Reformas",  sublabel: "Transformaciones estructurales" },
+  { href: "/futuro",   label: "Futuro",    sublabel: "Proyectos estratégicos" },
+  { href: "/mundo",    label: "Mundo",     sublabel: "Relaciones exteriores" },
+  { href: "/archivo",  label: "Archivo",   sublabel: "Producción intelectual" },
 ];

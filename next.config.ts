@@ -1,13 +1,15 @@
 import type { NextConfig } from "next";
+import createMDX from "@next/mdx";
 
 const nextConfig: NextConfig = {
+  pageExtensions: ["ts", "tsx", "mdx"],
   poweredByHeader: false,
 
   images: {
     formats: ["image/avif", "image/webp"],
     deviceSizes: [640, 750, 828, 1080, 1200, 1920],
     imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],
-    minimumCacheTTL: 60 * 60 * 24 * 30, // 30 days (explicit; default changed to 4h in Next.js 16)
+    minimumCacheTTL: 60 * 60 * 24 * 30,
   },
 
   async headers() {
@@ -44,4 +46,8 @@ const nextConfig: NextConfig = {
   },
 };
 
-export default nextConfig;
+const withMDX = createMDX({
+  // No remark/rehype plugins needed for now — vanilla MDX
+});
+
+export default withMDX(nextConfig);

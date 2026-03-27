@@ -1,0 +1,28 @@
+/*
+ * Injected during visual-regression tests to eliminate animation flake.
+ * Freezes all CSS animations/transitions and hides volatile elements.
+ */
+
+*, *::before, *::after {
+  animation-duration: 0s !important;
+  animation-delay: 0s !important;
+  animation-iteration-count: 1 !important;
+  transition-duration: 0s !important;
+  transition-delay: 0s !important;
+  scroll-behavior: auto !important;
+}
+
+/* Hide the scroll-progress bar (scroll-driven, always moving) */
+.scroll-progress {
+  display: none !important;
+}
+
+/* Hide the scroll indicator dot (infinite animation) */
+[aria-hidden="true"]:has(.animate-\[scroll-dot) {
+  display: none !important;
+}
+
+/* Force video poster only (no moving frames) */
+video {
+  visibility: hidden !important;
+}

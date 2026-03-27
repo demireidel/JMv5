@@ -41,9 +41,9 @@ export interface HeroCounter {
 // ── Hero ────────────────────────────────────────────────────
 
 export const reformasHero = {
-  eyebrow: "La revolución institucional",
-  title: "LAS 12 REFORMAS",
-  desc: "Prometí transformar la Argentina. No con discursos, sino con hechos. En dos años aprobamos los tres exámenes — fiscal, monetario y cambiario — aprobamos la primera reforma laboral de la democracia, e hicimos más reformas estructurales que en las últimas cuatro décadas juntas. En 2026, cada ministerio presentará 10 paquetes de proyectos legislativos para completar la transformación.",
+  eyebrow: "Reformas estructurales",
+  title: "Doce transformaciones de fondo",
+  desc: "En dos años se aprobaron los tres exámenes pendientes —fiscal, monetario y cambiario—, se sancionó la primera reforma laboral en treinta años y se implementaron más cambios estructurales que en las cuatro décadas anteriores. En 2026, cada ministerio presentará diez paquetes de proyectos legislativos complementarios.",
 } as const;
 
 export const heroCounters: HeroCounter[] = [
@@ -57,25 +57,25 @@ export const heroCounters: HeroCounter[] = [
 
 export const reformBlocks: ReformBlock[] = [
   {
-    title: "BLOQUE I — ESTABILIZACIÓN MACROECONÓMICA",
+    title: "Bloque I — Estabilización macroeconómica",
     subtitle:
-      "Los tres exámenes aprobados: fiscal, monetario y cambiario",
+      "Los tres exámenes pendientes: fiscal, monetario y cambiario",
     range: [0, 3],
   },
   {
-    title: "BLOQUE II — DESREGULACIÓN Y REFORMA DEL ESTADO",
+    title: "Bloque II — Desregulación y reforma del Estado",
     subtitle:
-      "DNU 70/23, Ley Bases, y 14.500 desregulaciones: de la economía más regulada a la más libre",
+      "DNU 70/23, Ley Bases y 14.500 normas eliminadas o simplificadas",
     range: [3, 7],
   },
   {
-    title: "BLOQUE III — REFORMAS LEGISLATIVAS",
+    title: "Bloque III — Reformas legislativas",
     subtitle:
-      "Con el Congreso más reformista de la historia: laboral, comercial, fiscal y penal",
+      "Reformas laboral, comercial, tributaria y penal aprobadas por el Congreso",
     range: [7, 10],
   },
   {
-    title: "BLOQUE IV — SEGURIDAD Y JUSTICIA",
+    title: "Bloque IV — Seguridad y justicia",
     subtitle:
       "Sin orden y sin justicia no hay futuro posible. Nadie puede edificar su futuro si no se respeta la ley.",
     range: [10, 12],

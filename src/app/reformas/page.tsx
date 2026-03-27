@@ -11,9 +11,9 @@ import { PageCTA } from "@/components/ui/PageCTA";
 import { ReformasContent } from "@/components/reformas/ReformasContent";
 
 export const metadata: Metadata = {
-  title: "Reformas",
+  title: "Reformas estructurales",
   description:
-    "Las 12 reformas estructurales del gobierno: estabilización, desregulación, legislación y seguridad.",
+    "Las doce reformas estructurales del gobierno: estabilización macroeconómica, desregulación, apertura comercial y seguridad.",
 };
 
 const headerMetrics = heroCounters.map((c) => ({
@@ -25,9 +25,10 @@ export default function ReformasPage() {
   return (
     <>
       <PageHeader
-        eyebrow={reformasHero.eyebrow}
-        title={reformasHero.title}
-        subtitle={reformasHero.desc}
+        eyebrow="Reformas estructurales"
+        title="Doce transformaciones de fondo"
+        subtitle="Cada reforma se identifica por su instrumento legal, su fecha de vigencia y su estado de implementación."
+        updated="Marzo 2025"
       >
         <MetricRow metrics={headerMetrics} />
       </PageHeader>
@@ -35,8 +36,8 @@ export default function ReformasPage() {
       <ReformasContent blocks={reformBlocks} reformas={reformas} />
 
       <PageCTA
-        headline="Las reformas son la base. Los resultados son la prueba."
-        cta="Ver los 19 logros"
+        headline="Las reformas crean el marco. Los resultados lo confirman."
+        cta="Ver los indicadores de gestión"
         href="/logros"
       />
     </>

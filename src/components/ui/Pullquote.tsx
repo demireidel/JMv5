@@ -17,7 +17,7 @@ export function Pullquote({ children, cite, className }: PullquoteProps) {
         className
       )}
     >
-      <p className="m-0">{children}</p>
+      <div className="m-0">{children}</div>
       {cite && (
         <footer className="mt-2 font-accent text-[length:var(--text-xs)] uppercase tracking-[0.1em] not-italic text-gold/70">
           {cite}

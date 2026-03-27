@@ -1,8 +1,14 @@
 import Link from "next/link";
 import { Container } from "@/components/ui/Container";
 import { SectionKicker } from "@/components/ui/SectionKicker";
-import { reformsIntro, reformSteps } from "@/data/homepage";
+import { Dek } from "@/components/ui/Dek";
+import { EvidenceChip } from "@/components/ui/EvidenceChip";
+import { reformsIntro, reformEntries } from "@/data/homepage";
 
+/**
+ * Reforms — legislative/structural ledger.
+ * Each entry shows instrument, date, result, and evidentiary status.
+ */
 export function ReformsTimeline() {
   return (
     <section className="bg-cream-dark py-[var(--spacing-section)]">
@@ -11,28 +17,53 @@ export function ReformsTimeline() {
         <h2 className="m-0 max-w-[28ch] font-display text-[length:var(--text-2xl)] leading-[1.1] text-text-primary">
           {reformsIntro.title}
         </h2>
-        <p className="mt-[var(--spacing-md)] max-w-[56ch] text-[length:var(--text-base)] leading-relaxed text-text-secondary">
-          {reformsIntro.subtitle}
-        </p>
+        <Dek>{reformsIntro.subtitle}</Dek>
 
-        {/* Timeline grid */}
-        <div className="mt-10 grid gap-px overflow-hidden rounded-[var(--radius-xl)] border border-border bg-border sm:grid-cols-2 lg:grid-cols-3">
-          {reformSteps.map((step) => (
+        {/* Ledger table on desktop, stacked cards on mobile */}
+        <div className="mt-10 overflow-hidden rounded-[var(--radius-lg)] border border-rule">
+          {/* Header — hidden on mobile */}
+          <div className="hidden grid-cols-[3rem_1fr_10rem_8rem_6rem] gap-x-4 border-b border-rule bg-dark px-5 py-2.5 text-[0.6875rem] text-text-tertiary md:grid">
+            <span>#</span>
+            <span>Reforma</span>
+            <span>Instrumento</span>
+            <span>Fecha</span>
+            <span>Estado</span>
+          </div>
+
+          {reformEntries.map((entry, i) => (
             <div
-              key={step.num}
-              className="reveal-fade-up flex flex-col bg-dark p-5"
+              key={entry.num}
+              className={`reveal-fade-up flex flex-col gap-2 border-b border-rule bg-dark p-5 last:border-b-0 md:grid md:grid-cols-[3rem_1fr_10rem_8rem_6rem] md:items-baseline md:gap-x-4 md:py-3.5 ${
+                i % 2 === 1 ? "md:bg-surface-1" : ""
+              }`}
             >
-              <div className="mb-2 flex items-baseline gap-3">
-                <span className="font-accent text-[length:var(--text-lg)] leading-none text-gold">
-                  {step.num}
-                </span>
-                <h3 className="m-0 font-accent text-[length:var(--text-sm)] font-semibold uppercase tracking-[0.04em] text-text-primary">
-                  {step.title}
-                </h3>
+              {/* Number */}
+              <span className="font-display text-[0.8125rem] font-semibold text-text-tertiary">
+                {entry.num}
+              </span>
+
+              {/* Title + result */}
+              <div>
+                <p className="m-0 text-[0.8125rem] font-medium text-text-primary">
+                  {entry.title}
+                </p>
+                <p className="m-0 mt-0.5 text-[length:var(--text-xs)] leading-relaxed text-text-secondary">
+                  {entry.result}
+                </p>
               </div>
-              <p className="m-0 text-[length:var(--text-xs)] leading-relaxed text-text-secondary">
-                {step.result}
-              </p>
+
+              {/* Instrument */}
+              <span className="text-[0.6875rem] text-text-tertiary">
+                {entry.instrument}
+              </span>
+
+              {/* Date */}
+              <span className="text-[0.6875rem] text-text-tertiary">
+                {entry.date}
+              </span>
+
+              {/* Status */}
+              <EvidenceChip status={entry.status} />
             </div>
           ))}
         </div>
@@ -40,7 +71,7 @@ export function ReformsTimeline() {
         <div className="mt-8 text-center">
           <Link
             href="/reformas"
-            className="font-accent text-[length:var(--text-xs)] uppercase tracking-[0.12em] text-gold no-underline transition-colors hover:text-text-primary"
+            className="text-[length:var(--text-sm)] text-text-secondary no-underline transition-colors hover:text-text-primary"
           >
             Ver las 12 reformas en detalle →
           </Link>

@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { Container } from "@/components/ui/Container";
+import { PageMeta } from "@/components/ui/PageMeta";
 import { cn } from "@/lib/cn";
 
 interface PageHeaderProps {
@@ -7,24 +8,29 @@ interface PageHeaderProps {
   title: string;
   titleEmphasis?: string;
   subtitle?: string;
+  date?: string;
+  updated?: string;
   children?: React.ReactNode;
   backgroundImage?: string;
   backgroundAlt?: string;
 }
 
+/**
+ * Editorial page header — institutional, not cinematic.
+ * Single clean fade instead of word-by-word stagger.
+ * Optional date/updated metadata.
+ */
 export function PageHeader({
   eyebrow,
   title,
   titleEmphasis,
   subtitle,
+  date,
+  updated,
   children,
   backgroundImage,
   backgroundAlt,
 }: PageHeaderProps) {
-  const titleWords = title.split(" ");
-  const totalWords = titleWords.length + (titleEmphasis ? titleEmphasis.split(" ").length : 0);
-  const stagger = 30;
-
   return (
     <section
       className={cn(
@@ -52,61 +58,44 @@ export function PageHeader({
         </>
       )}
       <Container className={backgroundImage ? "relative z-10" : undefined}>
-        <div className={backgroundImage ? "section-light-text" : undefined}>
-          {/* Eyebrow */}
+        <div
+          className={backgroundImage ? "section-light-text" : undefined}
+          style={{ animation: "anim-fade-up 600ms var(--ease-out-expo) both" }}
+        >
+          {/* Kicker */}
           <p
-            className="m-0 mb-[var(--spacing-sm)] font-accent text-[length:var(--text-sm)] uppercase tracking-[0.15em] text-gold"
-            style={{ animation: "anim-slide-right 500ms var(--ease-out-expo) both" }}
+            className="m-0 mb-[var(--spacing-sm)] font-display text-[length:var(--text-sm)] tracking-[0.04em] text-text-tertiary"
+            style={{ fontVariant: "small-caps" }}
           >
             {eyebrow}
           </p>
 
-          {/* Gold ornamental rule */}
+          {/* Thin rule */}
           <span
-            className="block h-0.5 w-10 rounded-sm bg-gold mb-5"
+            className="mb-5 block h-px w-10 bg-rule"
             aria-hidden="true"
-            style={{ animation: "anim-fade-up 400ms var(--ease-out-expo) 150ms both" }}
           />
 
-          {/* Title — word-by-word reveal */}
+          {/* Title */}
           <h1 className="m-0 font-display text-[length:var(--text-3xl)] leading-[1.05] text-text-primary">
-            {titleWords.map((word, i) => (
-              <span
-                key={i}
-                className="inline-block"
-                style={{
-                  animation: `anim-fade-up 500ms var(--ease-out-expo) ${i * stagger}ms both`,
-                }}
-              >
-                {word}
-                {i < titleWords.length - 1 || titleEmphasis ? "\u00A0" : ""}
-              </span>
-            ))}
-            {titleEmphasis?.split(" ").map((word, i) => (
-              <span
-                key={`em-${i}`}
-                className="inline-block italic text-gold"
-                style={{
-                  animation: `anim-fade-up 500ms var(--ease-out-expo) ${(titleWords.length + i) * stagger}ms both`,
-                }}
-              >
-                {word}
-                {i < (titleEmphasis.split(" ").length - 1) ? "\u00A0" : ""}
-              </span>
-            ))}
+            {title}
+            {titleEmphasis && (
+              <> <span className="italic text-gold">{titleEmphasis}</span></>
+            )}
           </h1>
 
           {/* Subtitle */}
           {subtitle && (
-            <p
-              className="mt-[var(--spacing-md)] max-w-[52ch] text-[length:var(--text-base)] leading-relaxed text-text-secondary"
-              style={{
-                animation: `anim-fade-up 600ms var(--ease-out-expo) ${totalWords * stagger}ms both`,
-              }}
-            >
+            <p className="mt-[var(--spacing-md)] max-w-[52ch] text-[length:var(--text-base)] leading-relaxed text-text-secondary">
               {subtitle}
             </p>
           )}
+
+          {/* Date metadata */}
+          {(date || updated) && (
+            <PageMeta date={date} updated={updated} className="mt-4" />
+          )}
+
           {children}
         </div>
       </Container>

@@ -15,28 +15,27 @@ import {
 import { FuturoContent } from "@/components/futuro/FuturoContent";
 
 export const metadata: Metadata = {
-  title: "Futuro",
+  title: "Proyectos estratégicos",
   description:
-    "Proyectos estratégicos: Silicon Valley, Stargate AI, energía nuclear y Vaca Muerta.",
+    "Iniciativas de desarrollo: inteligencia artificial, Stargate, energía nuclear y Vaca Muerta.",
 };
 
 const headerMetrics = [
-  { value: "4", label: "Pilares estratégicos" },
-  { value: "$20B", label: "Stargate Argentina" },
-  { value: "7", label: "CEOs tech reunidos" },
+  { value: "4", label: "Ejes estratégicos" },
+  { value: "USD 20.000 M", label: "Stargate Argentina" },
+  { value: "7", label: "Directivos tech reunidos" },
 ];
 
 export default function FuturoPage() {
   return (
     <>
       <PageHeader
-        eyebrow={futuroHeader.sectionTitle}
-        title="El Futuro de Argentina"
+        eyebrow="Proyectos estratégicos"
+        title="Iniciativas en curso y proyecciones"
+        subtitle="Cuatro ejes de desarrollo que posicionan a Argentina en la revolución tecnológica y energética global. Cada iniciativa indica su estado: vigente, anunciada o proyectada."
+        updated="Marzo 2025"
       >
         <Pullquote className="mt-6">{futuroHeader.introQuote}</Pullquote>
-        <p className="mt-4 max-w-[44rem] text-[length:var(--text-sm)] leading-[1.7] text-text-secondary">
-          {futuroHeader.introText}
-        </p>
         <MetricRow metrics={headerMetrics} />
       </PageHeader>
 
@@ -50,8 +49,8 @@ export default function FuturoPage() {
       />
 
       <PageCTA
-        headline="El futuro no se espera. Se construye."
-        cta="Ver la visión completa"
+        headline="El desarrollo de largo plazo requiere un marco institucional estable y una visión de país."
+        cta="Conocer los fundamentos"
         href="/vision"
       />
     </>

@@ -2,93 +2,55 @@ import { HeroVideo } from "@/components/home/HeroVideo";
 import { heroImage } from "@/data/photos";
 
 /**
- * Hero — server component.
- * Entrance choreography is pure CSS animation-delay.
- * Only HeroVideo is a client island (video fallback logic).
+ * Hero — institutional masthead with editorial dek.
+ * Mixed-case Fraunces, compact context line, reduced height.
+ * HeroVideo is the only client island (video/fallback).
  */
 export function Hero() {
   return (
-    <section className="relative h-dvh w-full overflow-hidden">
-      {/* Background — client island for video/fallback logic */}
+    <section className="relative h-[65vh] min-h-[26rem] w-full overflow-hidden">
       <HeroVideo
         src="/videos/milei_epic.mp4"
         poster={heroImage.src}
         alt={heroImage.alt}
       />
 
-      {/* Gradient overlay */}
       <div className="hero-overlay absolute inset-0" />
 
-      {/* Gold accent line at top */}
+      {/* Content — bottom-aligned masthead */}
       <div
-        className="absolute inset-x-0 top-0 h-0.5 origin-center bg-gold"
-        style={{ animation: "anim-line-expand 800ms var(--ease-out-expo) 100ms both" }}
-      />
+        className="relative z-10 flex h-full flex-col justify-end px-4 pb-12 sm:px-6 lg:px-8"
+        style={{ animation: "anim-fade-up 800ms var(--ease-out-expo) 300ms both" }}
+      >
+        <div className="mx-auto w-full max-w-[var(--width-content)]">
+          {/* Office context line */}
+          <p className="m-0 text-[0.6875rem] tracking-[0.04em] text-white/40">
+            Presidencia de la Nación Argentina
+          </p>
 
-      {/* Content */}
-      <div className="relative z-10 flex h-full flex-col items-center justify-end px-4 pb-12">
-        {/* Eyebrow */}
-        <p
-          className="mb-6 text-center font-accent text-sm uppercase tracking-[0.35em] text-white/85"
-          style={{ animation: "anim-fade-up 600ms var(--ease-out-expo) 400ms both" }}
-        >
-          Presidente de la Nacion Argentina
-        </p>
+          {/* Thin rule */}
+          <div className="my-3 h-px w-10 bg-white/15" aria-hidden="true" />
 
-        <h1
-          className="text-center"
-          style={{
-            lineHeight: 0.82,
-            textShadow: "0 4px 60px oklch(0 0 0 / 0.5), 0 2px 20px oklch(0 0 0 / 0.3)",
-          }}
-        >
-          {/* "Javier" */}
-          <span
-            className="block font-accent font-bold uppercase text-white"
-            style={{
-              fontSize: "clamp(3rem, 11vw, 6.5rem)",
-              letterSpacing: "0.18em",
-              animation: "anim-clip-reveal-up 800ms var(--ease-out-expo) 600ms both",
-            }}
-          >
-            Javier
-          </span>
-          {/* "Milei" */}
-          <span
-            className="block font-accent font-bold uppercase text-gold"
-            style={{
-              fontSize: "clamp(5rem, 19vw, 11rem)",
-              letterSpacing: "0.08em",
-              animation: "anim-clip-reveal-up 900ms var(--ease-out-expo) 800ms both",
-            }}
-          >
-            Milei
-          </span>
-        </h1>
+          {/* Name — mixed-case Fraunces, not shouted */}
+          <h1 className="m-0 font-display text-[clamp(2.25rem,6vw,4rem)] font-semibold leading-[0.95] text-white/92">
+            Javier Milei
+          </h1>
 
-        {/* Gold divider */}
-        <div
-          className="mx-auto mb-5 mt-7 h-px w-20 origin-center bg-gold"
-          style={{ animation: "anim-line-expand 700ms var(--ease-out-expo) 1200ms both" }}
-        />
+          {/* Dek — editorial subtitle */}
+          <p className="m-0 mt-3 max-w-[42ch] font-display text-[clamp(0.9375rem,2vw,1.125rem)] italic leading-snug text-white/55">
+            Las ideas de la libertad, al servicio del progreso de la Nación
+          </p>
+        </div>
+      </div>
 
-        {/* Subtitle */}
-        <p
-          className="max-w-[36rem] text-center font-display text-xl italic leading-snug text-white/90"
-          style={{ animation: "anim-fade-up 700ms var(--ease-out-expo) 1500ms both" }}
-        >
-          Argentina sera el pais mas libre del mundo
-        </p>
-
-        {/* Scroll indicator */}
-        <div
-          className="absolute bottom-8 left-1/2 flex -translate-x-1/2 flex-col items-center gap-2"
-          aria-hidden="true"
-          style={{ animation: "anim-fade-in 400ms var(--ease-standard) 1900ms both" }}
-        >
-          <div className="flex h-8 w-5 items-start justify-center rounded-full border-2 border-white/25 pt-1.5">
-            <div className="h-2 w-1 animate-[scroll-dot_2s_ease-in-out_infinite] rounded-full bg-gold" />
-          </div>
+      {/* Scroll indicator */}
+      <div
+        className="absolute bottom-5 left-1/2 -translate-x-1/2"
+        aria-hidden="true"
+        style={{ animation: "anim-fade-in 400ms var(--ease-standard) 1200ms both" }}
+      >
+        <div className="flex h-6 w-3.5 items-start justify-center rounded-full border border-white/15 pt-1">
+          <div className="h-1 w-0.5 animate-[scroll-dot_2s_ease-in-out_infinite] rounded-full bg-white/30" />
         </div>
       </div>
     </section>
