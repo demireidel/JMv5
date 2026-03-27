@@ -9,6 +9,12 @@ export const metadata: Metadata = {
   title: "Resultados de gestión",
   description:
     "Principales resultados del gobierno del presidente Milei: reducción de la pobreza, desinflación, equilibrio fiscal y recuperación del orden público.",
+  alternates: { canonical: "/logros" },
+  openGraph: {
+    title: "Resultados de gestión — 19 indicadores verificables",
+    description: "Cada resultado con cifra heredada, cifra actual, fuente oficial y metodología.",
+    url: "/logros",
+  },
 };
 
 const headerMetrics = [
@@ -22,6 +28,7 @@ export default function LogrosPage() {
   return (
     <>
       <PageHeader
+        breadcrumbs={[{ label: "Inicio", href: "/" }, { label: "Resultados de gestión" }]}
         eyebrow="Resultados de gestión"
         title="Indicadores con datos verificables"
         subtitle="Cada resultado se presenta con la cifra heredada, la cifra actual, la fuente oficial y la metodología de medición correspondientes."

@@ -18,6 +18,12 @@ export const metadata: Metadata = {
   title: "Proyectos estratégicos",
   description:
     "Iniciativas de desarrollo: inteligencia artificial, Stargate, energía nuclear y Vaca Muerta.",
+  alternates: { canonical: "/futuro" },
+  openGraph: {
+    title: "Iniciativas en curso y proyecciones estratégicas",
+    description: "Cuatro ejes de desarrollo: IA, Stargate, energía nuclear y Vaca Muerta. Estado de cada iniciativa indicado.",
+    url: "/futuro",
+  },
 };
 
 const headerMetrics = [
@@ -30,6 +36,7 @@ export default function FuturoPage() {
   return (
     <>
       <PageHeader
+        breadcrumbs={[{ label: "Inicio", href: "/" }, { label: "Proyectos estratégicos" }]}
         eyebrow="Proyectos estratégicos"
         title="Iniciativas en curso y proyecciones"
         subtitle="Cuatro ejes de desarrollo que posicionan a Argentina en la revolución tecnológica y energética global. Cada iniciativa indica su estado: vigente, anunciada o proyectada."

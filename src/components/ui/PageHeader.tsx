@@ -1,7 +1,13 @@
 import Image from "next/image";
 import { Container } from "@/components/ui/Container";
 import { PageMeta } from "@/components/ui/PageMeta";
+import { Breadcrumbs } from "@/components/ui/Breadcrumbs";
 import { cn } from "@/lib/cn";
+
+interface BreadcrumbItem {
+  label: string;
+  href?: string;
+}
 
 interface PageHeaderProps {
   eyebrow: string;
@@ -10,16 +16,12 @@ interface PageHeaderProps {
   subtitle?: string;
   date?: string;
   updated?: string;
+  breadcrumbs?: BreadcrumbItem[];
   children?: React.ReactNode;
   backgroundImage?: string;
   backgroundAlt?: string;
 }
 
-/**
- * Editorial page header — institutional, not cinematic.
- * Single clean fade instead of word-by-word stagger.
- * Optional date/updated metadata.
- */
 export function PageHeader({
   eyebrow,
   title,
@@ -27,6 +29,7 @@ export function PageHeader({
   subtitle,
   date,
   updated,
+  breadcrumbs,
   children,
   backgroundImage,
   backgroundAlt,
@@ -62,6 +65,9 @@ export function PageHeader({
           className={backgroundImage ? "section-light-text" : undefined}
           style={{ animation: "anim-fade-up 600ms var(--ease-out-expo) both" }}
         >
+          {/* Breadcrumbs */}
+          {breadcrumbs && <Breadcrumbs items={breadcrumbs} className="mb-4" />}
+
           {/* Kicker */}
           <p
             className="m-0 mb-[var(--spacing-sm)] font-display text-[length:var(--text-sm)] tracking-[0.04em] text-text-tertiary"

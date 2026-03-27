@@ -14,6 +14,12 @@ export const metadata: Metadata = {
   title: "Reformas estructurales",
   description:
     "Las doce reformas estructurales del gobierno: estabilización macroeconómica, desregulación, apertura comercial y seguridad.",
+  alternates: { canonical: "/reformas" },
+  openGraph: {
+    title: "Doce reformas estructurales",
+    description: "Cada reforma con instrumento legal, fecha de vigencia y estado de implementación.",
+    url: "/reformas",
+  },
 };
 
 const headerMetrics = heroCounters.map((c) => ({
@@ -25,6 +31,7 @@ export default function ReformasPage() {
   return (
     <>
       <PageHeader
+        breadcrumbs={[{ label: "Inicio", href: "/" }, { label: "Reformas estructurales" }]}
         eyebrow="Reformas estructurales"
         title="Doce transformaciones de fondo"
         subtitle="Cada reforma se identifica por su instrumento legal, su fecha de vigencia y su estado de implementación."

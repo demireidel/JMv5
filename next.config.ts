@@ -28,15 +28,19 @@ const nextConfig: NextConfig = {
             value: "camera=(), microphone=(), geolocation=()",
           },
           {
+            key: "Strict-Transport-Security",
+            value: "max-age=63072000; includeSubDomains; preload",
+          },
+          {
             key: "Content-Security-Policy",
             value: [
               "default-src 'self'",
               "style-src 'self' 'unsafe-inline'",
-              "script-src 'self' 'unsafe-inline'",
+              "script-src 'self' 'unsafe-inline' https://va.vercel-scripts.com",
               "img-src 'self' data: blob:",
               "font-src 'self'",
               "frame-src https://www.youtube-nocookie.com",
-              "connect-src 'self'",
+              "connect-src 'self' https://va.vercel-scripts.com https://vitals.vercel-insights.com",
               "worker-src 'self' blob:",
             ].join("; "),
           },

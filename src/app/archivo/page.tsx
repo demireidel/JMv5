@@ -15,6 +15,12 @@ export const metadata: Metadata = {
   title: "Archivo intelectual",
   description:
     "Producción intelectual del presidente Milei: libros, artículos académicos, discursos institucionales y entrevistas.",
+  alternates: { canonical: "/archivo" },
+  openGraph: {
+    title: "Archivo intelectual — Producción intelectual",
+    description: "Nueve libros, siete artículos académicos y once discursos institucionales del presidente Milei.",
+    url: "/archivo",
+  },
 };
 
 const headerMetrics = [
@@ -27,6 +33,7 @@ export default function ArchivoPage() {
   return (
     <>
       <PageHeader
+        breadcrumbs={[{ label: "Inicio", href: "/" }, { label: "Archivo intelectual" }]}
         eyebrow="Archivo intelectual"
         title="Producción intelectual"
         subtitle="Libros, artículos académicos, discursos y entrevistas del presidente Milei. El registro de una trayectoria que combina formación económica, debate público y ejercicio del poder."

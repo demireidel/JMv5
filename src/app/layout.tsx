@@ -1,8 +1,12 @@
 import type { Metadata, Viewport } from "next";
 import localFont from "next/font/local";
+import { Analytics } from "@vercel/analytics/next";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 import "./globals.css";
 import { NavBar } from "@/components/NavBar";
 import { Footer } from "@/components/Footer";
+
+/* ── Fonts ──────────────────────────────────────────────────── */
 
 const fraunces = localFont({
   src: [
@@ -18,6 +22,7 @@ const fraunces = localFont({
   variable: "--font-fraunces",
   display: "swap",
   weight: "100 900",
+  preload: true,
 });
 
 const oswald = localFont({
@@ -25,6 +30,7 @@ const oswald = localFont({
   variable: "--font-oswald",
   display: "swap",
   weight: "200 700",
+  preload: false, // accent font — not critical for FCP
 });
 
 const inter = localFont({
@@ -32,53 +38,73 @@ const inter = localFont({
   variable: "--font-inter",
   display: "swap",
   weight: "100 900",
+  preload: true,
 });
+
+/* ── Metadata ───────────────────────────────────────────────── */
+
+const SITE_URL = "https://javiermilei.com";
+const SITE_NAME = "Presidencia de la Nación Argentina";
 
 export const metadata: Metadata = {
   title: {
     default: "Javier Milei — Presidente de la Nación Argentina",
-    template: "%s | Javier Milei",
+    template: "%s | Presidencia de la Nación",
   },
   description:
-    "Sitio oficial de Javier Milei, Presidente de la Nación Argentina. Visión, logros, reformas y archivo intelectual.",
-  metadataBase: new URL("https://javiermilei.com"),
+    "Sitio oficial de la Presidencia de la Nación Argentina. Visión de gobierno, resultados de gestión, reformas estructurales, proyectos estratégicos, relaciones exteriores y archivo intelectual del presidente Javier Milei.",
+  metadataBase: new URL(SITE_URL),
+  alternates: {
+    canonical: "/",
+  },
   openGraph: {
     type: "website",
     locale: "es_AR",
-    url: "https://javiermilei.com",
-    siteName: "Javier Milei — Presidente",
+    url: SITE_URL,
+    siteName: SITE_NAME,
     title: "Javier Milei — Presidente de la Nación Argentina",
     description:
-      "Visión, logros, reformas y archivo intelectual del Presidente Javier Milei.",
+      "Sitio oficial de la Presidencia de la Nación Argentina. Visión, resultados, reformas y archivo intelectual.",
   },
   twitter: {
     card: "summary_large_image",
+    site: "@JMilei",
+    creator: "@JMilei",
     title: "Javier Milei — Presidente de la Nación Argentina",
     description:
-      "Visión, logros, reformas y archivo intelectual del Presidente Javier Milei.",
+      "Sitio oficial de la Presidencia de la Nación Argentina.",
   },
   robots: {
     index: true,
     follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
   },
+  category: "government",
 };
 
-// Page background is cream (#f5f2ed) — colorScheme must match globals.css
-// which sets `html { color-scheme: light; }`
 export const viewport: Viewport = {
-  themeColor: "#f5f2ed", // --color-dark-hex (actual page background)
+  themeColor: "#f7f5f0",
   colorScheme: "light",
   width: "device-width",
   initialScale: 1,
 };
 
-const schemaOrg = {
+/* ── Structured Data ────────────────────────────────────────── */
+
+const personSchema = {
   "@context": "https://schema.org",
   "@type": "Person",
+  "@id": `${SITE_URL}/#person`,
   name: "Javier Milei",
-  url: "https://javiermilei.com",
+  url: SITE_URL,
   jobTitle: "Presidente de la Nación Argentina",
-  nationality: "Argentine",
+  nationality: { "@type": "Country", name: "Argentina" },
   affiliation: {
     "@type": "Organization",
     name: "La Libertad Avanza",
@@ -86,16 +112,47 @@ const schemaOrg = {
   },
   worksFor: {
     "@type": "GovernmentOrganization",
+    "@id": `${SITE_URL}/#org`,
     name: "Presidencia de la Nación Argentina",
     url: "https://www.argentina.gob.ar",
     address: {
       "@type": "PostalAddress",
       streetAddress: "Balcarce 50",
       addressLocality: "Buenos Aires",
+      addressRegion: "CABA",
+      postalCode: "C1064AAB",
       addressCountry: "AR",
     },
   },
-} as const;
+};
+
+const websiteSchema = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "@id": `${SITE_URL}/#website`,
+  name: SITE_NAME,
+  url: SITE_URL,
+  publisher: { "@id": `${SITE_URL}/#org` },
+  inLanguage: "es",
+};
+
+const orgSchema = {
+  "@context": "https://schema.org",
+  "@type": "GovernmentOrganization",
+  "@id": `${SITE_URL}/#org`,
+  name: "Presidencia de la Nación Argentina",
+  url: "https://www.argentina.gob.ar",
+  address: {
+    "@type": "PostalAddress",
+    streetAddress: "Balcarce 50",
+    addressLocality: "Buenos Aires",
+    addressRegion: "CABA",
+    postalCode: "C1064AAB",
+    addressCountry: "AR",
+  },
+};
+
+/* ── Layout ─────────────────────────────────────────────────── */
 
 export default function RootLayout({
   children,
@@ -110,7 +167,9 @@ export default function RootLayout({
       <head>
         <script
           type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaOrg) }}
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify([personSchema, websiteSchema, orgSchema]),
+          }}
         />
       </head>
       <body>
@@ -120,6 +179,8 @@ export default function RootLayout({
         <NavBar />
         <main id="main-content">{children}</main>
         <Footer />
+        <Analytics />
+        <SpeedInsights />
       </body>
     </html>
   );

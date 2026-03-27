@@ -9,12 +9,19 @@ export const metadata: Metadata = {
   title: "Visión y principios",
   description:
     "Fundamentos filosóficos y principios rectores del gobierno del presidente Javier Milei. Cinco capítulos sobre libertad, capitalismo, Estado, cultura y defensa de Occidente.",
+  alternates: { canonical: "/vision" },
+  openGraph: {
+    title: "Visión y principios de gobierno",
+    description: "Los fundamentos del proyecto de gobierno: libertad individual, propiedad privada y cooperación social voluntaria.",
+    url: "/vision",
+  },
 };
 
 export default function VisionPage() {
   return (
     <>
       <PageHeader
+        breadcrumbs={[{ label: "Inicio", href: "/" }, { label: "Visión y principios" }]}
         eyebrow="Visión y principios"
         title="Los fundamentos del proyecto"
         titleEmphasis="de gobierno"
